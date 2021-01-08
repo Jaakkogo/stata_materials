@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stata basics &#8212; ECON-C4X00</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">ECON-C4X00</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Stata basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/stata_basics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/stata_basics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="stata-basics">
+<h1>Stata basics<a class="headerlink" href="#stata-basics" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> auto
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1978 Automobile Data)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">scatter</span> mpg weight
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#EAF2F3;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#EAF2F3&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#EAF2F3;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;390.80&quot; y=&quot;100.86&quot; width=&quot;3468.22&quot; height=&quot;2388.33&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2425.82&quot; x2=&quot;3859.02&quot; y2=&quot;2425.82&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1696.29&quot; x2=&quot;3859.02&quot; y2=&quot;1696.29&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;966.64&quot; x2=&quot;3859.02&quot; y2=&quot;966.64&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;237.11&quot; x2=&quot;3859.02&quot; y2=&quot;237.11&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1660.72&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1660.72&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2093.97&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2093.97&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1361.62&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1361.62&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1990.77&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1990.77&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2846.87&quot; cy=&quot;2061.12&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2846.87&quot; cy=&quot;2061.12&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2424.01&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2424.01&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;938.77&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;938.77&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2021.70&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2021.70&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2640.58&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2640.58&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2145.45&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2145.45&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3104.64&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;3104.64&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2661.12&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2661.12&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3063.43&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;3063.43&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;815.02&quot; cy=&quot;1039.66&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;815.02&quot; cy=&quot;1039.66&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1918.62&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1918.62&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1959.83&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1959.83&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2176.39&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2176.39&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;825.41&quot; cy=&quot;966.77&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;825.41&quot; cy=&quot;966.77&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2496.16&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2496.16&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;495.37&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;495.37&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3630.70&quot; cy=&quot;2280.04&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;3630.70&quot; cy=&quot;2280.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3506.83&quot; cy=&quot;2280.04&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;3506.83&quot; cy=&quot;2280.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2588.97&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2588.97&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1299.75&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1299.75&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2826.20&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2826.20&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2475.49&quot; cy=&quot;2061.12&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2475.49&quot; cy=&quot;2061.12&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2898.35&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2898.35&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2826.20&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2826.20&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2052.64&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2052.64&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2042.37&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2042.37&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1454.43&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1454.43&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2795.26&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2795.26&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2001.16&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2001.16&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;495.37&quot; cy=&quot;674.95&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;495.37&quot; cy=&quot;674.95&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;907.83&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;907.83&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1237.87&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1237.87&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2073.31&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2073.31&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2454.95&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2454.95&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2217.72&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2217.72&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1949.56&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1949.56&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1939.29&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1939.29&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2166.12&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2166.12&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1413.22&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1413.22&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;773.81&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;773.81&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1083.18&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1083.18&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;722.21&quot; cy=&quot;601.94&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;722.21&quot; cy=&quot;601.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;990.37&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;990.37&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;835.68&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;835.68&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;949.16&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;949.16&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;454.04&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;454.04&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;681.00&quot; cy=&quot;966.77&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;681.00&quot; cy=&quot;966.77&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2166.12&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;2166.12&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;526.31&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;526.31&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;753.14&quot; cy=&quot;601.94&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;753.14&quot; cy=&quot;601.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1124.52&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1124.52&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;907.83&quot; cy=&quot;893.75&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;907.83&quot; cy=&quot;893.75&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1392.56&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1392.56&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;866.62&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;866.62&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;742.87&quot; cy=&quot;164.22&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;742.87&quot; cy=&quot;164.22&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;629.39&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;629.39&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;691.27&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;691.27&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1908.22&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
+	&lt;circle cx=&quot;1908.22&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2425.82&quot; x2=&quot;350.83&quot; y2=&quot;2425.82&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2425.82&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2425.82)&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1696.29&quot; x2=&quot;350.83&quot; y2=&quot;1696.29&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1696.29&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1696.29)&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;966.64&quot; x2=&quot;350.83&quot; y2=&quot;966.64&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;966.64&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,966.64)&quot; text-anchor=&quot;middle&quot;&gt;30&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;237.11&quot; x2=&quot;350.83&quot; y2=&quot;237.11&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;237.11&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,237.11)&quot; text-anchor=&quot;middle&quot;&gt;40&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Mileage (mpg)&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;701.66&quot; y1=&quot;2489.19&quot; x2=&quot;701.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;701.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2,000&lt;/text&gt;
+	&lt;line x1=&quot;1732.99&quot; y1=&quot;2489.19&quot; x2=&quot;1732.99&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1732.99&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;3,000&lt;/text&gt;
+	&lt;line x1=&quot;2764.33&quot; y1=&quot;2489.19&quot; x2=&quot;2764.33&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2764.33&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;4,000&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;5,000&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Weight (lbs.)&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "stata"
+        },
+        kernelOptions: {
+            kernelName: "stata",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'stata'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="notebooks.html" title="previous page">Content with notebooks</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jaakko Markkanen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
