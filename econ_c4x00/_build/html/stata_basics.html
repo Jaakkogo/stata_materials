@@ -45,8 +45,6 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,8 +55,7 @@
     <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/stata_basics.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="Welcome to ECON-C4100 and ECON-C4200 Stata materials page!" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,7 +65,7 @@
 <meta property="og:url"         content="https://jaakkogo.github.io/stata_materials/stata_basics.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Stata basics" />
-<meta property="og:description" content="Stata basics  sysuse auto  (1978 Automobile Data)   scatter mpg weight                  &lt;iframe frameborder=&#34;0&#34; scrolling=&#34;no&#34; height=&#34;436&#34; width=&#34;600&#34;         " />
+<meta property="og:description" content="Stata basics  Printing in Stata  The print command for Stata is the display or di command. Let’s start by printing a familiar message:  di &#34;Hello World!&#34;  Hello" />
 <meta property="og:image"       content="https://jaakkogo.github.io/stata_materials/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -101,16 +98,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Stata basics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
   </a>
  </li>
 </ul>
@@ -195,6 +182,45 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#printing-in-stata">
+   Printing in Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#help">
+   Help
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#macros-and-scalars">
+   Macros and scalars
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commenting-and-line-breaks-in-stata">
+   Commenting and line breaks in Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-data-to-stata">
+   Importing data to Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-line-graphs-in-stata">
+   Simple line graphs in Stata
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -204,21 +230,506 @@
                 
   <div class="section" id="stata-basics">
 <h1>Stata basics<a class="headerlink" href="#stata-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="printing-in-stata">
+<h2>Printing in Stata<a class="headerlink" href="#printing-in-stata" title="Permalink to this headline">¶</a></h2>
+<p>The print command for Stata is the <code class="docutils literal notranslate"><span class="pre">display</span></code> or <code class="docutils literal notranslate"><span class="pre">di</span></code> command. Let’s start by printing a familiar message:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> auto
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;Hello World!&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1978 Automobile Data)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="help">
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<p>The most important Stata command is the <code class="docutils literal notranslate"><span class="pre">help</span></code> command. It searches the Stata documentation for the user input. Since this instance uses the <code class="docutils literal notranslate"><span class="pre">stata_kernel</span></code> for Jupyter Lab, we’ll need to include <code class="docutils literal notranslate"><span class="pre">%</span></code> to the start of the command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%help<span class="k"> help</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<html>
+<head>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Stata 16 help for help</title>
+<link href="//www.stata.com/includes/css/stylehelp.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">h2 {
+    font-family: Arial,Helvetica,Helv,sans-serif;
+    color: #000000;
+}
+
+pre {
+    margin: 10px;
+}
+
+table {
+    background-color: transparent;
+    border-color: transparent;
+    bgcolor: transparent;
+}
+
+tr {
+    background-color: transparent;
+    border-color: transparent;
+    bgcolor: transparent;
+}
+
+body {
+    background-color: transparent;
+    border-color: transparent;
+    margin: 0px;
+}
+
+div {
+    background-color: transparent;
+    border-color: transparent;
+}
+</style>
+</head>
+<body>
+
+<p>
+<table align="center" bgcolor="transparent" border="1" cellpadding="5" cellspacing="0">
+<tr bgcolor="transparent"><td align="left" bgcolor="transparent" valign="top">
+<!-- END HEAD -->
+
+<pre>
+<p>
+<b>[R] help</b> -- Display help in Stata
+<p>
+<p>
+-------------------------------------------------------------------------------
+<p>
+<b><u>Stata's help system</u></b>
+<p>
+    There are several kinds of help available to the Stata user. For more
+    information, see <a href="https://www.stata.com/help.cgi?help_advice" target="_blank">Advice on getting help</a>.  The information below is
+    technical details about Stata's <b>help</b> command.
+<p>
+-------------------------------------------------------------------------------
+<p>
+<a name="syntax"></a><b><u>Syntax</u></b>
+<p>
+        <b><u>h</u></b><b>elp</b> [<i>command_or_topic_name</i>] [<b>,</b> <b><u>non</u></b><b>ew</b> <b>name(</b><i>viewername</i><b>)</b>
+              <b><u>mark</u></b><b>er(</b><i>markername</i><b>)</b>]
+<p>
+<p>
+<a name="menu"></a><b><u>Menu</u></b>
+<p>
+    <b>Help &gt; Stata command...</b>
+<p>
+<p>
+<a name="description"></a><b><u>Description</u></b>
+<p>
+    The <b>help</b> command displays help information about the specified command or
+    topic.  <b>help</b> launches a new Viewer to display help for the specified
+    command or topic or displays help on the console in Stata for
+    Unix(console).  If <b>help</b> is not followed by a command or a topic name,
+    Stata displays advice for using the help system and documentation.
+<p>
+<p>
+<a name="options"></a><b><u>Options</u></b>
+<p>
+    <b>nonew</b> specifies that a new Viewer window not be opened for the help topic
+        if a Viewer window is already open.  The default is for a new Viewer
+        window to be opened each time <b>help</b> is typed so that multiple help
+        files may be viewed at once.  <b>nonew</b> causes the help file to be
+        displayed in the topmost open Viewer.
+<p>
+    <b>name(</b><i>viewername</i><b>)</b> specifies that help be displayed in a Viewer window
+        named <i>viewername</i>.  If the named window already exists, its contents
+        will be replaced.  If the named window does not exist, it will be
+        created.
+<p>
+    <b>marker(</b><i>markername</i><b>)</b> specifies that the help file be opened to the position
+        of <i>markername</i> within the help file.
+<p>
+<p>
+<a name="remarks"></a><b><u>Remarks</u></b>
+<p>
+    To obtain help for any Stata command, type <b>help</b> <i>command</i> or select <b>Help &gt;</b>
+    <b>Stata command...</b> and fill in <i>command</i>.
+<p>
+    <b>help</b> is best explained by examples.
+<p>
+        To obtain help for ...              type
+          <b>regress</b>                             <b>help regress</b>
+          postestimation tools for <b>regress</b>    <b>help regress postestimation</b>
+                                              or   <b>help regress post</b>
+          graph option <b>xlabel()</b>               <b>help graph xlabel()</b>
+          Stata function <b>strpos()</b>             <b>help strpos()</b>
+          Mata function <b>optimize()</b>            <b>help mata optimize()</b>
+<p>
+    Tips:
+<p>
+        o <b>help</b> displays advice for using the help system and documentation.
+<p>
+        o <b>help guide</b> displays a table of contents for basic Stata concepts.
+<p>
+        o <b>help estimation commands</b> displays an alphabetical listing of all
+            Stata estimation commands.
+<p>
+        o <b>help functions</b> displays help on Stata functions by category.
+<p>
+        o <b>help mata functions</b> displays a subject table of contents for Mata's
+            functions.
+<p>
+        o <b>help ts glossary</b> displays the glossary for the time-series manual,
+            and similarly for the other Stata specialty manuals.
+<p>
+    If you type <b>help</b> <i>topic</i> and help for <i>topic</i> is not found, Stata will
+    automatically perform a search for <i>topic</i>.
+<p>
+    For instance, try typing <b>help forecasting</b>.  A forecasting help file is
+    not found, so Stata executes <b>search forecasting</b> and displays the results
+    in the Viewer.
+<p>
+    See <b>[U] 4 Stata's help and search facilities</b> for a complete description
+    of how to use <b>help</b>.
+<p>
+<p>
+<a name="video"></a><b><u>Video example</u></b>
+<p>
+    Quick help in Stata
+<p>
+</p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></pre>
+<!-- BEGIN FOOT -->
+</td></tr></table>
+
+
+<br/>
+</p></body>
+</html>
+</div></div>
+</div>
+</div>
+<div class="section" id="macros-and-scalars">
+<h2>Macros and scalars<a class="headerlink" href="#macros-and-scalars" title="Permalink to this headline">¶</a></h2>
+<p>Stata has two types of “variables” called local and global macros (not to be confused with actual Stata variables). Local macros are saved in memory until the end of the current do-file or Stata instance. Global macros are saved until you exit Stata.</p>
+<p>Let’s start by saving your working directory with macros. Create a folder called <code class="docutils literal notranslate"><span class="pre">ECON-C4100</span></code> somewhere on your computer and copy the path to Stata:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPath <span class="s">&quot;Z:/ECON-C4100&quot;</span><span class="k"></span>
+<span class="k">global</span> userPath <span class="s">&quot;Z:/ECON-C4100&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Macros are referenced with <code class="docutils literal notranslate"><span class="pre">`localName'</span></code> and <code class="docutils literal notranslate"><span class="pre">$globalName</span></code>. We can print them by typing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPath&#39;</span><span class="s">&quot;</span><span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="vg">$userPath</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100
+</pre></div>
+</div>
+</div>
+</div>
+<p>One crucial thing about statistical programming is to know which folder your working directory is pointing at. Let’s set our working dir to <code class="docutils literal notranslate"><span class="pre">$userPath</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="vg">$userPath</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can print the location of the current working directory with two commands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">pwd</span>
+<span class="k">cd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+</pre></div>
+</div>
+</div>
+</div>
+<p>To print the Stata system directories you can type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysdir</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   STATA:  C:\Program Files (x86)\Stata15MP\
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    BASE:  C:\Program Files (x86)\Stata15MP\ado\base\
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    SITE:  C:\Program Files (x86)\Stata15MP\ado\site\
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PLUS:  c:\ado\plus\
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PERSONAL:  c:\ado\personal\
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OLDPLACE:  c:\ado\
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can combine macros easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice <span class="nv">`userPath&#39;</span> <span class="vg">$userPath</span> <span class="vg">$userPath</span><span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPathTwice&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100 Z:/ECON-C4100 Z:/ECON-C4100
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also erase macros by simply typing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice<span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPathTwice&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Macros can be used as counters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> one_ <span class="m">1</span><span class="k"></span>
+<span class="k">local</span> two_ <span class="m">2</span><span class="k"></span>
+<span class="k">local</span> three_ <span class="nv">`one_&#39;</span> <span class="o">+</span> <span class="nv">`two_&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">scatter</span> mpg weight
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="nv">`three_&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>However notice who <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> change the output:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="nv">`three_&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 + 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also use scalars. They are refered with their names but can only store numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">scalar</span> one_ = <span class="m">1</span><span class="k"></span>
+<span class="k">scalar</span> two_ = <span class="m">2</span><span class="k"></span>
+<span class="k">scalar</span> three_ = one_ <span class="o">+</span> two_
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> three_<span class="k"></span>
+<span class="k">scalar drop</span> three_
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="commenting-and-line-breaks-in-stata">
+<h2>Commenting and line breaks in Stata<a class="headerlink" href="#commenting-and-line-breaks-in-stata" title="Permalink to this headline">¶</a></h2>
+<p>Including comments to your code is easy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">// Comment, one line</span>
+<span class="c1">* Comment, one line</span>
+
+<span class="cm">/* Comment, </span>
+<span class="cm">multiple </span>
+<span class="cm">lines */</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The default chracter that marks the end of a command is newline (line break). You can change it to <code class="docutils literal notranslate"><span class="pre">;</span></code> and back easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>#delimit ;
+#delimit cr
+</pre></div>
+</div>
+</div>
+</div>
+<p>When using the standard line break, we need to use <code class="docutils literal notranslate"><span class="pre">///</span></code> to tell Stata if our command is presented in multiple lines.</p>
+</div>
+<div class="section" id="importing-data-to-stata">
+<h2>Importing data to Stata<a class="headerlink" href="#importing-data-to-stata" title="Permalink to this headline">¶</a></h2>
+<p>Next I demonstrate on how to import text and Excel data to Stata. We obtain our data directly through Statistics Finland API (I’ve created the links beforehand). We could also download the data to disk and replace the address with the file path. More on that later…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> delimiter <span class="s">&quot;tab&quot;</span> <span class="c1">// our data has &#39;tabulate&#39; key as the delimiter.</span>
+import delimited using <span class="cs">///</span>
+https:<span class="o">//</span>pxnet2<span class="m">.</span>stat<span class="m">.</span>fi:<span class="m">443</span><span class="o">/</span>PXWeb<span class="o">/</span>sq<span class="o">/</span>2c23b351<span class="o">-</span>c9a5<span class="m">-4946</span><span class="o">-</span>b9c1<span class="o">-</span>06c8146e7119 , <span class="cs">///</span>
+delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3 vars, 191 obs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s describe our data in memory:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">describe</span> _all
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           str7    %9s                   Month
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity       str5    %9s                   Commodity
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pointfigure     float   %9.0g                 Point figure
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Stata, the data is saved as variables. Think them as vectors or matrices or as columns.</p>
+<p>Notice how the month variable has storage type <code class="docutils literal notranslate"><span class="pre">str7</span></code>. That means it’s a string variable. We can turn it into a time variable that Stata understands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">generate</span> temp = <span class="nf">monthly</span>(month, <span class="s">&quot;YM&quot;</span>)<span class="k"></span>
+<span class="k">drop</span> month<span class="k"></span>
+<span class="k">rename</span> temp month<span class="k"></span>
+<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, we first generate a new variable with the <code class="docutils literal notranslate"><span class="pre">generate</span></code> or <code class="docutils literal notranslate"><span class="pre">gen</span></code> command. Then we delete the old variable with the <code class="docutils literal notranslate"><span class="pre">drop</span></code> command and rename the variable <em>temp</em> back to <em>month</em> with the <code class="docutils literal notranslate"><span class="pre">rename</span></code> command.</p>
+<p>Finally, we give the new month variable it’s old label.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">describe</span> _all
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity       str5    %9s                   Commodity
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pointfigure     float   %9.0g                 Point figure
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           float   %9.0g                 Month
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could also do the same with Excel data. This time Statistics Finland gives us a direct link to an Excel file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel using <span class="cs">///</span>
+https:<span class="o">//</span>pxnet2<span class="m">.</span>stat<span class="m">.</span>fi<span class="o">/</span>PXWeb<span class="o">/</span>sq<span class="o">/</span>feec4f38<span class="o">-</span>7ddb<span class="o">-</span>4c9f<span class="o">-</span>b091<span class="o">-</span>a0688c3f7b89 , <span class="cs">///</span>
+cellrange(A3:F194) firstrow<span class="k"> clear</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">keep</span> A B Pointfigure<span class="k"></span>
+<span class="k">rename</span> A month<span class="k"></span>
+<span class="k">rename</span> B commodity<span class="k"></span>
+<span class="k">generate</span> temp = <span class="nf">monthly</span>(month, <span class="s">&quot;YM&quot;</span>)<span class="k"></span>
+<span class="k">drop</span> month<span class="k"></span>
+<span class="k">rename</span> temp month<span class="k"></span>
+<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excel files are often quite awkward. Notice how we need to determine the precise cellrange or the data would include some unwanted metadata from the Statistics Finland.</p>
+<p>Command <code class="docutils literal notranslate"><span class="pre">keep</span></code> is the opposite of <code class="docutils literal notranslate"><span class="pre">drop</span></code>.</p>
+<p>Finally, to demonstrate the dynamic options of Stata, let’s do a graph:</p>
+</div>
+<div class="section" id="simple-line-graphs-in-stata">
+<h2>Simple line graphs in Stata<a class="headerlink" href="#simple-line-graphs-in-stata" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> scheme s1mono <span class="c1">// just a style for our graph</span>
+<span class="k">line</span> Pointfigure month
 </pre></div>
 </div>
 </div>
@@ -228,186 +739,41 @@
 
 &lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
 	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
-	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#EAF2F3;stroke:none&quot;/&gt;
-	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#EAF2F3&quot;/&gt;
-	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#EAF2F3;stroke-width:5.76&quot;/&gt;
-	&lt;rect x=&quot;390.80&quot; y=&quot;100.86&quot; width=&quot;3468.22&quot; height=&quot;2388.33&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
-	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;2425.82&quot; x2=&quot;3859.02&quot; y2=&quot;2425.82&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;1696.29&quot; x2=&quot;3859.02&quot; y2=&quot;1696.29&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;966.64&quot; x2=&quot;3859.02&quot; y2=&quot;966.64&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;237.11&quot; x2=&quot;3859.02&quot; y2=&quot;237.11&quot; style=&quot;stroke:#EAF2F3;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1660.72&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1660.72&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2093.97&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2093.97&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1361.62&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1361.62&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1990.77&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1990.77&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2846.87&quot; cy=&quot;2061.12&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2846.87&quot; cy=&quot;2061.12&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2424.01&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2424.01&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;938.77&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;938.77&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2021.70&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2021.70&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2640.58&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2640.58&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2145.45&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2145.45&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3104.64&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;3104.64&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2661.12&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2661.12&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3063.43&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;3063.43&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;815.02&quot; cy=&quot;1039.66&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;815.02&quot; cy=&quot;1039.66&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1918.62&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1918.62&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1959.83&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1959.83&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2176.39&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2176.39&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;825.41&quot; cy=&quot;966.77&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;825.41&quot; cy=&quot;966.77&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2351.74&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2496.16&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2496.16&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;495.37&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;495.37&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3630.70&quot; cy=&quot;2280.04&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;3630.70&quot; cy=&quot;2280.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3506.83&quot; cy=&quot;2280.04&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;3506.83&quot; cy=&quot;2280.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2588.97&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2588.97&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1299.75&quot; cy=&quot;1550.39&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1299.75&quot; cy=&quot;1550.39&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2826.20&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2826.20&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2475.49&quot; cy=&quot;2061.12&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2475.49&quot; cy=&quot;2061.12&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2898.35&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2898.35&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1696.29&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1696.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2826.20&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2826.20&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2052.64&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2052.64&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2042.37&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2042.37&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2444.56&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2114.52&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1454.43&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1454.43&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2795.26&quot; cy=&quot;1988.11&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2795.26&quot; cy=&quot;1988.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2001.16&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2001.16&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;495.37&quot; cy=&quot;674.95&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;495.37&quot; cy=&quot;674.95&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;907.83&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;907.83&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1237.87&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1237.87&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2073.31&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2073.31&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2454.95&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2454.95&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2217.72&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2217.72&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1949.56&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1949.56&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1939.29&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1939.29&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2166.12&quot; cy=&quot;1769.31&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2166.12&quot; cy=&quot;1769.31&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1413.22&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1413.22&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1557.64&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;773.81&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;773.81&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1372.02&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1083.18&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1083.18&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;722.21&quot; cy=&quot;601.94&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;722.21&quot; cy=&quot;601.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;990.37&quot; cy=&quot;1404.48&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;990.37&quot; cy=&quot;1404.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1475.10&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;835.68&quot; cy=&quot;1623.40&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;835.68&quot; cy=&quot;1623.40&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;949.16&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;949.16&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;454.04&quot; cy=&quot;1112.67&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;454.04&quot; cy=&quot;1112.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;681.00&quot; cy=&quot;966.77&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;681.00&quot; cy=&quot;966.77&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2166.12&quot; cy=&quot;2134.14&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;2166.12&quot; cy=&quot;2134.14&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;526.31&quot; cy=&quot;1258.58&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;526.31&quot; cy=&quot;1258.58&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;753.14&quot; cy=&quot;601.94&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;753.14&quot; cy=&quot;601.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1124.52&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1124.52&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;907.83&quot; cy=&quot;893.75&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;907.83&quot; cy=&quot;893.75&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1392.56&quot; cy=&quot;1842.20&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1392.56&quot; cy=&quot;1842.20&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;866.62&quot; cy=&quot;1477.50&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;866.62&quot; cy=&quot;1477.50&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;742.87&quot; cy=&quot;164.22&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;742.87&quot; cy=&quot;164.22&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;629.39&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;629.39&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;691.27&quot; cy=&quot;1331.59&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;691.27&quot; cy=&quot;1331.59&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1908.22&quot; cy=&quot;1915.21&quot; r=&quot;26.35&quot; style=&quot;fill:#1A476F&quot;/&gt;
-	&lt;circle cx=&quot;1908.22&quot; cy=&quot;1915.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#1A476F;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;path d=&quot; M454.04 2425.95 L470.00 2364.81 L485.84 2338.58 L501.81 2329.91 L517.77 2354.29 L533.61 2344.76 L549.57 2382.26 L565.41 2349.96 L581.38 2302.81 L597.34 2309.87 L613.18 2330.78 L629.14 2329.05 L644.99 2356.89 L660.95 2287.10 L676.79 2260.12 L692.75 2213.83 L708.72 2203.31 L724.56 2194.65 L740.52 2218.16 L756.36 2184.13 L772.32 2171.88 L788.29 2148.37 L804.13 2143.91 L820.09 2134.38 L835.93 2152.70 L851.89 2096.89 L867.74 2028.70 L883.70 1985.14 L899.66 1994.66 L915.50 1981.55 L931.47 1991.20 L947.31 1978.08 L963.27 1937.12 L979.23 1909.15 L995.07 1888.24 L1011.04 1903.95 L1026.88 1809.65 L1042.84 1762.50 L1058.81 1679.59 L1074.64 1665.60 L1090.61 1615.85 L1106.45 1581.82 L1122.41 1595.81 L1138.25 1553.85 L1154.22 1506.70 L1170.18 1508.44 L1186.02 1556.45 L1201.98 1585.29 L1217.82 1608.06 L1233.79 1600.14 L1249.75 1593.21 L1265.59 1594.94 L1281.56 1612.39 L1297.39 1589.62 L1313.36 1650.75 L1329.20 1621.05 L1345.16 1604.47 L1361.13 1655.08 L1376.97 1645.56 L1392.93 1636.77 L1408.77 1625.51 L1424.73 1588.75 L1440.70 1539.87 L1456.54 1513.76 L1472.50 1522.42 L1488.34 1502.37 L1504.31 1551.25 L1520.14 1511.16 L1536.11 1470.94 L1552.07 1434.31 L1567.91 1410.67 L1583.88 1362.65 L1599.72 1326.89 L1615.68 1268.48 L1631.64 1215.14 L1647.48 1195.09 L1663.45 1189.89 L1679.29 1161.93 L1695.25 1189.89 L1711.09 1150.54 L1727.06 1109.58 L1743.02 1085.07 L1758.86 1078.14 L1774.82 1081.61 L1790.66 1017.88 L1806.63 962.93 L1822.59 923.70 L1838.43 888.68 L1854.39 887.81 L1870.23 880.88 L1886.20 900.06 L1902.04 880.88 L1918.00 840.66 L1933.96 825.93 L1949.81 859.10 L1965.77 845.98 L1981.61 853.78 L1997.57 793.63 L2013.54 747.35 L2029.38 731.63 L2045.34 729.90 L2061.18 735.96 L2077.14 738.56 L2092.98 754.28 L2108.95 718.51 L2124.91 703.66 L2140.75 719.38 L2156.72 681.02 L2172.55 687.95 L2188.52 661.84 L2204.48 637.33 L2220.32 622.48 L2236.29 647.85 L2252.13 640.80 L2268.09 652.18 L2283.93 636.47 L2299.89 579.66 L2315.86 598.97 L2331.70 618.15 L2347.66 632.13 L2363.50 703.66 L2379.47 677.43 L2395.43 643.40 L2411.27 644.26 L2427.23 652.18 L2443.07 652.18 L2459.04 675.70 L2475.00 656.51 L2490.84 642.53 L2506.80 625.95 L2522.64 643.40 L2538.61 656.51 L2554.45 701.07 L2570.41 687.08 L2586.38 647.85 L2602.22 616.42 L2618.18 620.75 L2634.02 614.69 L2649.98 622.48 L2665.95 617.28 L2681.79 599.83 L2697.75 577.06 L2713.59 575.33 L2729.55 549.22 L2745.39 612.95 L2761.36 560.48 L2777.32 560.48 L2793.16 528.18 L2809.13 544.76 L2824.97 536.97 L2840.93 566.67 L2856.89 540.43 L2872.73 518.65 L2888.70 520.39 L2904.54 494.15 L2920.50 498.60 L2936.34 529.91 L2952.30 496.75 L2968.27 475.83 L2984.11 448.73 L3000.07 437.47 L3015.91 414.70 L3031.88 423.49 L3047.84 406.90 L3063.68 385.12 L3079.64 358.89 L3095.48 361.49 L3111.45 373.74 L3127.29 414.70 L3143.25 364.08 L3159.21 357.15 L3175.05 294.29 L3191.02 312.60 L3206.86 305.67 L3222.82 335.25 L3238.78 290.82 L3254.63 287.36 L3270.59 277.70 L3286.43 289.09 L3302.39 275.10 L3318.23 309.14 L3334.20 273.37 L3350.16 291.69 L3366.00 328.32 L3381.96 330.92 L3397.80 310.00 L3413.77 271.64 L3429.73 268.92 L3445.57 269.78 L3461.53 258.52 L3477.38 266.32&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;2425.82&quot; x2=&quot;350.83&quot; y2=&quot;2425.82&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;2425.82&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2425.82)&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;1696.29&quot; x2=&quot;350.83&quot; y2=&quot;1696.29&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;1696.29&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1696.29)&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;966.64&quot; x2=&quot;350.83&quot; y2=&quot;966.64&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;966.64&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,966.64)&quot; text-anchor=&quot;middle&quot;&gt;30&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;237.11&quot; x2=&quot;350.83&quot; y2=&quot;237.11&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;237.11&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,237.11)&quot; text-anchor=&quot;middle&quot;&gt;40&lt;/text&gt;
-	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Mileage (mpg)&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2346.37&quot; x2=&quot;350.83&quot; y2=&quot;2346.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2346.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2346.37)&quot; text-anchor=&quot;middle&quot;&gt;100&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1910.02&quot; x2=&quot;350.83&quot; y2=&quot;1910.02&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1910.02&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1910.02)&quot; text-anchor=&quot;middle&quot;&gt;105&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1473.54&quot; x2=&quot;350.83&quot; y2=&quot;1473.54&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1473.54&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1473.54)&quot; text-anchor=&quot;middle&quot;&gt;110&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1037.06&quot; x2=&quot;350.83&quot; y2=&quot;1037.06&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1037.06&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1037.06)&quot; text-anchor=&quot;middle&quot;&gt;115&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;600.58&quot; x2=&quot;350.83&quot; y2=&quot;600.58&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;600.58&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,600.58)&quot; text-anchor=&quot;middle&quot;&gt;120&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;164.22&quot; x2=&quot;350.83&quot; y2=&quot;164.22&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;125&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Point figure&lt;/text&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;line x1=&quot;701.66&quot; y1=&quot;2489.19&quot; x2=&quot;701.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;701.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2,000&lt;/text&gt;
-	&lt;line x1=&quot;1732.99&quot; y1=&quot;2489.19&quot; x2=&quot;1732.99&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;1732.99&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;3,000&lt;/text&gt;
-	&lt;line x1=&quot;2764.33&quot; y1=&quot;2489.19&quot; x2=&quot;2764.33&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;2764.33&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;4,000&lt;/text&gt;
+	&lt;line x1=&quot;613.30&quot; y1=&quot;2489.19&quot; x2=&quot;613.30&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;613.30&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;550&lt;/text&gt;
+	&lt;line x1=&quot;1408.89&quot; y1=&quot;2489.19&quot; x2=&quot;1408.89&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1408.89&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;600&lt;/text&gt;
+	&lt;line x1=&quot;2204.48&quot; y1=&quot;2489.19&quot; x2=&quot;2204.48&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2204.48&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;650&lt;/text&gt;
+	&lt;line x1=&quot;3000.07&quot; y1=&quot;2489.19&quot; x2=&quot;3000.07&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3000.07&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;700&lt;/text&gt;
 	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;5,000&lt;/text&gt;
-	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Weight (lbs.)&lt;/text&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;750&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Month&lt;/text&gt;
 &lt;/svg&gt;
 </body></html>"></iframe>
 </div></div>
+</div>
 </div>
 </div>
 
@@ -439,8 +805,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to your Jupyter Book</a>
-    <a class='right-next' id="next-link" href="markdown.html" title="next page">Markdown Files</a>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to ECON-C4100 and ECON-C4200 Stata materials page!</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
