@@ -1,7 +1,5 @@
-Welcome to your Jupyter Book
-============================
+# Welcome to ECON-C4100 and ECON-C4200 Stata materials page!
 
-This is a small sample book to give you a feel for how book content is
-structured.
+Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 
-Check out the content pages bundled with this sample book to get started.
+
