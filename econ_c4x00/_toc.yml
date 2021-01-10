@@ -2,6 +2,4 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
 - file: stata_basics
-- file: markdown
-- file: notebooks
 
