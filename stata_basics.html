@@ -516,8 +516,7 @@ div {
 <p>You can also erase macros by simply typing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice<span class="k"></span>
-<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPathTwice&#39;</span><span class="s">&quot;</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice
 </pre></div>
 </div>
 </div>
@@ -544,7 +543,7 @@ div {
 </div>
 </div>
 </div>
-<p>However notice how <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> changes the output:</p>
+<p>However notice who <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> change the output:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="nv">`three_&#39;</span><span class="s">&quot;</span>
@@ -562,14 +561,8 @@ div {
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">scalar</span> one_ = <span class="m">1</span><span class="k"></span>
 <span class="k">scalar</span> two_ = <span class="m">2</span><span class="k"></span>
-<span class="k">scalar</span> three_ = one_ <span class="o">+</span> two_
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> three_<span class="k"></span>
+<span class="k">scalar</span> three_ = one_ <span class="o">+</span> two_<span class="k"></span>
+<span class="k">di</span> three_<span class="k"></span>
 <span class="k">scalar drop</span> three_
 </pre></div>
 </div>
