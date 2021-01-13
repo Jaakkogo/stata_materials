@@ -419,7 +419,7 @@ div {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPath <span class="s">&quot;Z:/ECON-C4100&quot;</span><span class="k"></span>
-<span class="k">global</span> userPath <span class="s">&quot;Z:/ECON-C4100&quot;</span>
+<span class="k">global</span> userPath <span class="s">&quot;C:/ECON-C4100&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -436,7 +436,7 @@ div {
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:/ECON-C4100
 </pre></div>
 </div>
 </div>
@@ -449,7 +449,7 @@ div {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ECON-C4100
 </pre></div>
 </div>
 </div>
@@ -463,10 +463,10 @@ div {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ECON-C4100
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\ECON-C4100
 </pre></div>
 </div>
 </div>
@@ -479,19 +479,19 @@ div {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   STATA:  C:\Program Files (x86)\Stata15MP\
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   STATA:  C:\Program Files\Stata16\
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    BASE:  C:\Program Files (x86)\Stata15MP\ado\base\
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    BASE:  C:\Program Files\Stata16\ado\base\
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    SITE:  C:\Program Files (x86)\Stata15MP\ado\site\
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    SITE:  C:\Program Files\Stata16\ado\site\
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PLUS:  c:\ado\plus\
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PERSONAL:  c:\ado\personal\
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PERSONAL:  C:\Users\Jaakko\ado\personal\
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OLDPLACE:  c:\ado\
@@ -508,7 +508,7 @@ div {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100 Z:/ECON-C4100 Z:/ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100 C:/ECON-C4100 C:/ECON-C4100
 </pre></div>
 </div>
 </div>
@@ -516,8 +516,7 @@ div {
 <p>You can also erase macros by simply typing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice<span class="k"></span>
-<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPathTwice&#39;</span><span class="s">&quot;</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice
 </pre></div>
 </div>
 </div>
@@ -562,14 +561,8 @@ div {
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">scalar</span> one_ = <span class="m">1</span><span class="k"></span>
 <span class="k">scalar</span> two_ = <span class="m">2</span><span class="k"></span>
-<span class="k">scalar</span> three_ = one_ <span class="o">+</span> two_
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> three_<span class="k"></span>
+<span class="k">scalar</span> three_ = one_ <span class="o">+</span> two_<span class="k"></span>
+<span class="k">di</span> three_<span class="k"></span>
 <span class="k">scalar drop</span> three_
 </pre></div>
 </div>
@@ -642,7 +635,7 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------------------------------------
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           str7    %9s                   Month
@@ -683,7 +676,7 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------------------------------------
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity       str5    %9s                   Commodity
@@ -703,6 +696,11 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import excel using <span class="cs">///</span>
 https:<span class="o">//</span>pxnet2<span class="m">.</span>stat<span class="m">.</span>fi<span class="o">/</span>PXWeb<span class="o">/</span>sq<span class="o">/</span>feec4f38<span class="o">-</span>7ddb<span class="o">-</span>4c9f<span class="o">-</span>b091<span class="o">-</span>a0688c3f7b89 , <span class="cs">///</span>
 cellrange(A3:F194) firstrow<span class="k"> clear</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6 vars, 191 obs)
 </pre></div>
 </div>
 </div>
@@ -735,7 +733,7 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
-&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+&lt;!-- This is a Stata 16.1 generated SVG file (http://www.stata.com) --&gt;
 
 &lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
 	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
@@ -743,7 +741,7 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
 	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
 	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;path d=&quot; M454.04 2425.95 L470.00 2364.81 L485.84 2338.58 L501.81 2329.91 L517.77 2354.29 L533.61 2344.76 L549.57 2382.26 L565.41 2349.96 L581.38 2302.81 L597.34 2309.87 L613.18 2330.78 L629.14 2329.05 L644.99 2356.89 L660.95 2287.10 L676.79 2260.12 L692.75 2213.83 L708.72 2203.31 L724.56 2194.65 L740.52 2218.16 L756.36 2184.13 L772.32 2171.88 L788.29 2148.37 L804.13 2143.91 L820.09 2134.38 L835.93 2152.70 L851.89 2096.89 L867.74 2028.70 L883.70 1985.14 L899.66 1994.66 L915.50 1981.55 L931.47 1991.20 L947.31 1978.08 L963.27 1937.12 L979.23 1909.15 L995.07 1888.24 L1011.04 1903.95 L1026.88 1809.65 L1042.84 1762.50 L1058.81 1679.59 L1074.64 1665.60 L1090.61 1615.85 L1106.45 1581.82 L1122.41 1595.81 L1138.25 1553.85 L1154.22 1506.70 L1170.18 1508.44 L1186.02 1556.45 L1201.98 1585.29 L1217.82 1608.06 L1233.79 1600.14 L1249.75 1593.21 L1265.59 1594.94 L1281.56 1612.39 L1297.39 1589.62 L1313.36 1650.75 L1329.20 1621.05 L1345.16 1604.47 L1361.13 1655.08 L1376.97 1645.56 L1392.93 1636.77 L1408.77 1625.51 L1424.73 1588.75 L1440.70 1539.87 L1456.54 1513.76 L1472.50 1522.42 L1488.34 1502.37 L1504.31 1551.25 L1520.14 1511.16 L1536.11 1470.94 L1552.07 1434.31 L1567.91 1410.67 L1583.88 1362.65 L1599.72 1326.89 L1615.68 1268.48 L1631.64 1215.14 L1647.48 1195.09 L1663.45 1189.89 L1679.29 1161.93 L1695.25 1189.89 L1711.09 1150.54 L1727.06 1109.58 L1743.02 1085.07 L1758.86 1078.14 L1774.82 1081.61 L1790.66 1017.88 L1806.63 962.93 L1822.59 923.70 L1838.43 888.68 L1854.39 887.81 L1870.23 880.88 L1886.20 900.06 L1902.04 880.88 L1918.00 840.66 L1933.96 825.93 L1949.81 859.10 L1965.77 845.98 L1981.61 853.78 L1997.57 793.63 L2013.54 747.35 L2029.38 731.63 L2045.34 729.90 L2061.18 735.96 L2077.14 738.56 L2092.98 754.28 L2108.95 718.51 L2124.91 703.66 L2140.75 719.38 L2156.72 681.02 L2172.55 687.95 L2188.52 661.84 L2204.48 637.33 L2220.32 622.48 L2236.29 647.85 L2252.13 640.80 L2268.09 652.18 L2283.93 636.47 L2299.89 579.66 L2315.86 598.97 L2331.70 618.15 L2347.66 632.13 L2363.50 703.66 L2379.47 677.43 L2395.43 643.40 L2411.27 644.26 L2427.23 652.18 L2443.07 652.18 L2459.04 675.70 L2475.00 656.51 L2490.84 642.53 L2506.80 625.95 L2522.64 643.40 L2538.61 656.51 L2554.45 701.07 L2570.41 687.08 L2586.38 647.85 L2602.22 616.42 L2618.18 620.75 L2634.02 614.69 L2649.98 622.48 L2665.95 617.28 L2681.79 599.83 L2697.75 577.06 L2713.59 575.33 L2729.55 549.22 L2745.39 612.95 L2761.36 560.48 L2777.32 560.48 L2793.16 528.18 L2809.13 544.76 L2824.97 536.97 L2840.93 566.67 L2856.89 540.43 L2872.73 518.65 L2888.70 520.39 L2904.54 494.15 L2920.50 498.60 L2936.34 529.91 L2952.30 496.75 L2968.27 475.83 L2984.11 448.73 L3000.07 437.47 L3015.91 414.70 L3031.88 423.49 L3047.84 406.90 L3063.68 385.12 L3079.64 358.89 L3095.48 361.49 L3111.45 373.74 L3127.29 414.70 L3143.25 364.08 L3159.21 357.15 L3175.05 294.29 L3191.02 312.60 L3206.86 305.67 L3222.82 335.25 L3238.78 290.82 L3254.63 287.36 L3270.59 277.70 L3286.43 289.09 L3302.39 275.10 L3318.23 309.14 L3334.20 273.37 L3350.16 291.69 L3366.00 328.32 L3381.96 330.92 L3397.80 310.00 L3413.77 271.64 L3429.73 268.92 L3445.57 269.78 L3461.53 258.52 L3477.38 266.32&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;path d=&quot; M454.04 2425.95 L470.00 2364.81 L485.84 2338.58 L501.81 2329.91 L517.77 2354.29 L533.61 2344.76 L549.57 2382.26 L565.41 2349.96 L581.38 2302.81 L597.34 2309.87 L613.18 2330.78 L629.14 2329.05 L644.99 2356.89 L660.95 2287.10 L676.79 2260.12 L692.75 2213.83 L708.72 2203.31 L724.56 2194.65 L740.52 2218.16 L756.36 2184.13 L772.32 2171.88 L788.29 2148.37 L804.13 2143.91 L820.09 2134.38 L835.93 2152.70 L851.89 2096.89 L867.74 2028.70 L883.70 1985.14 L899.66 1994.66 L915.50 1981.55 L931.47 1991.20 L947.31 1978.08 L963.27 1937.12 L979.23 1909.15 L995.07 1888.24 L1011.04 1903.95 L1026.88 1809.65 L1042.84 1762.50 L1058.81 1679.59 L1074.64 1665.60 L1090.61 1615.85 L1106.45 1581.82 L1122.41 1595.81 L1138.25 1553.85 L1154.22 1506.70 L1170.18 1508.44 L1186.02 1556.45 L1201.98 1585.29 L1217.82 1608.06 L1233.79 1600.14 L1249.75 1593.21 L1265.59 1594.94 L1281.56 1612.39 L1297.39 1589.62 L1313.36 1650.75 L1329.20 1621.05 L1345.16 1604.47 L1361.13 1655.08 L1376.97 1645.56 L1392.93 1636.77 L1408.77 1625.51 L1424.73 1588.75 L1440.70 1539.87 L1456.54 1513.76 L1472.50 1522.42 L1488.34 1502.37 L1504.31 1551.25 L1520.14 1511.16 L1536.11 1470.94 L1552.07 1434.31 L1567.91 1410.67 L1583.88 1362.65 L1599.72 1326.89 L1615.68 1268.48 L1631.64 1215.14 L1647.48 1195.09 L1663.45 1189.89 L1679.29 1161.93 L1695.25 1189.89 L1711.09 1150.54 L1727.06 1109.58 L1743.02 1085.07 L1758.86 1078.14 L1774.82 1081.61 L1790.66 1017.88 L1806.63 962.93 L1822.59 923.70 L1838.43 888.68 L1854.39 887.81 L1870.23 880.88 L1886.20 900.06 L1902.04 880.88 L1918.00 840.66 L1933.96 825.93 L1949.81 859.10 L1965.77 845.98 L1981.61 853.78 L1997.57 793.63 L2013.54 747.35 L2029.38 731.63 L2045.34 729.90 L2061.18 735.96 L2077.14 738.56 L2092.98 754.28 L2108.95 718.51 L2124.91 703.66 L2140.75 719.38 L2156.72 681.02 L2172.55 687.95 L2188.52 661.84 L2204.48 637.33 L2220.32 622.48 L2236.29 647.85 L2252.13 640.80 L2268.09 652.18 L2283.93 636.47 L2299.89 579.66 L2315.86 598.97 L2331.70 618.15 L2347.66 632.13 L2363.50 703.66 L2379.47 677.43 L2395.43 643.40 L2411.27 644.26 L2427.23 652.18 L2443.07 652.18 L2459.04 675.70 L2475.00 656.51 L2490.84 642.53 L2506.80 625.95 L2522.64 643.40 L2538.61 656.51 L2554.45 701.07 L2570.41 687.08 L2586.38 647.85 L2602.22 616.42 L2618.18 620.75 L2634.02 614.69 L2649.98 622.48 L2665.95 617.28 L2681.79 599.83 L2697.75 577.06 L2713.59 575.33 L2729.55 549.22 L2745.39 612.95 L2761.36 560.48 L2777.32 560.48 L2793.16 528.18 L2809.13 544.76 L2824.97 536.97 L2840.93 566.67 L2856.89 540.43 L2872.73 518.65 L2888.70 520.39 L2904.54 494.15 L2920.50 498.60 L2936.34 529.91 L2952.30 496.75 L2968.27 475.83 L2984.11 448.73 L3000.07 437.47 L3015.91 414.70 L3031.88 423.49 L3047.84 406.90 L3063.68 385.12 L3079.64 358.89 L3095.48 361.49 L3111.45 373.74 L3127.29 414.70 L3143.25 364.08 L3159.21 357.15 L3175.05 294.29 L3191.02 312.60 L3206.86 305.67 L3222.82 335.25 L3238.78 290.82 L3254.63 287.36 L3270.59 277.70 L3286.43 289.09 L3302.39 275.10 L3318.23 309.14 L3334.20 273.37 L3350.16 291.69 L3366.00 328.32 L3381.96 330.92 L3397.80 310.00 L3413.77 271.64 L3429.73 268.92 L3445.57 269.78 L3461.53 258.52 L3477.38 266.32&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2346.37&quot; x2=&quot;350.83&quot; y2=&quot;2346.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;text x=&quot;300.72&quot; y=&quot;2346.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2346.37)&quot; text-anchor=&quot;middle&quot;&gt;100&lt;/text&gt;

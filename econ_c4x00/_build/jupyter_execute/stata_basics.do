@@ -3,7 +3,7 @@ di "Hello World!"
 %help help
 
 local userPath "Z:/ECON-C4100"
-global userPath "Z:/ECON-C4100"
+global userPath "C:/ECON-C4100"
 
 di "`userPath'"
 di "$userPath"
@@ -19,7 +19,6 @@ local userPathTwice `userPath' $userPath $userPath
 di "`userPathTwice'"
 
 local userPathTwice
-di "`userPathTwice'"
 
 local one_ 1
 local two_ 2
@@ -32,7 +31,6 @@ di "`three_'"
 scalar one_ = 1
 scalar two_ = 2
 scalar three_ = one_ + two_
-
 di three_
 scalar drop three_
 
