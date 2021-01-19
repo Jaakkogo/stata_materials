@@ -4,7 +4,7 @@ Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 
 ## Other Resources
 
-[Other resources](https://jaakkogo.github.io/stata_materials/Other_resources.html.html)
+[Other resources](https://jaakkogo.github.io/stata_materials/Other_resources.html)
 
 ## Course Materials
 
