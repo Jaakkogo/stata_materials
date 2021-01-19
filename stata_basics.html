@@ -55,7 +55,7 @@
     <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/stata_basics.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to ECON-C4100 and ECON-C4200 Stata materials page!" href="intro.html" />
+    <link rel="prev" title="Other resources" href="Other_resources.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,6 +95,11 @@
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Other_resources.html">
+   Other resources
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Stata basics
@@ -208,13 +213,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-data-to-stata">
-   Importing data to Stata
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simple-line-graphs-in-stata">
-   Simple line graphs in Stata
+  <a class="reference internal nav-link" href="#importing-data-to-stata-example-from-statistics-finland">
+   Importing data to Stata: Example from Statistics Finland
   </a>
  </li>
 </ul>
@@ -502,13 +502,13 @@ div {
 <p>You can combine macros easily:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice <span class="nv">`userPath&#39;</span> <span class="vg">$userPath</span> <span class="vg">$userPath</span><span class="k"></span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> userPathTwice <span class="nv">`userPath&#39;</span> <span class="vg">$userPath</span><span class="k"></span>
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`userPathTwice&#39;</span><span class="s">&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100 Z:/ECON-C4100 Z:/ECON-C4100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:/ECON-C4100 Z:/ECON-C4100
 </pre></div>
 </div>
 </div>
@@ -603,8 +603,8 @@ div {
 </div>
 <p>When using the standard line break, we need to use <code class="docutils literal notranslate"><span class="pre">///</span></code> to tell Stata if our command is presented in multiple lines.</p>
 </div>
-<div class="section" id="importing-data-to-stata">
-<h2>Importing data to Stata<a class="headerlink" href="#importing-data-to-stata" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importing-data-to-stata-example-from-statistics-finland">
+<h2>Importing data to Stata: Example from Statistics Finland<a class="headerlink" href="#importing-data-to-stata-example-from-statistics-finland" title="Permalink to this headline">¶</a></h2>
 <p>Next I demonstrate on how to import text and Excel data to Stata. We obtain our data directly through Statistics Finland API (I’ve created the links beforehand). We could also download the data to disk and replace the address with the file path. More on that later…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,7 +616,7 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3 vars, 191 obs)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3 vars, 192 obs)
 </pre></div>
 </div>
 </div>
@@ -656,7 +656,8 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">generate</span> temp = <span class="nf">monthly</span>(month, <span class="s">&quot;YM&quot;</span>)<span class="k"></span>
 <span class="k">drop</span> month<span class="k"></span>
 <span class="k">rename</span> temp month<span class="k"></span>
-<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span>
+<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span><span class="k"></span>
+<span class="k">format</span> month <span class="nx">%tm</span>
 </pre></div>
 </div>
 </div>
@@ -685,7 +686,7 @@ delimiter(<span class="nv">`delimiter&#39;</span>)<span class="k"> clear</span>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pointfigure     float   %9.0g                 Point figure
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           float   %9.0g                 Month
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           float   %tm                   Month
 </pre></div>
 </div>
 </div>
@@ -708,7 +709,8 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 <span class="k">generate</span> temp = <span class="nf">monthly</span>(month, <span class="s">&quot;YM&quot;</span>)<span class="k"></span>
 <span class="k">drop</span> month<span class="k"></span>
 <span class="k">rename</span> temp month<span class="k"></span>
-<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span>
+<span class="k">label</span> variable month <span class="s">&quot;Month&quot;</span><span class="k"></span>
+<span class="k">format</span> month <span class="nx">%tm</span>
 </pre></div>
 </div>
 </div>
@@ -716,9 +718,6 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 <p>Excel files are often quite awkward. Notice how we need to determine the precise cellrange or the data would include some unwanted metadata from the Statistics Finland.</p>
 <p>Command <code class="docutils literal notranslate"><span class="pre">keep</span></code> is the opposite of <code class="docutils literal notranslate"><span class="pre">drop</span></code>.</p>
 <p>Finally, to demonstrate the dynamic options of Stata, let’s do a graph:</p>
-</div>
-<div class="section" id="simple-line-graphs-in-stata">
-<h2>Simple line graphs in Stata<a class="headerlink" href="#simple-line-graphs-in-stata" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> scheme s1mono <span class="c1">// just a style for our graph</span>
@@ -736,7 +735,7 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
 	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
 	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;path d=&quot; M454.04 2425.95 L470.00 2364.81 L485.84 2338.58 L501.81 2329.91 L517.77 2354.29 L533.61 2344.76 L549.57 2382.26 L565.41 2349.96 L581.38 2302.81 L597.34 2309.87 L613.18 2330.78 L629.14 2329.05 L644.99 2356.89 L660.95 2287.10 L676.79 2260.12 L692.75 2213.83 L708.72 2203.31 L724.56 2194.65 L740.52 2218.16 L756.36 2184.13 L772.32 2171.88 L788.29 2148.37 L804.13 2143.91 L820.09 2134.38 L835.93 2152.70 L851.89 2096.89 L867.74 2028.70 L883.70 1985.14 L899.66 1994.66 L915.50 1981.55 L931.47 1991.20 L947.31 1978.08 L963.27 1937.12 L979.23 1909.15 L995.07 1888.24 L1011.04 1903.95 L1026.88 1809.65 L1042.84 1762.50 L1058.81 1679.59 L1074.64 1665.60 L1090.61 1615.85 L1106.45 1581.82 L1122.41 1595.81 L1138.25 1553.85 L1154.22 1506.70 L1170.18 1508.44 L1186.02 1556.45 L1201.98 1585.29 L1217.82 1608.06 L1233.79 1600.14 L1249.75 1593.21 L1265.59 1594.94 L1281.56 1612.39 L1297.39 1589.62 L1313.36 1650.75 L1329.20 1621.05 L1345.16 1604.47 L1361.13 1655.08 L1376.97 1645.56 L1392.93 1636.77 L1408.77 1625.51 L1424.73 1588.75 L1440.70 1539.87 L1456.54 1513.76 L1472.50 1522.42 L1488.34 1502.37 L1504.31 1551.25 L1520.14 1511.16 L1536.11 1470.94 L1552.07 1434.31 L1567.91 1410.67 L1583.88 1362.65 L1599.72 1326.89 L1615.68 1268.48 L1631.64 1215.14 L1647.48 1195.09 L1663.45 1189.89 L1679.29 1161.93 L1695.25 1189.89 L1711.09 1150.54 L1727.06 1109.58 L1743.02 1085.07 L1758.86 1078.14 L1774.82 1081.61 L1790.66 1017.88 L1806.63 962.93 L1822.59 923.70 L1838.43 888.68 L1854.39 887.81 L1870.23 880.88 L1886.20 900.06 L1902.04 880.88 L1918.00 840.66 L1933.96 825.93 L1949.81 859.10 L1965.77 845.98 L1981.61 853.78 L1997.57 793.63 L2013.54 747.35 L2029.38 731.63 L2045.34 729.90 L2061.18 735.96 L2077.14 738.56 L2092.98 754.28 L2108.95 718.51 L2124.91 703.66 L2140.75 719.38 L2156.72 681.02 L2172.55 687.95 L2188.52 661.84 L2204.48 637.33 L2220.32 622.48 L2236.29 647.85 L2252.13 640.80 L2268.09 652.18 L2283.93 636.47 L2299.89 579.66 L2315.86 598.97 L2331.70 618.15 L2347.66 632.13 L2363.50 703.66 L2379.47 677.43 L2395.43 643.40 L2411.27 644.26 L2427.23 652.18 L2443.07 652.18 L2459.04 675.70 L2475.00 656.51 L2490.84 642.53 L2506.80 625.95 L2522.64 643.40 L2538.61 656.51 L2554.45 701.07 L2570.41 687.08 L2586.38 647.85 L2602.22 616.42 L2618.18 620.75 L2634.02 614.69 L2649.98 622.48 L2665.95 617.28 L2681.79 599.83 L2697.75 577.06 L2713.59 575.33 L2729.55 549.22 L2745.39 612.95 L2761.36 560.48 L2777.32 560.48 L2793.16 528.18 L2809.13 544.76 L2824.97 536.97 L2840.93 566.67 L2856.89 540.43 L2872.73 518.65 L2888.70 520.39 L2904.54 494.15 L2920.50 498.60 L2936.34 529.91 L2952.30 496.75 L2968.27 475.83 L2984.11 448.73 L3000.07 437.47 L3015.91 414.70 L3031.88 423.49 L3047.84 406.90 L3063.68 385.12 L3079.64 358.89 L3095.48 361.49 L3111.45 373.74 L3127.29 414.70 L3143.25 364.08 L3159.21 357.15 L3175.05 294.29 L3191.02 312.60 L3206.86 305.67 L3222.82 335.25 L3238.78 290.82 L3254.63 287.36 L3270.59 277.70 L3286.43 289.09 L3302.39 275.10 L3318.23 309.14 L3334.20 273.37 L3350.16 291.69 L3366.00 328.32 L3381.96 330.92 L3397.80 310.00 L3413.77 271.64 L3429.73 268.92 L3445.57 269.78 L3461.53 258.52 L3477.38 266.32&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;path d=&quot; M454.04 2425.95 L471.61 2364.81 L489.31 2338.58 L506.88 2329.91 L524.45 2354.29 L542.02 2344.76 L559.60 2382.26 L577.17 2349.96 L594.74 2302.81 L612.32 2309.87 L630.01 2330.78 L647.58 2329.05 L665.16 2356.89 L682.73 2287.10 L700.30 2260.12 L717.87 2213.83 L735.45 2203.31 L753.02 2194.65 L770.59 2218.16 L788.29 2184.13 L805.86 2171.88 L823.43 2148.37 L841.00 2143.91 L858.58 2134.38 L876.15 2152.70 L893.72 2096.89 L911.29 2028.70 L928.99 1985.14 L946.56 1994.66 L964.14 1981.55 L981.71 1991.20 L999.28 1978.08 L1016.85 1937.12 L1034.43 1909.15 L1052.00 1888.24 L1069.57 1903.95 L1087.27 1809.65 L1104.84 1762.50 L1122.41 1679.59 L1139.98 1665.60 L1157.56 1615.85 L1175.13 1581.82 L1192.70 1595.81 L1210.28 1553.85 L1227.97 1506.70 L1245.54 1508.44 L1263.12 1556.45 L1280.69 1585.29 L1298.26 1608.06 L1315.83 1600.14 L1333.41 1593.21 L1350.98 1594.94 L1368.67 1612.39 L1386.25 1589.62 L1403.82 1650.75 L1421.39 1621.05 L1438.96 1604.47 L1456.54 1655.08 L1474.11 1645.56 L1491.68 1636.77 L1509.26 1625.51 L1526.95 1588.75 L1544.52 1539.87 L1562.10 1513.76 L1579.67 1522.42 L1597.24 1502.37 L1614.81 1551.25 L1632.39 1511.16 L1649.96 1470.94 L1667.65 1434.31 L1685.23 1410.67 L1702.80 1362.65 L1720.37 1326.89 L1737.94 1268.48 L1755.52 1215.14 L1773.09 1195.09 L1790.66 1189.89 L1808.36 1161.93 L1825.93 1189.89 L1843.50 1150.54 L1861.08 1109.58 L1878.65 1085.07 L1896.22 1078.14 L1913.79 1081.61 L1931.37 1017.88 L1948.94 962.93 L1966.63 923.70 L1984.21 888.68 L2001.78 887.81 L2019.35 880.88 L2036.92 900.06 L2054.50 880.88 L2072.07 840.66 L2089.64 825.93 L2107.34 859.10 L2124.91 845.98 L2142.48 853.78 L2160.06 793.63 L2177.63 747.35 L2195.20 731.63 L2212.77 729.90 L2230.35 735.96 L2247.92 738.56 L2265.61 754.28 L2283.19 718.51 L2300.76 703.66 L2318.33 719.38 L2335.91 681.02 L2353.48 687.95 L2371.05 661.84 L2388.62 637.33 L2406.32 622.48 L2423.89 647.85 L2441.46 640.80 L2459.04 652.18 L2476.61 636.47 L2494.18 579.66 L2511.75 598.97 L2529.33 618.15 L2547.02 632.13 L2564.59 703.66 L2582.17 677.43 L2599.74 643.40 L2617.31 644.26 L2634.89 652.18 L2652.46 652.18 L2670.03 675.70 L2687.60 656.51 L2705.30 642.53 L2722.87 625.95 L2740.44 643.40 L2758.02 656.51 L2775.59 701.07 L2793.16 687.08 L2810.73 647.85 L2828.31 616.42 L2846.00 620.75 L2863.57 614.69 L2881.15 622.48 L2898.72 617.28 L2916.29 599.83 L2933.86 577.06 L2951.44 575.33 L2969.01 549.22 L2986.71 612.95 L3004.28 560.48 L3021.85 560.48 L3039.42 528.18 L3057.00 544.76 L3074.57 536.97 L3092.14 566.67 L3109.71 540.43 L3127.29 518.65 L3144.98 520.39 L3162.55 494.15 L3180.13 498.60 L3197.70 529.91 L3215.27 496.75 L3232.84 475.83 L3250.42 448.73 L3267.99 437.47 L3285.69 414.70 L3303.26 423.49 L3320.83 406.90 L3338.40 385.12 L3355.98 358.89 L3373.55 361.49 L3391.12 373.74 L3408.69 414.70 L3426.27 364.08 L3443.96 357.15 L3461.53 294.29 L3479.11 312.60 L3496.68 305.67 L3514.25 335.25 L3531.82 290.82 L3549.40 287.36 L3566.97 277.70 L3584.67 289.09 L3602.24 275.10 L3619.81 309.14 L3637.38 273.37 L3654.96 291.69 L3672.53 328.32 L3690.10 330.92 L3707.67 310.00 L3725.37 271.64 L3742.94 268.92 L3760.51 269.78 L3778.09 258.52 L3795.66 266.32&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2346.37&quot; x2=&quot;350.83&quot; y2=&quot;2346.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;text x=&quot;300.72&quot; y=&quot;2346.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2346.37)&quot; text-anchor=&quot;middle&quot;&gt;100&lt;/text&gt;
@@ -752,16 +751,14 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
 	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;125&lt;/text&gt;
 	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Point figure&lt;/text&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;line x1=&quot;613.30&quot; y1=&quot;2489.19&quot; x2=&quot;613.30&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;613.30&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;550&lt;/text&gt;
-	&lt;line x1=&quot;1408.89&quot; y1=&quot;2489.19&quot; x2=&quot;1408.89&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;1408.89&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;600&lt;/text&gt;
-	&lt;line x1=&quot;2204.48&quot; y1=&quot;2489.19&quot; x2=&quot;2204.48&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;2204.48&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;650&lt;/text&gt;
-	&lt;line x1=&quot;3000.07&quot; y1=&quot;2489.19&quot; x2=&quot;3000.07&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;3000.07&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;700&lt;/text&gt;
-	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;750&lt;/text&gt;
+	&lt;line x1=&quot;454.16&quot; y1=&quot;2489.19&quot; x2=&quot;454.16&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;454.16&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2005m1&lt;/text&gt;
+	&lt;line x1=&quot;1509.38&quot; y1=&quot;2489.19&quot; x2=&quot;1509.38&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1509.38&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2010m1&lt;/text&gt;
+	&lt;line x1=&quot;2564.59&quot; y1=&quot;2489.19&quot; x2=&quot;2564.59&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2564.59&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2015m1&lt;/text&gt;
+	&lt;line x1=&quot;3619.81&quot; y1=&quot;2489.19&quot; x2=&quot;3619.81&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3619.81&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;2020m1&lt;/text&gt;
 	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Month&lt;/text&gt;
 &lt;/svg&gt;
 </body></html>"></iframe>
@@ -798,7 +795,7 @@ cellrange(A3:F194) firstrow<span class="k"> clear</span>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to ECON-C4100 and ECON-C4200 Stata materials page!</a>
+    <a class='left-prev' id="prev-link" href="Other_resources.html" title="previous page">Other resources</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
