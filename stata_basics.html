@@ -283,14 +283,14 @@
 <p>You should not run shell commands without knowing what you are doing!</p>
 </div>
 <p>For Windows:</p>
-<div class="highlight-{Stata notranslate"><div class="highlight"><pre><span></span>
-shell mkdir %USERPROFILE%/ECON-C4100
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">shell</span> <span class="n">mkdir</span> <span class="o">%</span><span class="n">USERPROFILE</span><span class="o">%/</span><span class="n">ECON</span><span class="o">-</span><span class="n">C4100</span>
 
 </pre></div>
 </div>
 <p>For Unix (OS X or Linux):</p>
-<div class="highlight-{Stata notranslate"><div class="highlight"><pre><span></span>
-shell mkdir ~/ECON-C4100
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">shell</span> <span class="n">mkdir</span> <span class="o">~/</span><span class="n">ECON</span><span class="o">-</span><span class="n">C4100</span>
 
 </pre></div>
 </div>
@@ -807,7 +807,7 @@ div {
 </table>
 </div></div></div>
 </div>
-<p>Note: the <code class="docutils literal notranslate"><span class="pre">%browse</span></code> command only works in</p>
+<p>Note: the <code class="docutils literal notranslate"><span class="pre">%browse</span></code> command only works in Jupyter. You should use the <code class="docutils literal notranslate"><span class="pre">list</span></code> command for printing observations to the results window.</p>
 <p>When declaring new variables, it’s a good practice to start with some initialization value (such as the left tail of the distribution) and then <code class="docutils literal notranslate"><span class="pre">replace</span></code> the rest of the values with some <code class="docutils literal notranslate"><span class="pre">if</span></code> condition. Notice also that the dummy is generated directly with a boolean expression since <code class="docutils literal notranslate"><span class="pre">v1</span> <span class="pre">&gt;</span> <span class="pre">0.5</span></code> returns either 1 or 0.</p>
 <p>We conclude this exercise with a histogram of the simulated data:</p>
 <div class="cell docutils container">
