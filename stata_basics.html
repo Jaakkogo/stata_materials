@@ -694,10 +694,8 @@ div {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> v1 = <span class="nf">rnormal</span>() <span class="c1">// draws observation values from the std. normal distribution</span>
-
 <span class="k">gen</span> tail = <span class="s">&quot;Left&quot;</span> <span class="c1">// initialize tail value with &quot;Left&quot;</span>
 <span class="k">replace</span> tail = <span class="s">&quot;Right&quot;</span><span class="k"> if</span> v1 <span class="o">&gt;</span> <span class="m">0.5</span> <span class="c1">// change right tail values</span>
-
 <span class="k">gen</span> tail_dummy = v1 <span class="o">&gt;</span> <span class="m">0.5</span> <span class="c1">// 1 = if right tail, 0 otherwise</span>
 </pre></div>
 </div>
@@ -714,6 +712,102 @@ div {
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>tail</th>
+      <th>tail_dummy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2.0255878</td>
+      <td>Right</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0426311</td>
+      <td>Right</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>.29771236</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.7221316</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-.72919953</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>.86182606</td>
+      <td>Right</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-.23935401</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>.51654899</td>
+      <td>Right</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-1.8120158</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>-1.0151243</td>
+      <td>Left</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note: the <code class="docutils literal notranslate"><span class="pre">%browse</span></code> command only works in</p>
 <p>When declaring new variables, it’s a good practice to start with some initialization value (such as the left tail of the distribution) and then <code class="docutils literal notranslate"><span class="pre">replace</span></code> the rest of the values with some <code class="docutils literal notranslate"><span class="pre">if</span></code> condition. Notice also that the dummy is generated directly with a boolean expression since <code class="docutils literal notranslate"><span class="pre">v1</span> <span class="pre">&gt;</span> <span class="pre">0.5</span></code> returns either 1 or 0.</p>
 <p>We conclude this exercise with a histogram of the simulated data:</p>
 <div class="cell docutils container">
