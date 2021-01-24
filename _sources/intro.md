@@ -2,9 +2,11 @@
 
 Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 
-## Other Resources
+## Other
 
 [Other resources](https://jaakkogo.github.io/stata_materials/Other_resources.html)
+
+[Using `dyndoc` and `markstat`](https://jaakkogo.github.io/stata_materials/dynamic_documents.html)
 
 ## Course Materials
 

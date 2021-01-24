@@ -201,16 +201,16 @@
                 
   <div class="section" id="using-dyndoc-and-markstat">
 <h1>Using <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> and <code class="docutils literal notranslate"><span class="pre">markstat</span></code><a class="headerlink" href="#using-dyndoc-and-markstat" title="Permalink to this headline">¶</a></h1>
-<p>Templates for the Stata build in <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> function and the user written <code class="docutils literal notranslate"><span class="pre">markstat</span></code> package are available on Mycourses in the Materials section. When using either of these functions, you should remember to specify that you want to generate self-contained htlml-files. In other words, you want that the figures are embedded in the html file (otherwise we won’t be able to see them). You should the following commands:</p>
+<p>Templates for the Stata build in <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> function and the user written <code class="docutils literal notranslate"><span class="pre">markstat</span></code> package are available on Mycourses in the Materials section. When using either of these functions, you should remember to specify that you want to generate self-contained htlml-files. In other words, you want that the figures are embedded in the html-file (otherwise we won’t be able to see them). You should the following commands:</p>
 <p><code class="docutils literal notranslate"><span class="pre">dyndoc</span></code>:</p>
-<div class="highlight-{Stata notranslate"><div class="highlight"><pre><span></span>
-dyndoc file_name.txt, embedimage
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">dyndoc</span> <span class="n">file_name</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="n">embedimage</span>
 
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Markstat</span></code>:</p>
-<div class="highlight-{Stata notranslate"><div class="highlight"><pre><span></span>
-markstat using file_name.stmd, bundle
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">markstat</span> <span class="n">using</span> <span class="n">file_name</span><span class="o">.</span><span class="n">stmd</span><span class="p">,</span> <span class="n">bundle</span>
 
 </pre></div>
 </div>
