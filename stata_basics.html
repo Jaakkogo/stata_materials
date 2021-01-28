@@ -288,6 +288,12 @@
 
 </pre></div>
 </div>
+<p>or (notice ‘’ not ‘/’):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">shell</span> <span class="n">mkdir</span> <span class="o">%</span><span class="n">USERPROFILE</span><span class="o">%</span>\<span class="n">ECON</span><span class="o">-</span><span class="n">C4100</span>
+
+</pre></div>
+</div>
 <p>For Unix (OS X or Linux):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">shell</span> <span class="n">mkdir</span> <span class="o">~/</span><span class="n">ECON</span><span class="o">-</span><span class="n">C4100</span>
@@ -520,11 +526,10 @@ div {
 </div>
 </div>
 </div>
-<p>You can print the location of the current working directory with two commands:</p>
+<p>You can print the location of the current working with the <code class="docutils literal notranslate"><span class="pre">pwd</span> </code> command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">pwd</span>
-<span class="k">cd</span>
 </pre></div>
 </div>
 </div>
@@ -532,11 +537,9 @@ div {
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
-</pre></div>
 </div>
 </div>
-</div>
+<p>On Windows, <code class="docutils literal notranslate"><span class="pre">cd</span></code> without arguments would print the current working directory, but in OSX or Linux it would change the working directory to the user root.</p>
 <p>To print the Stata system directories you can type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
