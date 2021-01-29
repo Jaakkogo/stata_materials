@@ -57,6 +57,7 @@
     <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/second_touch.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Importing data and statistical functions" href="first_touch.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,7 +96,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+    <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Other_resources.html">
    External resources
@@ -125,6 +126,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="first_touch.html">
    Importing data and statistical functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Some motivation and more Stata commands
   </a>
  </li>
 </ul>
@@ -277,10 +283,10 @@ replace dummy = 1 if !missing(some_variable)
 
 </pre></div>
 </div>
-<p>It’s clearly usefult to use the return values from known Stata functions if possible. But where to find are useful Stata functions?</p>
+<p>It’s clearly useful to use the return values from known Stata functions if possible. But where to find useful Stata functions?</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Strictly speaking Stata functions are a different thing from commands. So far I’ve used both terms when referring stuff that you can write to the command line.</p>
+<p>Strictly speaking Stata functions are a different thing from commands. So far I’ve used both terms when referring to stuff that you can write to the command line.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">missing</span></code> is one function we are already are familiar with. So is <code class="docutils literal notranslate"><span class="pre">strpos</span></code> or <code class="docutils literal notranslate"><span class="pre">substr</span></code> and the other <a class="reference external" href="https://www.stata.com/manuals/fnstringfunctions.pdf">string manipulation functions</a> mentioned in the previous exercise session. Other examples are <a class="reference external" href="https://www.stata.com/manuals/fnstatisticalfunctions.pdf">statistical functions</a> such as <code class="docutils literal notranslate"><span class="pre">normal(z)</span></code> that returns the cumulative probability of a given Z-value. The statistical functions are mostly functions for statistical distributions. They can also be used with the <code class="docutils literal notranslate"><span class="pre">display</span></code> command.</p>
 <p>Probably more useful tricks are the various <a class="reference external" href="https://www.stata.com/manuals/fnrandom-numberfunctions.pdf">random number generators</a> that can be used for instance with simulations. More on those later.</p>
@@ -525,10 +531,13 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data from data/sweden_prices.dta
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:        14,276                          
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:        14,278                          
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            15                          24 Jan 2021 22:20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            15                          29 Jan 2021 16:00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size:     6,396,544                          
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -627,37 +636,37 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,433       10.04       10.04
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        962        6.74       16.78
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        962        6.74       16.77
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,443       10.11       26.88
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,441       10.09       26.87
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        431        3.02       29.90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        429        3.00       29.87
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        567        3.97       33.88
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        569        3.99       33.86
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        403        2.82       36.70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        403        2.82       36.68
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,032        7.23       43.93
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,030        7.21       43.89
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,804       12.64       56.56
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,812       12.69       56.58
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        399        2.79       59.36
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        399        2.79       59.38
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,510       31.59       90.95
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,509       31.58       90.96
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         45        0.32       91.27
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        746        5.23       96.49
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        745        5.22       96.49
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        367        2.57       99.06
@@ -669,7 +678,7 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  cond_mean |      Freq.     Percent        Cum.
@@ -678,52 +687,52 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        567        3.97        3.97
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        569        3.99        3.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2409.912 |        431        3.02        6.99
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2232.045 |        429        3.00        6.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2670.016 |      4,510       31.59       38.58
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2665.033 |      4,509       31.58       38.57
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.84
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.82
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.87
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.86
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.68
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.27
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.80
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,443       10.11       74.91
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,441       10.09       74.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,032        7.23       82.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,030        7.21       82.09
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14347.02 |        746        5.23       87.36
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14639.91 |      1,812       12.69       94.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      14645 |      1,804       12.64      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    15090.6 |        745        5.22      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 </div>
@@ -737,7 +746,7 @@ replace dummy = 1 if !missing(some_variable)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10,504 missing values generated)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10500 missing values generated)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_2 |      Freq.     Percent        Cum.
@@ -746,52 +755,52 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        133        3.53        3.53
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        133        3.52        3.52
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2409.912 |         38        1.01        4.53
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2232.045 |         36        0.95        4.47
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2670.016 |        562       14.90       19.43
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2665.033 |        564       14.93       19.40
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         10        0.27       19.70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         10        0.26       19.67
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |         91        2.41       22.11
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |         91        2.41       22.08
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |        252        6.68       28.79
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |        252        6.67       28.75
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        183        4.85       33.64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        183        4.84       33.59
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |          5        0.13       33.78
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |          5        0.13       33.72
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |         58        1.54       35.31
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |         58        1.54       35.26
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        565       14.98       50.29
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        565       14.96       50.21
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |         95        2.52       52.81
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |         95        2.51       52.73
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |        322        8.54       61.35
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |        322        8.52       61.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14347.02 |        135        3.58       64.93
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14639.91 |      1,328       35.15       96.40
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      14645 |      1,323       35.07      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    15090.6 |        136        3.60      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |      3,772      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |      3,778      100.00
 </pre></div>
 </div>
 </div>
@@ -814,52 +823,52 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        567        3.97        3.97
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        569        3.99        3.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2409.912 |        431        3.02        6.99
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2232.045 |        429        3.00        6.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2670.016 |      4,510       31.59       38.58
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2665.033 |      4,509       31.58       38.57
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.84
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.82
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.87
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.86
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.68
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.27
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.80
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,443       10.11       74.91
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,441       10.09       74.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,032        7.23       82.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,030        7.21       82.09
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14347.02 |        746        5.23       87.36
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14639.91 |      1,812       12.69       94.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      14645 |      1,804       12.64      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    15090.6 |        745        5.22      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_4 |      Freq.     Percent        Cum.
@@ -868,52 +877,52 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        567        3.97        3.97
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2022.123 |        569        3.99        3.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2409.912 |        431        3.02        6.99
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2232.045 |        429        3.00        6.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2670.016 |      4,510       31.59       38.58
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2665.033 |      4,509       31.58       38.57
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.84
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3439.819 |        134        0.94       39.82
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.87
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6087.08 |      1,433       10.04       49.86
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6588.213 |        403        2.82       52.68
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.27
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        367        2.57       55.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8277.331 |        399        2.79       58.05
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.80
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8402.929 |        962        6.74       64.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,443       10.11       74.91
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10566.04 |      1,441       10.09       74.88
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,032        7.23       82.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13632.82 |      1,030        7.21       82.09
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14347.02 |        746        5.23       87.36
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14639.91 |      1,812       12.69       94.78
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      14645 |      1,804       12.64      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    15090.6 |        745        5.22      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 </div>
@@ -1028,13 +1037,13 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -.1616081 |     14,276      100.00      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -.1617094 |     14,278      100.00      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab covariance
@@ -1052,13 +1061,13 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -11033.07 |     14,276      100.00      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -11075.95 |     14,278      100.00      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,276      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,278      100.00
 </pre></div>
 </div>
 </div>
@@ -1091,22 +1100,22 @@ replace dummy = 1 if !missing(some_variable)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =    14,276
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =    14,278
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   F(1, 14274)     =    382.79
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   F(1, 14276)     =    383.34
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Model |  4.2959e+10         1  4.2959e+10   Prob &gt; F        =    0.0000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Model |  4.3371e+10         1  4.3371e+10   Prob &gt; F        =    0.0000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Residual |  1.6019e+12    14,274   112225807   R-squared       =    0.0261
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Residual |  1.6152e+12    14,276   113138482   R-squared       =    0.0261
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   Adj R-squared   =    0.0260
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   Adj R-squared   =    0.0261
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Total |  1.6449e+12    14,275   115227359   Root MSE        =     10594
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Total |  1.6585e+12    14,277   116168351   Root MSE        =     10637
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
@@ -1118,10 +1127,10 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |   -272.763   13.94129   -19.57   0.000    -300.0898   -245.4363
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -274.2692   14.00828   -19.58   0.000    -301.7273   -246.8112
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |    6318.27    201.164    31.41   0.000     5923.962    6712.577
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   6345.904   201.9208    31.43   0.000     5950.113    6741.695
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
@@ -1131,51 +1140,6 @@ replace dummy = 1 if !missing(some_variable)
 </div>
 <p>The above regression table tells that products that have longer names are less expensive in average. A decrease of one chracter in the product name’s length is in average associated with a decrease or roughly 273 kronors in Apotek Inkop Pris (the slope).</p>
 <p>The table also tells us that based on our model, products whose name is zero characters long cost 6318.27 kronors to the pharmacists (the constant). Finally, the R-squared tells us that our model is able to explain roughly 2.6% of the variation of AIP in the data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reg</span> AIP name_length
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =    14,276
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   F(1, 14274)     =    382.79
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Model |  4.2959e+10         1  4.2959e+10   Prob &gt; F        =    0.0000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Residual |  1.6019e+12    14,274   112225807   R-squared       =    0.0261
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   Adj R-squared   =    0.0260
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Total |  1.6449e+12    14,275   115227359   Root MSE        =     10594
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |   -272.763   13.94129   -19.57   0.000    -300.0898   -245.4363
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |    6318.27    201.164    31.41   0.000     5923.962    6712.577
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -1207,6 +1171,7 @@ replace dummy = 1 if !missing(some_variable)
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="first_touch.html" title="previous page">Importing data and statistical functions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
