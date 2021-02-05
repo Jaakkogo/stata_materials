@@ -14,4 +14,6 @@ Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 
 [Session 2: Importing data and statistical functions](https://jaakkogo.github.io/stata_materials/first_touch.html)
 
-[Session 3: More Stata commands and intro to `reg`](https://jaakkogo.github.io/stata_materials/second_touch.html)
+[Session 3: Some motivation and more Stata commands](https://jaakkogo.github.io/stata_materials/second_touch.html)
+
+[Session 4: More `bysort`, `merge` and multivariate regression using Stata](https://jaakkogo.github.io/stata_materials/third_touch.html)

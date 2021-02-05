@@ -1,0 +1,1389 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More bysort, merge and multivariate regression using Stata &#8212; ECON-C4X00</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/third_touch.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Some motivation and more Stata commands" href="second_touch.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jaakkogo.github.io/stata_materials/third_touch.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="More bysort, merge and multivariate regression using Stata" />
+<meta property="og:description" content="More bysort, merge and multivariate regression using Stata  qui cd Z:/ECON-C4100 // change working dir qui use data/sweden_prices.dta, clear  Calculating unique" />
+<meta property="og:image"       content="https://jaakkogo.github.io/stata_materials/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">ECON-C4X00</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Other_resources.html">
+   External resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dynamic_documents.html">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dyndoc
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     markstat
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stata_basics.html">
+   Stata basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="first_touch.html">
+   Importing data and statistical functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="second_touch.html">
+   Some motivation and more Stata commands
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   More
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     bysort
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+   and multivariate regression using Stata
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/third_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/third_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-unique-observation-within-groups-using-bysort">
+   Calculating unique observation within groups using bysort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-imaginary-sales-data-using-bysort">
+   Calculating imaginary sales data using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     bysort
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duplicate-observations">
+   Duplicate observations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-data-sets-introduction-to-merge">
+   Combining data sets - introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-regressions-using-stata">
+   Multiple regressions using Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-data-for-later-use">
+   Save data for later use
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="more-bysort-merge-and-multivariate-regression-using-stata">
+<h1>More <code class="docutils literal notranslate"><span class="pre">bysort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge</span></code> and multivariate regression using Stata<a class="headerlink" href="#more-bysort-merge-and-multivariate-regression-using-stata" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui cd</span> Z:<span class="o">/</span>ECON<span class="o">-</span>C4100 <span class="c1">// change working dir</span>
+<span class="k">qui use</span> data<span class="o">/</span>sweden_prices<span class="m">.</span>dta,<span class="k"> clear</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="calculating-unique-observation-within-groups-using-bysort">
+<h2>Calculating unique observation within groups using bysort<a class="headerlink" href="#calculating-unique-observation-within-groups-using-bysort" title="Permalink to this headline">¶</a></h2>
+<p>We start with <code class="docutils literal notranslate"><span class="pre">bysort</span></code> again. This time I demonstrate how you can use it to calculate the number of observations or products within some subgroups and variables. Quite often we are interested in calculating some group specific statistics such as sums, means and covariances (see the materials for Session 3). However, quite often we want to calculate the number of observations or more specifically, the number of <strong>unique</strong> or <strong>distinct</strong> observations.</p>
+<p>Let’s demonstrate. We want to calculate how many products each company or <code class="docutils literal notranslate"><span class="pre">Företag</span></code> has on the market.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    bysort</span> Företag Produktnamn:<span class="k"> gen</span> n_products1 = _n <span class="o">==</span> <span class="m">1</span>
+<span class="k">    bysort</span> Företag:<span class="k"> replace</span> n_products1 =<span class="k"> sum</span>(n_products1)
+<span class="k">    bysort</span> Företag:<span class="k"> replace</span> n_products1 = n_products1[_N]
+}<span class="k"></span>
+<span class="k">tab</span> n_products1<span class="k"> if</span> <span class="nf">strpos</span>(Företag, <span class="s">&quot;Orion&quot;</span>) <span class="o">&gt;</span> <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab n_products1 if strpos(Företag, &quot;Orion&quot;) &gt; 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_products1 |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        132 |        515      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |        515      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is shown above. Orion has 131 products at the market, separated by the product name.</p>
+<p>The above code does the following things:</p>
+<ol class="simple">
+<li><p>Bysort “creates” subgroups for <code class="docutils literal notranslate"><span class="pre">Företag</span></code> and <code class="docutils literal notranslate"><span class="pre">Produktnamn</span></code> with their own sort orders</p></li>
+<li><p>Tag the first value of each subgroup, ie. <code class="docutils literal notranslate"><span class="pre">_n</span> <span class="pre">==</span> <span class="pre">1</span></code></p></li>
+<li><p>Calculate the (rolling) sum of tags by <code class="docutils literal notranslate"><span class="pre">Företag</span></code> with <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p></li>
+<li><p>The total is the value of the last value of <code class="docutils literal notranslate"><span class="pre">Företag</span></code>, ie. <code class="docutils literal notranslate"><span class="pre">_N</span></code>.</p></li>
+</ol>
+<p>I call them them “the Three Lines of God-tier Code” because I use them so often. <a class="reference external" href="https://www.stata.com/support/faqs/data-management/number-of-distinct-observations/">Kudos to Nick Cox again!</a></p>
+<p>It’s a nice trick to know and master even for cross-section data. But it’s even better for panel data. The basic pricinple remains the same and can be stated as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bysort</span> <span class="n">timevar</span> <span class="n">xvar</span> <span class="n">zvar</span><span class="p">:</span> <span class="n">gen</span> <span class="n">nvals</span> <span class="o">=</span> <span class="n">_n</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">by</span> <span class="n">timevar</span> <span class="n">xvar</span><span class="p">:</span> <span class="n">replace</span> <span class="n">nvals</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nvals</span><span class="p">)</span>
+<span class="n">by</span> <span class="n">timevar</span> <span class="n">xvar</span><span class="p">:</span> <span class="n">replace</span> <span class="n">nvals</span> <span class="o">=</span> <span class="n">nvals</span><span class="p">[</span><span class="n">_N</span><span class="p">]</span>
+
+</pre></div>
+</div>
+<p>Which calculates the number of distinct observations of <code class="docutils literal notranslate"><span class="pre">zvar</span></code> within <code class="docutils literal notranslate"><span class="pre">timevar</span></code> and <code class="docutils literal notranslate"><span class="pre">xvar</span></code>.</p>
+<p>However, there is also another way to do the same thing with <code class="docutils literal notranslate"><span class="pre">egen</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    egen</span> n_products2_temp = tag(Företag Produktnamn)
+<span class="k">    bysort</span> Företag:<span class="k"> egen</span> n_products2 =<span class="k"> total</span>(n_products2_temp)
+<span class="k">    drop</span> n_products2_temp
+}<span class="k"></span>
+<span class="k">tab</span> n_products2<span class="k"> if</span> <span class="nf">strpos</span>(Företag, <span class="s">&quot;Orion&quot;</span>) <span class="o">&gt;</span> <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab n_products2 if strpos(Företag, &quot;Orion&quot;) &gt; 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_products2 |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        132 |        515      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |        515      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>The answer is the same.</p>
+</div>
+<div class="section" id="calculating-imaginary-sales-data-using-bysort">
+<h2>Calculating imaginary sales data using <code class="docutils literal notranslate"><span class="pre">bysort</span></code><a class="headerlink" href="#calculating-imaginary-sales-data-using-bysort" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">bysort</span></code> is the go-to tool to calculate other stats too. Here I demonstrate how you can calculate company sales and market shares with imaginary simulated sales volume.</p>
+<p>It’s an ugly demonstration but works for now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    gen</span> sales_volume =  <span class="nf">runiform</span>(<span class="m">1</span>,<span class="m">5000</span>)
+<span class="k">    bysort</span> ATCkod:<span class="k"> egen</span> total_sales =<span class="k"> total</span>(sales_volume)
+<span class="k">    bysort</span> ATCkod Företag:<span class="k"> egen</span> firm_sales =<span class="k"> total</span>(sales_volume)
+<span class="k">    gen</span> market_share = (firm_sales<span class="o">/</span>total_sales)<span class="o">*</span><span class="m">100</span>
+}<span class="k"></span>
+<span class="k">tab</span> market_share<span class="k"> if</span> <span class="nf">strpos</span>(Företag, <span class="s">&quot;Orion&quot;</span>) <span class="o">&gt;</span> <span class="m">0</span> <span class="o">&amp;</span> <span class="nf">strpos</span>(ATCkod, <span class="s">&quot;C10AA01&quot;</span>) <span class="o">&gt;</span> <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab market_share if strpos(Företag, &quot;Orion&quot;) &gt; 0 &amp; strpos(ATCkod, &quot;C10AA01&quot;) &gt; 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>market_shar |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          e |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13.70447 |          7      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |          7      100.00
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="duplicate-observations">
+<h2>Duplicate observations<a class="headerlink" href="#duplicate-observations" title="Permalink to this headline">¶</a></h2>
+<p>Duplicate observations are observations that have identical values in their variables. A natural way to calculate the number of duplicate observations by some variable list can be done using the <code class="docutils literal notranslate"><span class="pre">duplicates</span></code> command(s):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">duplicates report</span> _all
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of Produktnamn Varunummer ATCkod NPLid NPLpackid Form Styrka Förpackning Antal Företag AIP AUP AIPperst AUPperst Subventionerad dummy atc_1 cond_mean cond_mean_2 cond_mean_3 cond_mean_4 name_length correlation covariance n_products1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    n_products2 sales_volume total_sales firm_sales market_share
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   copies | observations       surplus
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------+---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        1 |        13953             0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are no perfect duplicates in our Swedish data. What about VNRs?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">duplicates report</span> Varunummer
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of Varunummer
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   copies | observations       surplus
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------+---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        1 |        12770             0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        2 |          514           257
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        3 |          279           186
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        4 |          144           108
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        5 |           40            32
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        6 |           78            65
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        7 |           56            48
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        8 |           24            21
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        9 |           18            16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       10 |           30            27
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some observations have the same VNR but different values for some of the other variables. Why?</p>
+<p>The answer: the cross-section variable in the Swedish data is not the Nordic article number (VNR) but <code class="docutils literal notranslate"><span class="pre">NPLpackid</span></code>. Let’s try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">duplicates report</span> NPLpackid
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of NPLpackid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   copies | observations       surplus
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------+---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        1 |        13953             0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>No duplicates. But we can create some using the <code class="docutils literal notranslate"><span class="pre">expand</span></code> command that creates duplicates from existing observations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">expand</span> <span class="m">2</span><span class="k"></span>
+<span class="k">duplicates report</span> NPLpackid
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13,953 observations created)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of NPLpackid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   copies | observations       surplus
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------+---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        2 |        27906         13953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">expand</span></code> command is extremely useful when dealing with panel and time series data. But let’s get back to the <code class="docutils literal notranslate"><span class="pre">duplicates</span></code> command. Or to be more specific, I’ll demonstrate the <code class="docutils literal notranslate"><span class="pre">duplicates</span> <span class="pre">tag</span></code> and <code class="docutils literal notranslate"><span class="pre">duplicates</span> <span class="pre">drop</span></code> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">duplicates</span> tag NPLpackid,<span class="k"> gen</span>(tag)<span class="k"></span>
+<span class="k">tab</span> tag<span class="k"></span>
+<span class="k">drop</span> tag<span class="k"></span>
+<span class="k">duplicates drop</span> NPLpackid, force<span class="k"></span>
+<span class="k">duplicates report</span> NPLpackid
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of NPLpackid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        tag |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1 |     27,906      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     27,906      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of NPLpackid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13,953 observations deleted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicates in terms of NPLpackid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   copies | observations       surplus
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------+---------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        1 |        13953             0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">duplicates</span> <span class="pre">tag</span></code> saves the number of surplus duplicates to a new variabe specified by the user. The <code class="docutils literal notranslate"><span class="pre">duplicates</span> <span class="pre">drop</span></code> command drops the duplicate observations (it also requires the option <code class="docutils literal notranslate"><span class="pre">force</span></code>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You should not use <code class="docutils literal notranslate"><span class="pre">duplicates</span> <span class="pre">drop</span></code> without if you do not know which observations you are dealing with!</p>
+</div>
+</div>
+<div class="section" id="combining-data-sets-introduction-to-merge">
+<h2>Combining data sets - introduction to <code class="docutils literal notranslate"><span class="pre">merge</span></code><a class="headerlink" href="#combining-data-sets-introduction-to-merge" title="Permalink to this headline">¶</a></h2>
+<p>Quite often we want to use data from multiple source. How can we do that? We need at least:</p>
+<ol class="simple">
+<li><p>Some new data related to our current data</p></li>
+<li><p>key(s) to link you current data with the new data</p></li>
+<li><p>some command to do this for us</p></li>
+</ol>
+<p>Parts 1 and 2 are situational. But Stata can help us with the part 3 with the <code class="docutils literal notranslate"><span class="pre">merge</span></code> command. It is used to add new existing variables to our data.</p>
+<p><img alt="" src="_images/merge.png" /></p>
+<p>The data we want to add is the “product of the month” substitution data from Sweden.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may want to update our Swedish price data from Session 1. You can do this by importing it again and using <code class="docutils literal notranslate"><span class="pre">save</span></code> with <code class="docutils literal notranslate"><span class="pre">replace</span></code>.</p>
+</div>
+<p>We will other data combining functions more in detail in the next course.</p>
+<p>Let’s clear the current memory and import it to Stata:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">clear</span> all
+import excel using <span class="cs">///</span>
+<span class="s">&quot;https://www.tlv.se/webdav/files/Periodens-vara/periodens-vara-februari-20210201.xlsx&quot;</span>, <span class="cs">///</span>
+firstrow<span class="k"> clear</span> <span class="c1">// variable names in first row</span>
+<span class="k">describe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:         6,683                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            17                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size:     2,459,344                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status          str3    %9s                   Status
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Produktnamn     str50   %50s                  Produktnamn
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Varunummer      str6    %9s                   Varunummer
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Styrka          str36   %36s                  Styrka
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Förpackningss~p str8    %9s                   Förpackningsstorleksgrupp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Substans        str56   %56s                  Substans
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Beredningsform  str66   %66s                  Beredningsform
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Storlek         double  %10.0g                Storlek
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Apotekensinkö~s double  %10.0g                Apotekens inköpspris
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Försäljningsp~s double  %10.0g                Försäljningspris
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inköpsprisper~t double  %10.0g                Inköpspris per minsta enhet
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Försäljningsp~e double  %10.0g                Försäljningspris per minsta enhet
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NPLID           str14   %14s                  NPL ID
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NPLpackID       str14   %14s                  NPL pack ID
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ursprung        str20   %20s                  Ursprung
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Företag         str49   %49s                  Företag
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UtbytesgruppsID str6    %9s                   Utbytesgrupps ID
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted by: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Note: Dataset has changed since last saved.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s keep only <code class="docutils literal notranslate"><span class="pre">NPLpackID</span></code>, <code class="docutils literal notranslate"><span class="pre">UtbytesgruppsID</span></code> and <code class="docutils literal notranslate"><span class="pre">Status</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">keep</span> NPLpackID UtbytesgruppsID Status
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our key for combining data is <code class="docutils literal notranslate"><span class="pre">NPLpackID</span></code>. For the <code class="docutils literal notranslate"><span class="pre">merge</span></code> to work, the variable names in our two data sets have to be equal. We’ll have to <code class="docutils literal notranslate"><span class="pre">rename</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">rename</span> NPLpackID NPLpackid
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can <code class="docutils literal notranslate"><span class="pre">merge</span></code>. There are three variants of merge:</p>
+<ol class="simple">
+<li><p>1 to 1</p></li>
+<li><p>1 to many</p></li>
+<li><p>many to 1</p></li>
+<li><p>many to many</p></li>
+</ol>
+<p>The first one means that there are more than 1 observations for our key in the other data set. The second means that we have duplicates for our key in this data set but there is only one value in the other data set. The many-to-many merge exists, but the Stata manual says that you should never use it.</p>
+<p>We have 1:1 merge because we are using the <code class="docutils literal notranslate"><span class="pre">NPLpackid</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> NPLpackid using <span class="s">&quot;Z:/ECON-C4100/data/sweden_prices.dta&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Result                           # of obs.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    -----------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    not matched                         7,270
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        from master                         0  (_merge==1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        from using                      7,270  (_merge==2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    matched                             6,683  (_merge==3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    -----------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output tells us that slightly less than half of the observations were matched. The information whether some observation was matched is saved in the variable <code class="docutils literal notranslate"><span class="pre">_merge</span></code> by default.</p>
+<p>With our new data, we can <code class="docutils literal notranslate"><span class="pre">generate</span></code> a new variable for the substitution status. This time we will call it the “product of the month status”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> pm_status = _merge <span class="o">==</span> <span class="m">3</span><span class="k"></span>
+<span class="k">tab</span> pm_status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  pm_status |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          0 |      7,270       52.10       52.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1 |      6,683       47.90      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,953      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also add a dummy for each ATC level 1 in the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">egen</span> atc1_group = <span class="nf">group</span>(atc_1),<span class="k"> label</span>
+<span class="k">tab</span> atc_1,<span class="k"> gen</span>(atc_dummy)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      atc_1 |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,408       10.09       10.09
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        956        6.85       16.94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,429       10.24       27.18
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        412        2.95       30.14
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        544        3.90       34.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        400        2.87       36.90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,032        7.40       44.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,754       12.57       56.87
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        403        2.89       59.76
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,408       31.59       91.35
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         45        0.32       91.67
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        691        4.95       96.62
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        349        2.50       99.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V |        122        0.87      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,953      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> atc1_group<span class="k"></span>
+<span class="k">describe</span> atc_dummy<span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>group(atc_1 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ) |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,408       10.09       10.09
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        956        6.85       16.94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,429       10.24       27.18
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        412        2.95       30.14
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        544        3.90       34.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        400        2.87       36.90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,032        7.40       44.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,754       12.57       56.87
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        403        2.89       59.76
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,408       31.59       91.35
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         45        0.32       91.67
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        691        4.95       96.62
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        349        2.50       99.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V |        122        0.87      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,953      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy1      byte    %8.0g                 atc_1==A
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy2      byte    %8.0g                 atc_1==B
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy3      byte    %8.0g                 atc_1==C
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy4      byte    %8.0g                 atc_1==D
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy5      byte    %8.0g                 atc_1==G
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy6      byte    %8.0g                 atc_1==H
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy7      byte    %8.0g                 atc_1==J
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy8      byte    %8.0g                 atc_1==L
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy9      byte    %8.0g                 atc_1==M
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy10     byte    %8.0g                 atc_1==N
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy11     byte    %8.0g                 atc_1==P
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy12     byte    %8.0g                 atc_1==R
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy13     byte    %8.0g                 atc_1==S
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_dummy14     byte    %8.0g                 atc_1==V
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-regressions-using-stata">
+<h2>Multiple regressions using Stata<a class="headerlink" href="#multiple-regressions-using-stata" title="Permalink to this headline">¶</a></h2>
+<p>Doing multiple regressions using Stata is as easy as univariate regressions. We simply add more variables to the equation. Let’s continue with our light-hearted example from the previous session:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reg</span> AIP name_length pm_status atc_dummy<span class="o">*</span>, r
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>note: atc_dummy11 omitted because of collinearity
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(15, 13937)      =      67.36
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10160
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -176.9473   10.54853   -16.77   0.000    -197.6239   -156.2708
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pm_status |  -1862.504    171.648   -10.85   0.000    -2198.957   -1526.051
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy1 |     632.32    316.969     1.99   0.046     11.01831    1253.622
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy2 |   4003.285   588.1725     6.81   0.000     2850.388    5156.183
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy3 |   1519.962   288.2879     5.27   0.000     954.8786    2085.045
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy4 |  -262.6696   264.3871    -0.99   0.320    -780.9038    255.5646
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy5 |  -409.0312   255.0316    -1.60   0.109    -908.9273    90.86498
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy6 |   2590.807    417.682     6.20   0.000     1772.094     3409.52
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy7 |   4486.223   643.9131     6.97   0.000     3224.067    5748.379
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy8 |   9774.207   464.0406    21.06   0.000     8864.625    10683.79
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc_dummy9 |    1726.34   678.0852     2.55   0.011     397.2021    3055.478
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> atc_dummy10 |   473.4766   254.8002     1.86   0.063    -25.96589    972.9191
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> atc_dummy11 |          0  (omitted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> atc_dummy12 |   3024.402   694.9133     4.35   0.000     1662.279    4386.526
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> atc_dummy13 |  -850.3503   263.4682    -3.23   0.001    -1366.783   -333.9172
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> atc_dummy14 |   1069.107   400.7182     2.67   0.008     283.6458    1854.569
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   3582.007   294.5745    12.16   0.000     3004.601    4159.412
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could have also typed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reg</span> AIP name_length pm_status i<span class="m">.</span>atc1_group, r
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(15, 13937)      =      67.36
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10160
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -176.9473   10.54853   -16.77   0.000    -197.6239   -156.2708
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pm_status |  -1862.504    171.648   -10.85   0.000    -2198.957   -1526.051
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B  |   3370.965   573.2447     5.88   0.000     2247.329    4494.602
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C  |   887.6416   230.0974     3.86   0.000     436.6198    1338.663
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D  |  -894.9896   219.6701    -4.07   0.000    -1325.573   -464.4067
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G  |  -1041.351   210.4891    -4.95   0.000    -1453.938   -628.7643
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H  |   1958.487   388.5961     5.04   0.000     1196.786    2720.187
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J  |   3853.903   612.3809     6.29   0.000     2653.554    5054.252
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L  |   9141.887   442.1455    20.68   0.000     8275.222    10008.55
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M  |    1094.02   649.5993     1.68   0.092    -179.2816    2367.322
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N  |  -158.8434   198.3489    -0.80   0.423    -547.6338     229.947
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P  |    -632.32    316.969    -1.99   0.046    -1253.622   -11.01831
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R  |   2392.082   676.1316     3.54   0.000     1066.774    3717.391
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S  |   -1482.67   221.8531    -6.68   0.000    -1917.532   -1047.808
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V  |   436.7873   377.9722     1.16   0.248    -304.0889    1177.663
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   4214.327   277.3235    15.20   0.000     3670.736    4757.918
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a few important things to notive. First of all, <code class="docutils literal notranslate"><span class="pre">i.</span></code> in front of some variable means that we want Stata to consider this variable as a <strong>categorical</strong> variable. Stata will automatically add the dummy variables for us. Remember that one dummy goes always to zero because of multicollinearity.</p>
+<p>Second of all, we’ve used the option <code class="docutils literal notranslate"><span class="pre">r</span></code> in our regressions. This tells Stata to calculate robust standard errors that allow for heteroscedasticity. We will use this option in all of our estimations in the future and so should you.</p>
+<p>Finally, let’s transform some of the variables to natural logs and run our regression again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> ln_nlength = <span class="nf">ln</span>(name_length)<span class="k"></span>
+<span class="k">gen</span> ln_AIP = <span class="nf">ln</span>(AIP)<span class="k"></span>
+<span class="k">reg</span> ln_AIP ln_nlength pm_status i<span class="m">.</span>atc1_group, r
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(15, 13937)      =     561.18
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.3903
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =       1.48
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ln_AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ln_nlength |  -.6799245   .0298059   -22.81   0.000     -.738348    -.621501
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pm_status |    -.99519   .0297118   -33.49   0.000    -1.053429   -.9369509
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B  |   1.380389   .0603043    22.89   0.000     1.262185    1.498594
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C  |  -.0759281   .0557473    -1.36   0.173    -.1852003    .0333442
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D  |  -.2234432   .0758802    -2.94   0.003    -.3721786   -.0747077
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G  |   .0334417   .0648877     0.52   0.606    -.0937469    .1606304
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H  |   1.072565   .0996964    10.76   0.000     .8771467    1.267983
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J  |   .8185149   .0694894    11.78   0.000     .6823063    .9547236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L  |   2.341384   .0557629    41.99   0.000     2.232081    2.450687
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M  |  -.1340736   .0876596    -1.53   0.126    -.3058982    .0377511
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N  |    .199959    .042192     4.74   0.000     .1172569    .2826611
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P  |  -.3629877   .2280811    -1.59   0.112    -.8100573     .084082
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R  |   .3562219   .0680349     5.24   0.000     .2228644    .4895794
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S  |  -.6855587   .0641376   -10.69   0.000     -.811277   -.5598403
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V  |   1.415148   .0988852    14.31   0.000     1.221319    1.608976
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   7.511801   .0784276    95.78   0.000     7.358072     7.66553
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="save-data-for-later-use">
+<h2>Save data for later use<a class="headerlink" href="#save-data-for-later-use" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span> data<span class="o">/</span>sweden_prices_merged<span class="m">.</span>dta,<span class="k"> replace</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file data/sweden_prices_merged.dta saved
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "stata"
+        },
+        kernelOptions: {
+            kernelName: "stata",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'stata'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="second_touch.html" title="previous page">Some motivation and more Stata commands</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jaakko Markkanen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
