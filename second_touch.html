@@ -665,7 +665,8 @@ replace dummy = 1 if !missing(some_variable)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">bysort</span> atc_1:<span class="k"> egen</span> cond_mean =<span class="k"> mean</span>(<span class="nf">cond</span>(AIP<span class="o">&gt;</span> <span class="m">1000</span>, AIP, .))<span class="k"></span>
-<span class="k">tab</span> cond_mean
+<span class="k">tab</span> cond_mean<span class="k"></span>
+<span class="k">drop</span> cond_mean<span class="o">*</span>
 </pre></div>
 </div>
 </div>
@@ -828,25 +829,14 @@ cond_mean_4 |      Freq.     Percent        Cum.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab correlation
-
-Correlation |
-     of AIP |
-name_length |      Freq.     Percent        Cum.
-------------+-----------------------------------
-  -.1643231 |     13,953      100.00      100.00
-------------+-----------------------------------
-      Total |     13,953      100.00
-
-. tab covariance
-
- Covariance |
-     of AIP |
-name_length |      Freq.     Percent        Cum.
-------------+-----------------------------------
-   -11375.9 |     13,953      100.00      100.00
-------------+-----------------------------------
-      Total |     13,953      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name_length already defined
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(110);
+r(110);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -855,12 +845,6 @@ name_length |      Freq.     Percent        Cum.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>motivate
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I find that the harder I work, the more luck I seem to have&#39;
-                                            Thomas Jefferson
 </pre></div>
 </div>
 </div>
@@ -876,23 +860,6 @@ name_length |      Freq.     Percent        Cum.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =    13,953
--------------+----------------------------------   F(1, 13951)     =    387.16
-       Model |  4.4287e+10         1  4.4287e+10   Prob &gt; F        =    0.0000
-    Residual |  1.5959e+12    13,951   114390203   R-squared       =    0.0270
--------------+----------------------------------   Adj R-squared   =    0.0269
-       Total |  1.6401e+12    13,952   117556268   Root MSE        =     10695
-
-------------------------------------------------------------------------------
-         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
- name_length |  -279.0341   14.18117   -19.68   0.000    -306.8311   -251.2371
-       _cons |   6458.304   205.2788    31.46   0.000      6055.93    6860.678
-------------------------------------------------------------------------------
-</pre></div>
-</div>
-</div>
 </div>
 <p>The above regression table tells that products that have longer names are less expensive in average. A decrease of one chracter in the product name’s length is in average associated with a decrease or roughly 273 kronors in Apotek Inkop Pris (the slope).</p>
 <p>The table also tells us that based on our model, products whose name is zero characters long cost 6318.27 kronors to the pharmacists (the constant). Finally, the R-squared tells us that our model is able to explain roughly 2.6% of the variation of AIP in the data.</p>
@@ -902,11 +869,6 @@ name_length |      Freq.     Percent        Cum.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span> data<span class="o">/</span>sweden_prices<span class="m">.</span>dta,<span class="k"> replace</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file data/sweden_prices.dta saved
 </pre></div>
 </div>
 </div>
