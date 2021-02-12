@@ -541,7 +541,7 @@ replace dummy = 1 if !missing(some_variable)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> Z:<span class="o">/</span>ECON<span class="o">-</span>C4100 <span class="c1">// change working dir</span>
-<span class="k">use</span> data<span class="o">/</span>sweden_prices<span class="m">.</span>dta,<span class="k"> clear</span>
+<span class="k">use</span> data<span class="o">/</span>sweden_prices_raw<span class="m">.</span>dta,<span class="k"> clear</span>
 <span class="k">describe</span>
 </pre></div>
 </div>
@@ -550,16 +550,16 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\ECON-C4100
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data from data/sweden_prices.dta
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data from data/sweden_prices_raw.dta
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:        13,953                          
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:        13,972                          
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            24                          4 Feb 2021 22:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            17                          12 Feb 2021 10:52
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size:     6,920,688                          
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size:     6,538,896                          
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -625,31 +625,10 @@ replace dummy = 1 if !missing(some_variable)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_1           str1    %9s                   
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean       float   %9.0g                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_2     float   %9.0g                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_3     float   %9.0g                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_4     float   %9.0g                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name_length     float   %9.0g                 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>correlation     float   %9.0g                 Correlation of AIP name_length
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>covariance      float   %9.0g                 Covariance of AIP name_length
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted by: atc_1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted by: 
 </pre></div>
 </div>
 </div>
@@ -665,22 +644,63 @@ replace dummy = 1 if !missing(some_variable)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">bysort</span> atc_1:<span class="k"> egen</span> cond_mean =<span class="k"> mean</span>(<span class="nf">cond</span>(AIP<span class="o">&gt;</span> <span class="m">1000</span>, AIP, .))<span class="k"></span>
-<span class="k">tab</span> cond_mean<span class="k"></span>
-<span class="k">drop</span> cond_mean<span class="o">*</span>
+<span class="k">tab</span> cond_mean
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable cond_mean already defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  cond_mean |      Freq.     Percent        Cum.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(110);
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(110);
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1989.909 |        547        3.91        3.91
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2327.587 |        412        2.95        6.86
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2696.104 |      4,408       31.55       38.41
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.73
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3528.302 |        122        0.87       39.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6043.88 |      1,413       10.11       49.72
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6525.996 |        403        2.88       52.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        349        2.50       55.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8173.659 |        403        2.88       57.99
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8411.975 |        957        6.85       64.84
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10601.13 |      1,430       10.23       75.07
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13266.64 |      1,032        7.39       82.46
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14897.71 |      1,758       12.58       95.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   17129.74 |        693        4.96      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
 </pre></div>
 </div>
 </div>
@@ -694,27 +714,61 @@ replace dummy = 1 if !missing(some_variable)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10253 missing values generated)
-
-
-cond_mean_2 |      Freq.     Percent        Cum.
-------------+-----------------------------------
-   1989.589 |        125        3.38        3.38
-   2327.587 |         33        0.89        4.27
-   2696.104 |        546       14.76       19.03
-   3240.064 |         10        0.27       19.30
-   3528.302 |         84        2.27       21.57
-   6104.941 |        251        6.78       28.35
-     6458.9 |        177        4.78       33.14
-   7943.088 |          5        0.14       33.27
-   8173.659 |         59        1.59       34.86
-   8423.975 |        562       15.19       50.05
-   10601.13 |         95        2.57       52.62
-   13266.64 |        326        8.81       61.43
-   14857.21 |      1,304       35.24       96.68
-   16460.27 |        123        3.32      100.00
-------------+-----------------------------------
-      Total |      3,700      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10258 missing values generated)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_2 |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1989.909 |        126        3.39        3.39
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2327.587 |         33        0.89        4.28
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2696.104 |        546       14.70       18.98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         10        0.27       19.25
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3528.302 |         84        2.26       21.51
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6043.88 |        255        6.87       28.38
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6525.996 |        179        4.82       33.20
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |          5        0.13       33.33
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8173.659 |         59        1.59       34.92
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8411.975 |        563       15.16       50.08
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10601.13 |         95        2.56       52.64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13266.64 |        326        8.78       61.42
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14897.71 |      1,308       35.22       96.63
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   17129.74 |        125        3.37      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |      3,714      100.00
 </pre></div>
 </div>
 </div>
@@ -726,49 +780,121 @@ cond_mean_2 |      Freq.     Percent        Cum.
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">by</span> atc_1,<span class="k"> sort</span>:<span class="k"> egen</span> cond_mean_3 =<span class="k"> mean</span>(<span class="nf">cond</span>(AIP<span class="o">&gt;</span> <span class="m">1000</span>, AIP, .))<span class="k"></span>
 <span class="k">egen</span> cond_mean_4 =<span class="k"> mean</span>(<span class="nf">cond</span>(AIP<span class="o">&gt;</span> <span class="m">1000</span>, AIP, .)),<span class="k"> by</span>(atc_1)<span class="k"></span>
 <span class="k">tab</span> cond_mean_3<span class="k"></span>
-<span class="k">tab</span> cond_mean_4
+<span class="k">tab</span> cond_mean_4<span class="k"></span>
+<span class="k">drop</span> cond_mean<span class="o">*</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_3 |      Freq.     Percent        Cum.
-------------+-----------------------------------
-   1989.589 |        544        3.90        3.90
-   2327.587 |        412        2.95        6.85
-   2696.104 |      4,408       31.59       38.44
-   3240.064 |         45        0.32       38.77
-   3528.302 |        122        0.87       39.64
-   6104.941 |      1,408       10.09       49.73
-     6458.9 |        400        2.87       52.60
-   7943.088 |        349        2.50       55.10
-   8173.659 |        403        2.89       57.99
-   8423.975 |        956        6.85       64.84
-   10601.13 |      1,429       10.24       75.08
-   13266.64 |      1,032        7.40       82.48
-   14857.21 |      1,754       12.57       95.05
-   16460.27 |        691        4.95      100.00
-------------+-----------------------------------
-      Total |     13,953      100.00
-
-
-cond_mean_4 |      Freq.     Percent        Cum.
-------------+-----------------------------------
-   1989.589 |        544        3.90        3.90
-   2327.587 |        412        2.95        6.85
-   2696.104 |      4,408       31.59       38.44
-   3240.064 |         45        0.32       38.77
-   3528.302 |        122        0.87       39.64
-   6104.941 |      1,408       10.09       49.73
-     6458.9 |        400        2.87       52.60
-   7943.088 |        349        2.50       55.10
-   8173.659 |        403        2.89       57.99
-   8423.975 |        956        6.85       64.84
-   10601.13 |      1,429       10.24       75.08
-   13266.64 |      1,032        7.40       82.48
-   14857.21 |      1,754       12.57       95.05
-   16460.27 |        691        4.95      100.00
-------------+-----------------------------------
-      Total |     13,953      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1989.909 |        547        3.91        3.91
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2327.587 |        412        2.95        6.86
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2696.104 |      4,408       31.55       38.41
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.73
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3528.302 |        122        0.87       39.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6043.88 |      1,413       10.11       49.72
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6525.996 |        403        2.88       52.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        349        2.50       55.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8173.659 |        403        2.88       57.99
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8411.975 |        957        6.85       64.84
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10601.13 |      1,430       10.23       75.07
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13266.64 |      1,032        7.39       82.46
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14897.71 |      1,758       12.58       95.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   17129.74 |        693        4.96      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cond_mean_4 |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1989.909 |        547        3.91        3.91
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2327.587 |        412        2.95        6.86
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2696.104 |      4,408       31.55       38.41
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3240.064 |         45        0.32       38.73
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3528.302 |        122        0.87       39.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6043.88 |      1,413       10.11       49.72
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6525.996 |        403        2.88       52.61
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7943.088 |        349        2.50       55.10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8173.659 |        403        2.88       57.99
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8411.975 |        957        6.85       64.84
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   10601.13 |      1,430       10.23       75.07
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   13266.64 |      1,032        7.39       82.46
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   14897.71 |      1,758       12.58       95.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   17129.74 |        693        4.96      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -786,24 +912,57 @@ cond_mean_4 |      Freq.     Percent        Cum.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 10 packages at SSC
-
-        Jan 2021   
-  Rank   # hits    Package       Author(s)
-  ----------------------------------------------------------------------
-     1  193218.0    outreg2       Roy Wada                                
-     2  87706.3    ritest        Simon Hess                              
-     3  42149.8    estout        Ben Jann                                
-     4  24481.3    asdoc         Attaullah Shah                          
-     5  20767.3    winsor2       Lian Yu-jun                             
-     6  13653.7    filelist      Robert Picard                           
-     7  11351.7    reghdfe       Sergio Correia                          
-     8  11131.3    unique        Tony Brady                              
-     9  10946.3    ivreg2        Mark E Schaffer, Steven Stillman,       
-                                   Christopher F Baum                      
-    10  10886.2    ivreg210      Mark E Schaffer, Christopher F Baum,    
-                                   Steven Stillman                         
-  ----------------------------------------------------------------------
-  (Click on package name for description)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Jan 2021   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Rank   # hits    Package       Author(s)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     1  193218.0    outreg2       Roy Wada                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     2  87706.3    ritest        Simon Hess                              
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     3  42149.8    estout        Ben Jann                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     4  24481.3    asdoc         Attaullah Shah                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     5  20767.3    winsor2       Lian Yu-jun                             
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     6  13653.7    filelist      Robert Picard                           
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     7  11351.7    reghdfe       Sergio Correia                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     8  11131.3    unique        Tony Brady                              
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     9  10946.3    ivreg2        Mark E Schaffer, Steven Stillman,       
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Christopher F Baum                      
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    10  10886.2    ivreg210      Mark E Schaffer, Christopher F Baum,    
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Steven Stillman                         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (Click on package name for description)
 </pre></div>
 </div>
 </div>
@@ -829,14 +988,52 @@ cond_mean_4 |      Freq.     Percent        Cum.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name_length already defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab correlation
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(110);
-r(110);
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation |
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     of AIP |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name_length |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -.1644622 |     13,972      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. tab covariance
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Covariance |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     of AIP |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name_length |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -11430.56 |     13,972      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
 </pre></div>
 </div>
 </div>
@@ -845,6 +1042,14 @@ r(110);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>motivate
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I find that the harder I work, the more luck I seem to have&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                            Thomas Jefferson
 </pre></div>
 </div>
 </div>
@@ -860,6 +1065,44 @@ r(110);
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =    13,972
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   F(1, 13970)     =    388.36
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Model |  4.4798e+10         1  4.4798e+10   Prob &gt; F        =    0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Residual |  1.6115e+12    13,970   115350934   R-squared       =    0.0270
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   Adj R-squared   =    0.0270
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Total |  1.6563e+12    13,971   118549175   Root MSE        =     10740
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -280.5197   14.23458   -19.71   0.000    -308.4214    -252.618
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   6491.642   205.9778    31.52   0.000     6087.897    6895.386
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
 </div>
 <p>The above regression table tells that products that have longer names are less expensive in average. A decrease of one chracter in the product name’s length is in average associated with a decrease or roughly 273 kronors in Apotek Inkop Pris (the slope).</p>
 <p>The table also tells us that based on our model, products whose name is zero characters long cost 6318.27 kronors to the pharmacists (the constant). Finally, the R-squared tells us that our model is able to explain roughly 2.6% of the variation of AIP in the data.</p>
@@ -869,6 +1112,11 @@ r(110);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span> data<span class="o">/</span>sweden_prices<span class="m">.</span>dta,<span class="k"> replace</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file data/sweden_prices.dta saved
 </pre></div>
 </div>
 </div>
