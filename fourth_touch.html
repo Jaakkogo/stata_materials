@@ -1,0 +1,2012 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recap of random number generation and more about interactions &#8212; ECON-C4X00</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/fourth_touch.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="More bysort, merge and multivariate regression using Stata" href="third_touch.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jaakkogo.github.io/stata_materials/fourth_touch.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Recap of random number generation and more about interactions" />
+<meta property="og:description" content="Recap of random number generation and more about interactions  set obs and random  In the future, we will look more into simulations using Stata. For now, let’s" />
+<meta property="og:image"       content="https://jaakkogo.github.io/stata_materials/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">ECON-C4X00</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Other_resources.html">
+   External resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dynamic_documents.html">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dyndoc
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     markstat
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stata_basics.html">
+   Stata basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="first_touch.html">
+   Importing data and statistical functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="second_touch.html">
+   Some motivation and more Stata commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="third_touch.html">
+   More
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     bysort
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+   and multivariate regression using Stata
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Recap of random number generation and more about interactions
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/fourth_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/fourth_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-obs-and-random">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set
+    </span>
+    <span class="pre">
+     obs
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     random
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactions-categorical-variables-and-continuous-variables">
+   Interactions, categorical variables and continuous variables.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predicting-values-using-stata">
+   Predicting values using Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-data-for-later-use">
+   Save data for later use
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="recap-of-random-number-generation-and-more-about-interactions">
+<h1>Recap of random number generation and more about interactions<a class="headerlink" href="#recap-of-random-number-generation-and-more-about-interactions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="set-obs-and-random">
+<h2><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span></code> and <code class="docutils literal notranslate"><span class="pre">random</span></code><a class="headerlink" href="#set-obs-and-random" title="Permalink to this headline">¶</a></h2>
+<p>In the future, we will look more into simulations using Stata. For now, let’s recap how you can declare new observations and use the random number generator possibilities in Stata. The commans we use are:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">seed</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runiform()</span></code></p></li>
+</ol>
+<p>Let’s see them in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">clear</span>
+<span class="k">set</span> obs <span class="m">1000</span><span class="k"></span>
+<span class="k">set</span> seed <span class="m">1234</span><span class="k"></span>
+<span class="k">gen</span> y = <span class="nf">runiform</span>()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of observations (_N) was 0, now 1,000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> scheme s1mono<span class="k"></span>
+<span class="k">hist</span> y, freq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=29, start=.00022811, width=.03442595)
+</pre></div>
+</div>
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;510.72&quot; y=&quot;620.01&quot; width=&quot;113.11&quot; height=&quot;1869.18&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;515.04&quot; y=&quot;624.33&quot; width=&quot;104.47&quot; height=&quot;1860.54&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;623.82&quot; y=&quot;847.96&quot; width=&quot;113.11&quot; height=&quot;1641.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;628.14&quot; y=&quot;852.28&quot; width=&quot;104.47&quot; height=&quot;1632.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;736.93&quot; y=&quot;528.92&quot; width=&quot;113.11&quot; height=&quot;1960.26&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;741.25&quot; y=&quot;533.24&quot; width=&quot;104.47&quot; height=&quot;1951.62&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;850.04&quot; y=&quot;711.21&quot; width=&quot;113.11&quot; height=&quot;1777.97&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;854.36&quot; y=&quot;715.53&quot; width=&quot;104.47&quot; height=&quot;1769.33&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;963.15&quot; y=&quot;984.71&quot; width=&quot;113.11&quot; height=&quot;1504.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;967.47&quot; y=&quot;989.03&quot; width=&quot;104.47&quot; height=&quot;1495.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1076.25&quot; y=&quot;893.63&quot; width=&quot;113.11&quot; height=&quot;1595.56&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1080.57&quot; y=&quot;897.95&quot; width=&quot;104.47&quot; height=&quot;1586.92&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1189.36&quot; y=&quot;1075.92&quot; width=&quot;113.11&quot; height=&quot;1413.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1193.68&quot; y=&quot;1080.24&quot; width=&quot;104.47&quot; height=&quot;1404.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1302.47&quot; y=&quot;1212.66&quot; width=&quot;113.11&quot; height=&quot;1276.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1306.79&quot; y=&quot;1216.98&quot; width=&quot;104.47&quot; height=&quot;1267.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1415.58&quot; y=&quot;802.42&quot; width=&quot;113.11&quot; height=&quot;1686.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1419.90&quot; y=&quot;806.74&quot; width=&quot;104.47&quot; height=&quot;1678.13&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1528.68&quot; y=&quot;939.17&quot; width=&quot;113.23&quot; height=&quot;1550.02&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1533.00&quot; y=&quot;943.49&quot; width=&quot;104.59&quot; height=&quot;1541.38&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1641.91&quot; y=&quot;847.96&quot; width=&quot;113.11&quot; height=&quot;1641.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1646.23&quot; y=&quot;852.28&quot; width=&quot;104.47&quot; height=&quot;1632.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1755.02&quot; y=&quot;847.96&quot; width=&quot;113.11&quot; height=&quot;1641.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1759.34&quot; y=&quot;852.28&quot; width=&quot;104.47&quot; height=&quot;1632.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1868.13&quot; y=&quot;802.42&quot; width=&quot;113.11&quot; height=&quot;1686.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1872.45&quot; y=&quot;806.74&quot; width=&quot;104.47&quot; height=&quot;1678.13&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1981.24&quot; y=&quot;1212.66&quot; width=&quot;113.11&quot; height=&quot;1276.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1985.56&quot; y=&quot;1216.98&quot; width=&quot;104.47&quot; height=&quot;1267.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2094.34&quot; y=&quot;984.71&quot; width=&quot;113.11&quot; height=&quot;1504.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2098.66&quot; y=&quot;989.03&quot; width=&quot;104.47&quot; height=&quot;1495.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2207.45&quot; y=&quot;1121.58&quot; width=&quot;113.11&quot; height=&quot;1367.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2211.77&quot; y=&quot;1125.90&quot; width=&quot;104.47&quot; height=&quot;1358.96&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2320.56&quot; y=&quot;893.63&quot; width=&quot;113.11&quot; height=&quot;1595.56&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2324.88&quot; y=&quot;897.95&quot; width=&quot;104.47&quot; height=&quot;1586.92&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2433.67&quot; y=&quot;802.42&quot; width=&quot;113.11&quot; height=&quot;1686.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2437.99&quot; y=&quot;806.74&quot; width=&quot;104.47&quot; height=&quot;1678.13&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2546.78&quot; y=&quot;984.71&quot; width=&quot;113.11&quot; height=&quot;1504.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2551.09&quot; y=&quot;989.03&quot; width=&quot;104.47&quot; height=&quot;1495.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2659.88&quot; y=&quot;1030.37&quot; width=&quot;113.11&quot; height=&quot;1458.81&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2664.20&quot; y=&quot;1034.69&quot; width=&quot;104.47&quot; height=&quot;1450.17&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2772.99&quot; y=&quot;1623.03&quot; width=&quot;113.11&quot; height=&quot;866.15&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2777.31&quot; y=&quot;1627.35&quot; width=&quot;104.47&quot; height=&quot;857.51&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2886.10&quot; y=&quot;164.22&quot; width=&quot;113.11&quot; height=&quot;2324.96&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2890.42&quot; y=&quot;168.54&quot; width=&quot;104.47&quot; height=&quot;2316.32&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2999.20&quot; y=&quot;893.63&quot; width=&quot;113.11&quot; height=&quot;1595.56&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3003.52&quot; y=&quot;897.95&quot; width=&quot;104.47&quot; height=&quot;1586.92&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3112.31&quot; y=&quot;984.71&quot; width=&quot;113.11&quot; height=&quot;1504.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3116.63&quot; y=&quot;989.03&quot; width=&quot;104.47&quot; height=&quot;1495.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3225.42&quot; y=&quot;984.71&quot; width=&quot;113.23&quot; height=&quot;1504.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3229.74&quot; y=&quot;989.03&quot; width=&quot;104.59&quot; height=&quot;1495.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3338.65&quot; y=&quot;1030.37&quot; width=&quot;113.11&quot; height=&quot;1458.81&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3342.97&quot; y=&quot;1034.69&quot; width=&quot;104.47&quot; height=&quot;1450.17&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3451.76&quot; y=&quot;1075.92&quot; width=&quot;113.11&quot; height=&quot;1413.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3456.08&quot; y=&quot;1080.24&quot; width=&quot;104.47&quot; height=&quot;1404.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3564.87&quot; y=&quot;620.01&quot; width=&quot;113.11&quot; height=&quot;1869.18&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3569.19&quot; y=&quot;624.33&quot; width=&quot;104.47&quot; height=&quot;1860.54&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3677.97&quot; y=&quot;1075.92&quot; width=&quot;113.11&quot; height=&quot;1413.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3682.29&quot; y=&quot;1080.24&quot; width=&quot;104.47&quot; height=&quot;1404.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2033.28&quot; x2=&quot;350.83&quot; y2=&quot;2033.28&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2033.28&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2033.28)&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1577.37&quot; x2=&quot;350.83&quot; y2=&quot;1577.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1577.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1577.37)&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1121.58&quot; x2=&quot;350.83&quot; y2=&quot;1121.58&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1121.58&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1121.58)&quot; text-anchor=&quot;middle&quot;&gt;30&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;665.67&quot; x2=&quot;350.83&quot; y2=&quot;665.67&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;665.67&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,665.67)&quot; text-anchor=&quot;middle&quot;&gt;40&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;209.76&quot; x2=&quot;350.83&quot; y2=&quot;209.76&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;209.76&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,209.76)&quot; text-anchor=&quot;middle&quot;&gt;50&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Frequency&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;509.97&quot; y1=&quot;2489.19&quot; x2=&quot;509.97&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;509.97&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1167.09&quot; y1=&quot;2489.19&quot; x2=&quot;1167.09&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1167.09&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.2&lt;/text&gt;
+	&lt;line x1=&quot;1824.20&quot; y1=&quot;2489.19&quot; x2=&quot;1824.20&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1824.20&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.4&lt;/text&gt;
+	&lt;line x1=&quot;2481.43&quot; y1=&quot;2489.19&quot; x2=&quot;2481.43&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2481.43&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.6&lt;/text&gt;
+	&lt;line x1=&quot;3138.55&quot; y1=&quot;2489.19&quot; x2=&quot;3138.55&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3138.55&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.8&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;1&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;y&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the historgram gives the distribution of <span class="math notranslate nohighlight">\(y\)</span>. However, since <span class="math notranslate nohighlight">\(N=1000\)</span>, the distribution is not so uniform after all. Let’s declare more observations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> obs <span class="m">10000000</span><span class="k"></span>
+<span class="k">replace</span> y = <span class="nf">runiform</span>()<span class="k"> if</span> <span class="nf">missing</span>(y)<span class="k"></span>
+<span class="k">hist</span> y, freq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of observations (_N) was 1,000, now 10,000,000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9,999,000 real changes made)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=70, start=1.647e-08, width=.01428571)
+</pre></div>
+</div>
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;477.80&quot; y=&quot;276.96&quot; width=&quot;47.40&quot; height=&quot;2212.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;482.12&quot; y=&quot;281.28&quot; width=&quot;38.76&quot; height=&quot;2203.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;525.20&quot; y=&quot;281.91&quot; width=&quot;47.40&quot; height=&quot;2207.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;529.51&quot; y=&quot;286.23&quot; width=&quot;38.76&quot; height=&quot;2198.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;572.59&quot; y=&quot;273.74&quot; width=&quot;47.40&quot; height=&quot;2215.44&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;576.91&quot; y=&quot;278.06&quot; width=&quot;38.76&quot; height=&quot;2206.80&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;619.99&quot; y=&quot;268.67&quot; width=&quot;47.40&quot; height=&quot;2220.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;624.31&quot; y=&quot;272.99&quot; width=&quot;38.76&quot; height=&quot;2211.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;667.38&quot; y=&quot;277.95&quot; width=&quot;47.40&quot; height=&quot;2211.23&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;671.70&quot; y=&quot;282.27&quot; width=&quot;38.76&quot; height=&quot;2202.59&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;714.78&quot; y=&quot;279.31&quot; width=&quot;47.40&quot; height=&quot;2209.87&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;719.10&quot; y=&quot;283.63&quot; width=&quot;38.76&quot; height=&quot;2201.23&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;762.18&quot; y=&quot;277.58&quot; width=&quot;47.40&quot; height=&quot;2211.61&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;766.50&quot; y=&quot;281.90&quot; width=&quot;38.76&quot; height=&quot;2202.97&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;809.57&quot; y=&quot;281.05&quot; width=&quot;47.40&quot; height=&quot;2208.14&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;813.89&quot; y=&quot;285.36&quot; width=&quot;38.76&quot; height=&quot;2199.50&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;856.97&quot; y=&quot;280.92&quot; width=&quot;47.40&quot; height=&quot;2208.26&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;861.29&quot; y=&quot;285.24&quot; width=&quot;38.76&quot; height=&quot;2199.62&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;904.37&quot; y=&quot;270.40&quot; width=&quot;47.40&quot; height=&quot;2218.78&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;908.68&quot; y=&quot;274.72&quot; width=&quot;38.76&quot; height=&quot;2210.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;951.76&quot; y=&quot;271.52&quot; width=&quot;47.52&quot; height=&quot;2217.67&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;956.08&quot; y=&quot;275.84&quot; width=&quot;38.88&quot; height=&quot;2209.03&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;999.28&quot; y=&quot;278.94&quot; width=&quot;47.40&quot; height=&quot;2210.24&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1003.60&quot; y=&quot;283.26&quot; width=&quot;38.76&quot; height=&quot;2201.60&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1046.68&quot; y=&quot;289.34&quot; width=&quot;47.40&quot; height=&quot;2199.85&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1051.00&quot; y=&quot;293.66&quot; width=&quot;38.76&quot; height=&quot;2191.21&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1094.07&quot; y=&quot;270.40&quot; width=&quot;47.40&quot; height=&quot;2218.78&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1098.39&quot; y=&quot;274.72&quot; width=&quot;38.76&quot; height=&quot;2210.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1141.47&quot; y=&quot;271.89&quot; width=&quot;47.40&quot; height=&quot;2217.30&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1145.79&quot; y=&quot;276.21&quot; width=&quot;38.76&quot; height=&quot;2208.66&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1188.87&quot; y=&quot;274.11&quot; width=&quot;47.40&quot; height=&quot;2215.07&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1193.19&quot; y=&quot;278.43&quot; width=&quot;38.76&quot; height=&quot;2206.43&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1236.26&quot; y=&quot;273.74&quot; width=&quot;47.40&quot; height=&quot;2215.44&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1240.58&quot; y=&quot;278.06&quot; width=&quot;38.76&quot; height=&quot;2206.80&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1283.66&quot; y=&quot;275.60&quot; width=&quot;47.40&quot; height=&quot;2213.59&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1287.98&quot; y=&quot;279.92&quot; width=&quot;38.76&quot; height=&quot;2204.95&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1331.06&quot; y=&quot;270.03&quot; width=&quot;47.40&quot; height=&quot;2219.15&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1335.37&quot; y=&quot;274.35&quot; width=&quot;38.76&quot; height=&quot;2210.51&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1378.45&quot; y=&quot;271.27&quot; width=&quot;47.40&quot; height=&quot;2217.92&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1382.77&quot; y=&quot;275.59&quot; width=&quot;38.76&quot; height=&quot;2209.28&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1425.85&quot; y=&quot;274.61&quot; width=&quot;47.40&quot; height=&quot;2214.58&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1430.17&quot; y=&quot;278.93&quot; width=&quot;38.76&quot; height=&quot;2205.94&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1473.24&quot; y=&quot;274.73&quot; width=&quot;47.40&quot; height=&quot;2214.45&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1477.56&quot; y=&quot;279.05&quot; width=&quot;38.76&quot; height=&quot;2205.81&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1520.64&quot; y=&quot;268.17&quot; width=&quot;47.40&quot; height=&quot;2221.01&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1524.96&quot; y=&quot;272.49&quot; width=&quot;38.76&quot; height=&quot;2212.37&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1568.04&quot; y=&quot;275.35&quot; width=&quot;47.40&quot; height=&quot;2213.83&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1572.36&quot; y=&quot;279.67&quot; width=&quot;38.76&quot; height=&quot;2205.19&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1615.43&quot; y=&quot;271.27&quot; width=&quot;47.40&quot; height=&quot;2217.92&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1619.75&quot; y=&quot;275.59&quot; width=&quot;38.76&quot; height=&quot;2209.28&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1662.83&quot; y=&quot;280.18&quot; width=&quot;47.40&quot; height=&quot;2209.01&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1667.15&quot; y=&quot;284.50&quot; width=&quot;38.76&quot; height=&quot;2200.37&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1710.22&quot; y=&quot;272.26&quot; width=&quot;47.40&quot; height=&quot;2216.93&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1714.54&quot; y=&quot;276.58&quot; width=&quot;38.76&quot; height=&quot;2208.29&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1757.62&quot; y=&quot;276.34&quot; width=&quot;47.40&quot; height=&quot;2212.84&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1761.94&quot; y=&quot;280.66&quot; width=&quot;38.76&quot; height=&quot;2204.20&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1805.02&quot; y=&quot;279.68&quot; width=&quot;47.40&quot; height=&quot;2209.50&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1809.34&quot; y=&quot;284.00&quot; width=&quot;38.76&quot; height=&quot;2200.86&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1852.41&quot; y=&quot;276.34&quot; width=&quot;47.40&quot; height=&quot;2212.84&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1856.73&quot; y=&quot;280.66&quot; width=&quot;38.76&quot; height=&quot;2204.20&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1899.81&quot; y=&quot;277.95&quot; width=&quot;47.40&quot; height=&quot;2211.23&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1904.13&quot; y=&quot;282.27&quot; width=&quot;38.76&quot; height=&quot;2202.59&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1947.21&quot; y=&quot;281.91&quot; width=&quot;47.40&quot; height=&quot;2207.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1951.53&quot; y=&quot;286.23&quot; width=&quot;38.76&quot; height=&quot;2198.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1994.60&quot; y=&quot;281.17&quot; width=&quot;47.40&quot; height=&quot;2208.02&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1998.92&quot; y=&quot;285.49&quot; width=&quot;38.76&quot; height=&quot;2199.38&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2042.00&quot; y=&quot;274.11&quot; width=&quot;47.40&quot; height=&quot;2215.07&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2046.32&quot; y=&quot;278.43&quot; width=&quot;38.76&quot; height=&quot;2206.43&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2089.39&quot; y=&quot;268.55&quot; width=&quot;47.40&quot; height=&quot;2220.64&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2093.71&quot; y=&quot;272.87&quot; width=&quot;38.76&quot; height=&quot;2212.00&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2136.79&quot; y=&quot;281.66&quot; width=&quot;47.40&quot; height=&quot;2207.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2141.11&quot; y=&quot;285.98&quot; width=&quot;38.76&quot; height=&quot;2198.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2184.19&quot; y=&quot;274.73&quot; width=&quot;47.40&quot; height=&quot;2214.45&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2188.51&quot; y=&quot;279.05&quot; width=&quot;38.76&quot; height=&quot;2205.81&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2231.58&quot; y=&quot;267.31&quot; width=&quot;47.40&quot; height=&quot;2221.88&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2235.90&quot; y=&quot;271.63&quot; width=&quot;38.76&quot; height=&quot;2213.24&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2278.98&quot; y=&quot;274.36&quot; width=&quot;47.40&quot; height=&quot;2214.82&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2283.30&quot; y=&quot;278.68&quot; width=&quot;38.76&quot; height=&quot;2206.18&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2326.38&quot; y=&quot;277.70&quot; width=&quot;47.40&quot; height=&quot;2211.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2330.70&quot; y=&quot;282.02&quot; width=&quot;38.76&quot; height=&quot;2202.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2373.77&quot; y=&quot;269.54&quot; width=&quot;47.40&quot; height=&quot;2219.65&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2378.09&quot; y=&quot;273.86&quot; width=&quot;38.76&quot; height=&quot;2211.01&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2421.17&quot; y=&quot;280.67&quot; width=&quot;47.40&quot; height=&quot;2208.51&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2425.49&quot; y=&quot;284.99&quot; width=&quot;38.76&quot; height=&quot;2199.87&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2468.57&quot; y=&quot;277.21&quot; width=&quot;47.40&quot; height=&quot;2211.98&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2472.88&quot; y=&quot;281.53&quot; width=&quot;38.76&quot; height=&quot;2203.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2515.96&quot; y=&quot;270.77&quot; width=&quot;47.40&quot; height=&quot;2218.41&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2520.28&quot; y=&quot;275.09&quot; width=&quot;38.76&quot; height=&quot;2209.77&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2563.36&quot; y=&quot;265.58&quot; width=&quot;47.40&quot; height=&quot;2223.61&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2567.68&quot; y=&quot;269.90&quot; width=&quot;38.76&quot; height=&quot;2214.97&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2610.75&quot; y=&quot;281.66&quot; width=&quot;47.40&quot; height=&quot;2207.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2615.07&quot; y=&quot;285.98&quot; width=&quot;38.76&quot; height=&quot;2198.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2658.15&quot; y=&quot;270.03&quot; width=&quot;47.40&quot; height=&quot;2219.15&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2662.47&quot; y=&quot;274.35&quot; width=&quot;38.76&quot; height=&quot;2210.51&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2705.55&quot; y=&quot;272.01&quot; width=&quot;47.40&quot; height=&quot;2217.17&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2709.87&quot; y=&quot;276.33&quot; width=&quot;38.76&quot; height=&quot;2208.53&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2752.94&quot; y=&quot;274.73&quot; width=&quot;47.40&quot; height=&quot;2214.45&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2757.26&quot; y=&quot;279.05&quot; width=&quot;38.76&quot; height=&quot;2205.81&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2800.34&quot; y=&quot;260.01&quot; width=&quot;47.40&quot; height=&quot;2229.18&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2804.66&quot; y=&quot;264.33&quot; width=&quot;38.76&quot; height=&quot;2220.54&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2847.74&quot; y=&quot;271.02&quot; width=&quot;47.40&quot; height=&quot;2218.16&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2852.05&quot; y=&quot;275.34&quot; width=&quot;38.76&quot; height=&quot;2209.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2895.13&quot; y=&quot;276.59&quot; width=&quot;47.40&quot; height=&quot;2212.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2899.45&quot; y=&quot;280.91&quot; width=&quot;38.76&quot; height=&quot;2203.96&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2942.53&quot; y=&quot;273.12&quot; width=&quot;47.40&quot; height=&quot;2216.06&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2946.85&quot; y=&quot;277.44&quot; width=&quot;38.76&quot; height=&quot;2207.42&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2989.92&quot; y=&quot;270.28&quot; width=&quot;47.40&quot; height=&quot;2218.91&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2994.24&quot; y=&quot;274.60&quot; width=&quot;38.76&quot; height=&quot;2210.27&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3037.32&quot; y=&quot;275.10&quot; width=&quot;47.40&quot; height=&quot;2214.08&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3041.64&quot; y=&quot;279.42&quot; width=&quot;38.76&quot; height=&quot;2205.44&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3084.72&quot; y=&quot;281.66&quot; width=&quot;47.40&quot; height=&quot;2207.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3089.04&quot; y=&quot;285.98&quot; width=&quot;38.76&quot; height=&quot;2198.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3132.11&quot; y=&quot;276.84&quot; width=&quot;47.40&quot; height=&quot;2212.35&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3136.43&quot; y=&quot;281.16&quot; width=&quot;38.76&quot; height=&quot;2203.71&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3179.51&quot; y=&quot;275.48&quot; width=&quot;47.40&quot; height=&quot;2213.71&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3183.83&quot; y=&quot;279.80&quot; width=&quot;38.76&quot; height=&quot;2205.07&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3226.91&quot; y=&quot;277.21&quot; width=&quot;47.40&quot; height=&quot;2211.98&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3231.22&quot; y=&quot;281.53&quot; width=&quot;38.76&quot; height=&quot;2203.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3274.30&quot; y=&quot;268.92&quot; width=&quot;47.40&quot; height=&quot;2220.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3278.62&quot; y=&quot;273.24&quot; width=&quot;38.76&quot; height=&quot;2211.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3321.70&quot; y=&quot;279.56&quot; width=&quot;47.40&quot; height=&quot;2209.63&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3326.02&quot; y=&quot;283.88&quot; width=&quot;38.76&quot; height=&quot;2200.99&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3369.09&quot; y=&quot;272.88&quot; width=&quot;47.40&quot; height=&quot;2216.31&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3373.41&quot; y=&quot;277.20&quot; width=&quot;38.76&quot; height=&quot;2207.67&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3416.49&quot; y=&quot;271.39&quot; width=&quot;47.40&quot; height=&quot;2217.79&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3420.81&quot; y=&quot;275.71&quot; width=&quot;38.76&quot; height=&quot;2209.15&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3463.89&quot; y=&quot;282.28&quot; width=&quot;47.40&quot; height=&quot;2206.90&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3468.21&quot; y=&quot;286.60&quot; width=&quot;38.76&quot; height=&quot;2198.26&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3511.28&quot; y=&quot;272.13&quot; width=&quot;47.40&quot; height=&quot;2217.05&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3515.60&quot; y=&quot;276.45&quot; width=&quot;38.76&quot; height=&quot;2208.41&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3558.68&quot; y=&quot;267.56&quot; width=&quot;47.40&quot; height=&quot;2221.63&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3563.00&quot; y=&quot;271.88&quot; width=&quot;38.76&quot; height=&quot;2212.99&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3606.07&quot; y=&quot;275.48&quot; width=&quot;47.40&quot; height=&quot;2213.71&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3610.39&quot; y=&quot;279.80&quot; width=&quot;38.76&quot; height=&quot;2205.07&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3653.47&quot; y=&quot;274.11&quot; width=&quot;47.40&quot; height=&quot;2215.07&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3657.79&quot; y=&quot;278.43&quot; width=&quot;38.76&quot; height=&quot;2206.43&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3700.87&quot; y=&quot;284.26&quot; width=&quot;47.40&quot; height=&quot;2204.92&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3705.19&quot; y=&quot;288.58&quot; width=&quot;38.76&quot; height=&quot;2196.28&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3748.26&quot; y=&quot;269.29&quot; width=&quot;47.40&quot; height=&quot;2219.90&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3752.58&quot; y=&quot;273.61&quot; width=&quot;38.76&quot; height=&quot;2211.26&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1714.24&quot; x2=&quot;350.83&quot; y2=&quot;1714.24&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1714.24&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1714.24)&quot; text-anchor=&quot;middle&quot;&gt;5.0e+04&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;939.17&quot; x2=&quot;350.83&quot; y2=&quot;939.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;939.17&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,939.17)&quot; text-anchor=&quot;middle&quot;&gt;1.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;164.22&quot; x2=&quot;350.83&quot; y2=&quot;164.22&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;1.5e+05&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Frequency&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;477.80&quot; y1=&quot;2489.19&quot; x2=&quot;477.80&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;477.80&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1141.47&quot; y1=&quot;2489.19&quot; x2=&quot;1141.47&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1141.47&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.2&lt;/text&gt;
+	&lt;line x1=&quot;1805.02&quot; y1=&quot;2489.19&quot; x2=&quot;1805.02&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1805.02&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.4&lt;/text&gt;
+	&lt;line x1=&quot;2468.57&quot; y1=&quot;2489.19&quot; x2=&quot;2468.57&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2468.57&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.6&lt;/text&gt;
+	&lt;line x1=&quot;3132.11&quot; y1=&quot;2489.19&quot; x2=&quot;3132.11&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3132.11&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;.8&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;1&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;y&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also combine random variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> x1 = <span class="nf">rgamma</span>(<span class="m">9</span>,<span class="m">0.5</span>)<span class="k"></span>
+<span class="k">gen</span> x2 = <span class="nf">rgamma</span>(<span class="m">7.5</span>,<span class="m">1</span>)<span class="k"></span>
+<span class="k">gen</span> x3 = x1 <span class="o">+</span> x2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> x1, freq<span class="k"></span>
+<span class="k">hist</span> x2, freq<span class="k"></span>
+<span class="k">hist</span> x3, freq
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=70, start=.37228525, width=.23520847)
+</pre></div>
+</div>
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;516.28&quot; y=&quot;2489.06&quot; width=&quot;39.35&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;520.60&quot; y=&quot;2493.38&quot; width=&quot;30.71&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;555.64&quot; y=&quot;2487.33&quot; width=&quot;39.35&quot; height=&quot;1.86&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;559.96&quot; y=&quot;2491.65&quot; width=&quot;30.71&quot; height=&quot;-6.78&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;594.99&quot; y=&quot;2479.53&quot; width=&quot;39.23&quot; height=&quot;9.65&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;599.31&quot; y=&quot;2483.85&quot; width=&quot;30.59&quot; height=&quot;1.01&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;634.22&quot; y=&quot;2454.29&quot; width=&quot;39.35&quot; height=&quot;34.90&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;638.54&quot; y=&quot;2458.61&quot; width=&quot;30.71&quot; height=&quot;26.26&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;673.57&quot; y=&quot;2400.45&quot; width=&quot;39.23&quot; height=&quot;88.73&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;677.89&quot; y=&quot;2404.77&quot; width=&quot;30.59&quot; height=&quot;80.09&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;712.80&quot; y=&quot;2303.18&quot; width=&quot;39.35&quot; height=&quot;186.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;717.12&quot; y=&quot;2307.50&quot; width=&quot;30.71&quot; height=&quot;177.36&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;752.15&quot; y=&quot;2156.04&quot; width=&quot;39.23&quot; height=&quot;333.15&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;756.47&quot; y=&quot;2160.36&quot; width=&quot;30.59&quot; height=&quot;324.51&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;791.38&quot; y=&quot;1962.12&quot; width=&quot;39.35&quot; height=&quot;527.07&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;795.70&quot; y=&quot;1966.44&quot; width=&quot;30.71&quot; height=&quot;518.43&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;830.73&quot; y=&quot;1732.43&quot; width=&quot;39.35&quot; height=&quot;756.75&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;835.05&quot; y=&quot;1736.75&quot; width=&quot;30.71&quot; height=&quot;748.12&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;870.09&quot; y=&quot;1485.54&quot; width=&quot;39.23&quot; height=&quot;1003.64&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;874.41&quot; y=&quot;1489.86&quot; width=&quot;30.59&quot; height=&quot;995.00&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;909.32&quot; y=&quot;1232.09&quot; width=&quot;39.35&quot; height=&quot;1257.09&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;913.63&quot; y=&quot;1236.41&quot; width=&quot;30.71&quot; height=&quot;1248.45&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;948.67&quot; y=&quot;1005.13&quot; width=&quot;39.23&quot; height=&quot;1484.06&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;952.99&quot; y=&quot;1009.45&quot; width=&quot;30.59&quot; height=&quot;1475.42&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;987.90&quot; y=&quot;822.10&quot; width=&quot;39.35&quot; height=&quot;1667.09&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;992.22&quot; y=&quot;826.42&quot; width=&quot;30.71&quot; height=&quot;1658.45&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1027.25&quot; y=&quot;685.97&quot; width=&quot;39.23&quot; height=&quot;1803.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1031.57&quot; y=&quot;690.29&quot; width=&quot;30.59&quot; height=&quot;1794.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1066.48&quot; y=&quot;602.19&quot; width=&quot;39.35&quot; height=&quot;1887.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1070.80&quot; y=&quot;606.51&quot; width=&quot;30.71&quot; height=&quot;1878.36&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1105.83&quot; y=&quot;583.25&quot; width=&quot;39.23&quot; height=&quot;1905.93&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1110.15&quot; y=&quot;587.57&quot; width=&quot;30.59&quot; height=&quot;1897.29&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1145.06&quot; y=&quot;615.68&quot; width=&quot;39.35&quot; height=&quot;1873.51&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1149.38&quot; y=&quot;620.00&quot; width=&quot;30.71&quot; height=&quot;1864.87&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1184.41&quot; y=&quot;684.73&quot; width=&quot;39.35&quot; height=&quot;1804.46&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1188.73&quot; y=&quot;689.05&quot; width=&quot;30.71&quot; height=&quot;1795.82&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1223.76&quot; y=&quot;789.80&quot; width=&quot;39.23&quot; height=&quot;1699.39&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1228.08&quot; y=&quot;794.12&quot; width=&quot;30.59&quot; height=&quot;1690.75&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1262.99&quot; y=&quot;925.31&quot; width=&quot;39.35&quot; height=&quot;1563.88&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1267.31&quot; y=&quot;929.63&quot; width=&quot;30.71&quot; height=&quot;1555.24&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1302.35&quot; y=&quot;1074.68&quot; width=&quot;39.23&quot; height=&quot;1414.51&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1306.66&quot; y=&quot;1079.00&quot; width=&quot;30.59&quot; height=&quot;1405.87&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1341.57&quot; y=&quot;1226.77&quot; width=&quot;39.35&quot; height=&quot;1262.41&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1345.89&quot; y=&quot;1231.09&quot; width=&quot;30.71&quot; height=&quot;1253.77&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1380.93&quot; y=&quot;1380.60&quot; width=&quot;39.23&quot; height=&quot;1108.59&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1385.25&quot; y=&quot;1384.92&quot; width=&quot;30.59&quot; height=&quot;1099.95&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1420.15&quot; y=&quot;1534.42&quot; width=&quot;39.35&quot; height=&quot;954.76&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1424.47&quot; y=&quot;1538.74&quot; width=&quot;30.71&quot; height=&quot;946.12&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1459.51&quot; y=&quot;1671.17&quot; width=&quot;39.35&quot; height=&quot;818.01&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1463.83&quot; y=&quot;1675.49&quot; width=&quot;30.71&quot; height=&quot;809.37&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1498.86&quot; y=&quot;1800.37&quot; width=&quot;39.23&quot; height=&quot;688.81&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1503.18&quot; y=&quot;1804.69&quot; width=&quot;30.59&quot; height=&quot;680.17&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1538.09&quot; y=&quot;1914.35&quot; width=&quot;39.35&quot; height=&quot;574.84&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1542.41&quot; y=&quot;1918.67&quot; width=&quot;30.71&quot; height=&quot;566.20&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1577.44&quot; y=&quot;2014.71&quot; width=&quot;39.23&quot; height=&quot;474.47&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1581.76&quot; y=&quot;2019.03&quot; width=&quot;30.59&quot; height=&quot;465.83&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1616.67&quot; y=&quot;2099.98&quot; width=&quot;39.35&quot; height=&quot;389.21&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1620.99&quot; y=&quot;2104.30&quot; width=&quot;30.71&quot; height=&quot;380.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1656.02&quot; y=&quot;2171.01&quot; width=&quot;39.23&quot; height=&quot;318.17&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1660.34&quot; y=&quot;2175.33&quot; width=&quot;30.59&quot; height=&quot;309.53&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1695.25&quot; y=&quot;2233.01&quot; width=&quot;39.35&quot; height=&quot;256.17&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1699.57&quot; y=&quot;2237.33&quot; width=&quot;30.71&quot; height=&quot;247.53&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1734.60&quot; y=&quot;2286.60&quot; width=&quot;39.23&quot; height=&quot;202.59&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1738.92&quot; y=&quot;2290.92&quot; width=&quot;30.59&quot; height=&quot;193.95&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1773.83&quot; y=&quot;2328.43&quot; width=&quot;39.35&quot; height=&quot;160.76&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1778.15&quot; y=&quot;2332.75&quot; width=&quot;30.71&quot; height=&quot;152.12&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1813.18&quot; y=&quot;2361.97&quot; width=&quot;39.35&quot; height=&quot;127.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1817.50&quot; y=&quot;2366.29&quot; width=&quot;30.71&quot; height=&quot;118.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1852.54&quot; y=&quot;2389.07&quot; width=&quot;39.23&quot; height=&quot;100.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1856.86&quot; y=&quot;2393.39&quot; width=&quot;30.59&quot; height=&quot;91.48&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1891.77&quot; y=&quot;2412.33&quot; width=&quot;39.35&quot; height=&quot;76.85&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1896.09&quot; y=&quot;2416.65&quot; width=&quot;30.71&quot; height=&quot;68.21&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1931.12&quot; y=&quot;2429.29&quot; width=&quot;39.23&quot; height=&quot;59.90&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1935.44&quot; y=&quot;2433.61&quot; width=&quot;30.59&quot; height=&quot;51.26&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1970.35&quot; y=&quot;2443.27&quot; width=&quot;39.35&quot; height=&quot;45.91&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1974.67&quot; y=&quot;2447.59&quot; width=&quot;30.71&quot; height=&quot;37.27&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2009.70&quot; y=&quot;2454.41&quot; width=&quot;39.23&quot; height=&quot;34.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2014.02&quot; y=&quot;2458.73&quot; width=&quot;30.59&quot; height=&quot;26.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2048.93&quot; y=&quot;2461.84&quot; width=&quot;39.35&quot; height=&quot;27.35&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2053.25&quot; y=&quot;2466.16&quot; width=&quot;30.71&quot; height=&quot;18.71&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2088.28&quot; y=&quot;2468.89&quot; width=&quot;39.35&quot; height=&quot;20.30&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2092.60&quot; y=&quot;2473.21&quot; width=&quot;30.71&quot; height=&quot;11.66&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2127.63&quot; y=&quot;2473.96&quot; width=&quot;39.23&quot; height=&quot;15.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2131.95&quot; y=&quot;2478.28&quot; width=&quot;30.59&quot; height=&quot;6.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2166.86&quot; y=&quot;2478.05&quot; width=&quot;39.35&quot; height=&quot;11.14&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2171.18&quot; y=&quot;2482.37&quot; width=&quot;30.71&quot; height=&quot;2.50&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2206.22&quot; y=&quot;2480.65&quot; width=&quot;39.23&quot; height=&quot;8.54&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2210.53&quot; y=&quot;2484.97&quot; width=&quot;30.59&quot; height=&quot;-0.10&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2245.44&quot; y=&quot;2482.75&quot; width=&quot;39.35&quot; height=&quot;6.44&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2249.76&quot; y=&quot;2487.07&quot; width=&quot;30.71&quot; height=&quot;-2.20&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2284.80&quot; y=&quot;2484.61&quot; width=&quot;39.23&quot; height=&quot;4.58&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2289.12&quot; y=&quot;2488.93&quot; width=&quot;30.59&quot; height=&quot;-4.06&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2324.03&quot; y=&quot;2485.47&quot; width=&quot;39.35&quot; height=&quot;3.71&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2328.34&quot; y=&quot;2489.79&quot; width=&quot;30.71&quot; height=&quot;-4.93&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2363.38&quot; y=&quot;2486.71&quot; width=&quot;39.23&quot; height=&quot;2.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2367.70&quot; y=&quot;2491.03&quot; width=&quot;30.59&quot; height=&quot;-6.16&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2402.61&quot; y=&quot;2487.33&quot; width=&quot;39.35&quot; height=&quot;1.86&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2406.93&quot; y=&quot;2491.65&quot; width=&quot;30.71&quot; height=&quot;-6.78&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2441.96&quot; y=&quot;2487.95&quot; width=&quot;39.35&quot; height=&quot;1.24&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2446.28&quot; y=&quot;2492.27&quot; width=&quot;30.71&quot; height=&quot;-7.40&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2481.31&quot; y=&quot;2488.20&quot; width=&quot;39.23&quot; height=&quot;0.99&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2485.63&quot; y=&quot;2492.52&quot; width=&quot;30.59&quot; height=&quot;-7.65&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2520.54&quot; y=&quot;2488.44&quot; width=&quot;39.35&quot; height=&quot;0.74&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2524.86&quot; y=&quot;2492.76&quot; width=&quot;30.71&quot; height=&quot;-7.90&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2559.89&quot; y=&quot;2488.57&quot; width=&quot;39.23&quot; height=&quot;0.62&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2564.21&quot; y=&quot;2492.89&quot; width=&quot;30.59&quot; height=&quot;-8.02&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2599.12&quot; y=&quot;2488.81&quot; width=&quot;39.35&quot; height=&quot;0.37&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2603.44&quot; y=&quot;2493.13&quot; width=&quot;30.71&quot; height=&quot;-8.27&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2638.47&quot; y=&quot;2488.94&quot; width=&quot;39.23&quot; height=&quot;0.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2642.79&quot; y=&quot;2493.26&quot; width=&quot;30.59&quot; height=&quot;-8.39&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2677.70&quot; y=&quot;2489.06&quot; width=&quot;39.35&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2682.02&quot; y=&quot;2493.38&quot; width=&quot;30.71&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2717.05&quot; y=&quot;2489.06&quot; width=&quot;39.35&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2721.37&quot; y=&quot;2493.38&quot; width=&quot;30.71&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2756.41&quot; y=&quot;2489.06&quot; width=&quot;39.23&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2760.73&quot; y=&quot;2493.38&quot; width=&quot;30.59&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2795.64&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2799.96&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2834.99&quot; y=&quot;2489.19&quot; width=&quot;39.23&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2839.31&quot; y=&quot;2493.51&quot; width=&quot;30.59&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2874.22&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2878.54&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2913.57&quot; y=&quot;2489.19&quot; width=&quot;39.23&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2917.89&quot; y=&quot;2493.51&quot; width=&quot;30.59&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2952.80&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2957.12&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2992.15&quot; y=&quot;2489.19&quot; width=&quot;39.23&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2996.47&quot; y=&quot;2493.51&quot; width=&quot;30.59&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3070.73&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3075.05&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3110.09&quot; y=&quot;2489.19&quot; width=&quot;39.23&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3114.40&quot; y=&quot;2493.51&quot; width=&quot;30.59&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3149.31&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3153.63&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3188.67&quot; y=&quot;2489.19&quot; width=&quot;39.23&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3192.99&quot; y=&quot;2493.51&quot; width=&quot;30.59&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3227.89&quot; y=&quot;2489.19&quot; width=&quot;39.35&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3232.21&quot; y=&quot;2493.51&quot; width=&quot;30.71&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1907.91&quot; x2=&quot;350.83&quot; y2=&quot;1907.91&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1907.91&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1907.91)&quot; text-anchor=&quot;middle&quot;&gt;2.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1326.64&quot; x2=&quot;350.83&quot; y2=&quot;1326.64&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1326.64&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1326.64)&quot; text-anchor=&quot;middle&quot;&gt;4.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;745.37&quot; x2=&quot;350.83&quot; y2=&quot;745.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;745.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,745.37)&quot; text-anchor=&quot;middle&quot;&gt;6.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;164.22&quot; x2=&quot;350.83&quot; y2=&quot;164.22&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;8.0e+05&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Frequency&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;454.16&quot; y1=&quot;2489.19&quot; x2=&quot;454.16&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;454.16&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1289.47&quot; y1=&quot;2489.19&quot; x2=&quot;1289.47&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1289.47&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;5&lt;/text&gt;
+	&lt;line x1=&quot;2124.91&quot; y1=&quot;2489.19&quot; x2=&quot;2124.91&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
+	&lt;line x1=&quot;2960.35&quot; y1=&quot;2489.19&quot; x2=&quot;2960.35&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2960.35&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;15&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;x1&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=70, start=.46502763, width=.47477912)
+</pre></div>
+</div>
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;493.02&quot; y=&quot;2488.57&quot; width=&quot;39.60&quot; height=&quot;0.62&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;497.34&quot; y=&quot;2492.89&quot; width=&quot;30.96&quot; height=&quot;-8.02&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;532.62&quot; y=&quot;2481.88&quot; width=&quot;39.72&quot; height=&quot;7.30&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;536.94&quot; y=&quot;2486.20&quot; width=&quot;31.08&quot; height=&quot;-1.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;572.34&quot; y=&quot;2449.71&quot; width=&quot;39.60&quot; height=&quot;39.48&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;576.66&quot; y=&quot;2454.03&quot; width=&quot;30.96&quot; height=&quot;30.84&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;611.94&quot; y=&quot;2367.41&quot; width=&quot;39.72&quot; height=&quot;121.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;616.26&quot; y=&quot;2371.73&quot; width=&quot;31.08&quot; height=&quot;113.13&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;651.67&quot; y=&quot;2212.10&quot; width=&quot;39.60&quot; height=&quot;277.08&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;655.99&quot; y=&quot;2216.42&quot; width=&quot;30.96&quot; height=&quot;268.45&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;691.27&quot; y=&quot;1981.30&quot; width=&quot;39.72&quot; height=&quot;507.89&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;695.59&quot; y=&quot;1985.62&quot; width=&quot;31.08&quot; height=&quot;499.25&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;730.99&quot; y=&quot;1688.25&quot; width=&quot;39.60&quot; height=&quot;800.94&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;735.31&quot; y=&quot;1692.57&quot; width=&quot;30.96&quot; height=&quot;792.30&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;770.59&quot; y=&quot;1366.00&quot; width=&quot;39.72&quot; height=&quot;1123.19&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;774.91&quot; y=&quot;1370.32&quot; width=&quot;31.08&quot; height=&quot;1114.55&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;810.32&quot; y=&quot;1049.43&quot; width=&quot;39.60&quot; height=&quot;1439.75&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;814.63&quot; y=&quot;1053.75&quot; width=&quot;30.96&quot; height=&quot;1431.11&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;849.91&quot; y=&quot;764.80&quot; width=&quot;39.72&quot; height=&quot;1724.39&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;854.23&quot; y=&quot;769.12&quot; width=&quot;31.08&quot; height=&quot;1715.75&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;889.64&quot; y=&quot;550.95&quot; width=&quot;39.60&quot; height=&quot;1938.23&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;893.96&quot; y=&quot;555.27&quot; width=&quot;30.96&quot; height=&quot;1929.59&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;929.24&quot; y=&quot;414.08&quot; width=&quot;39.72&quot; height=&quot;2075.10&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;933.56&quot; y=&quot;418.40&quot; width=&quot;31.08&quot; height=&quot;2066.47&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;968.96&quot; y=&quot;367.30&quot; width=&quot;39.60&quot; height=&quot;2121.88&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;973.28&quot; y=&quot;371.62&quot; width=&quot;30.96&quot; height=&quot;2113.24&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1008.56&quot; y=&quot;383.76&quot; width=&quot;39.72&quot; height=&quot;2105.42&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1012.88&quot; y=&quot;388.08&quot; width=&quot;31.08&quot; height=&quot;2096.78&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1048.29&quot; y=&quot;462.22&quot; width=&quot;39.60&quot; height=&quot;2026.96&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1052.61&quot; y=&quot;466.54&quot; width=&quot;30.96&quot; height=&quot;2018.32&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1087.89&quot; y=&quot;596.37&quot; width=&quot;39.72&quot; height=&quot;1892.82&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1092.21&quot; y=&quot;600.69&quot; width=&quot;31.08&quot; height=&quot;1884.18&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1127.61&quot; y=&quot;762.70&quot; width=&quot;39.60&quot; height=&quot;1726.49&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1131.93&quot; y=&quot;767.01&quot; width=&quot;30.96&quot; height=&quot;1717.85&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1167.21&quot; y=&quot;945.97&quot; width=&quot;39.72&quot; height=&quot;1543.21&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1171.53&quot; y=&quot;950.29&quot; width=&quot;31.08&quot; height=&quot;1534.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1206.93&quot; y=&quot;1140.64&quot; width=&quot;39.60&quot; height=&quot;1348.55&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1211.25&quot; y=&quot;1144.96&quot; width=&quot;30.96&quot; height=&quot;1339.91&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1246.53&quot; y=&quot;1326.52&quot; width=&quot;39.72&quot; height=&quot;1162.67&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1250.85&quot; y=&quot;1330.84&quot; width=&quot;31.08&quot; height=&quot;1154.03&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1286.26&quot; y=&quot;1502.50&quot; width=&quot;39.60&quot; height=&quot;986.69&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1290.58&quot; y=&quot;1506.82&quot; width=&quot;30.96&quot; height=&quot;978.05&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1325.86&quot; y=&quot;1665.11&quot; width=&quot;39.72&quot; height=&quot;824.08&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1330.18&quot; y=&quot;1669.43&quot; width=&quot;31.08&quot; height=&quot;815.44&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1365.58&quot; y=&quot;1808.42&quot; width=&quot;39.60&quot; height=&quot;680.77&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1369.90&quot; y=&quot;1812.74&quot; width=&quot;30.96&quot; height=&quot;672.13&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1405.18&quot; y=&quot;1933.41&quot; width=&quot;39.72&quot; height=&quot;555.78&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1409.50&quot; y=&quot;1937.73&quot; width=&quot;31.08&quot; height=&quot;547.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1444.90&quot; y=&quot;2042.56&quot; width=&quot;39.60&quot; height=&quot;446.63&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1449.22&quot; y=&quot;2046.88&quot; width=&quot;30.96&quot; height=&quot;437.99&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1484.51&quot; y=&quot;2130.18&quot; width=&quot;39.72&quot; height=&quot;359.01&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1488.82&quot; y=&quot;2134.50&quot; width=&quot;31.08&quot; height=&quot;350.37&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1524.23&quot; y=&quot;2205.05&quot; width=&quot;39.60&quot; height=&quot;284.14&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1528.55&quot; y=&quot;2209.37&quot; width=&quot;30.96&quot; height=&quot;275.50&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1563.83&quot; y=&quot;2266.80&quot; width=&quot;39.72&quot; height=&quot;222.39&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1568.15&quot; y=&quot;2271.12&quot; width=&quot;31.08&quot; height=&quot;213.75&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1603.55&quot; y=&quot;2315.56&quot; width=&quot;39.60&quot; height=&quot;173.63&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1607.87&quot; y=&quot;2319.88&quot; width=&quot;30.96&quot; height=&quot;164.99&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1643.15&quot; y=&quot;2355.04&quot; width=&quot;39.72&quot; height=&quot;134.15&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1647.47&quot; y=&quot;2359.36&quot; width=&quot;31.08&quot; height=&quot;125.51&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1682.88&quot; y=&quot;2386.96&quot; width=&quot;39.60&quot; height=&quot;102.22&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1687.20&quot; y=&quot;2391.28&quot; width=&quot;30.96&quot; height=&quot;93.58&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1722.48&quot; y=&quot;2412.21&quot; width=&quot;39.72&quot; height=&quot;76.97&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1726.80&quot; y=&quot;2416.53&quot; width=&quot;31.08&quot; height=&quot;68.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1762.20&quot; y=&quot;2429.54&quot; width=&quot;39.60&quot; height=&quot;59.65&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1766.52&quot; y=&quot;2433.86&quot; width=&quot;30.96&quot; height=&quot;51.01&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1801.80&quot; y=&quot;2445.25&quot; width=&quot;39.72&quot; height=&quot;43.93&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1806.12&quot; y=&quot;2449.57&quot; width=&quot;31.08&quot; height=&quot;35.29&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1841.52&quot; y=&quot;2455.40&quot; width=&quot;39.72&quot; height=&quot;33.78&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1845.84&quot; y=&quot;2459.72&quot; width=&quot;31.08&quot; height=&quot;25.15&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1881.25&quot; y=&quot;2463.94&quot; width=&quot;39.60&quot; height=&quot;25.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1885.57&quot; y=&quot;2468.26&quot; width=&quot;30.96&quot; height=&quot;16.61&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1920.85&quot; y=&quot;2470.37&quot; width=&quot;39.72&quot; height=&quot;18.81&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1925.17&quot; y=&quot;2474.69&quot; width=&quot;31.08&quot; height=&quot;10.17&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1960.57&quot; y=&quot;2475.45&quot; width=&quot;39.60&quot; height=&quot;13.74&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1964.89&quot; y=&quot;2479.77&quot; width=&quot;30.96&quot; height=&quot;5.10&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2000.17&quot; y=&quot;2479.28&quot; width=&quot;39.72&quot; height=&quot;9.90&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2004.49&quot; y=&quot;2483.60&quot; width=&quot;31.08&quot; height=&quot;1.26&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2039.89&quot; y=&quot;2482.01&quot; width=&quot;39.60&quot; height=&quot;7.18&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2044.21&quot; y=&quot;2486.33&quot; width=&quot;30.96&quot; height=&quot;-1.46&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2079.49&quot; y=&quot;2483.86&quot; width=&quot;39.72&quot; height=&quot;5.32&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2083.81&quot; y=&quot;2488.18&quot; width=&quot;31.08&quot; height=&quot;-3.32&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2119.22&quot; y=&quot;2485.23&quot; width=&quot;39.60&quot; height=&quot;3.96&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2123.54&quot; y=&quot;2489.55&quot; width=&quot;30.96&quot; height=&quot;-4.68&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2158.82&quot; y=&quot;2486.22&quot; width=&quot;39.72&quot; height=&quot;2.97&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2163.14&quot; y=&quot;2490.54&quot; width=&quot;31.08&quot; height=&quot;-5.67&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2198.54&quot; y=&quot;2487.21&quot; width=&quot;39.60&quot; height=&quot;1.98&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2202.86&quot; y=&quot;2491.53&quot; width=&quot;30.96&quot; height=&quot;-6.66&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2238.14&quot; y=&quot;2487.70&quot; width=&quot;39.72&quot; height=&quot;1.49&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2242.46&quot; y=&quot;2492.02&quot; width=&quot;31.08&quot; height=&quot;-7.15&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2277.87&quot; y=&quot;2488.07&quot; width=&quot;39.60&quot; height=&quot;1.11&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2282.19&quot; y=&quot;2492.39&quot; width=&quot;30.96&quot; height=&quot;-7.53&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2317.47&quot; y=&quot;2488.44&quot; width=&quot;39.72&quot; height=&quot;0.74&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2321.79&quot; y=&quot;2492.76&quot; width=&quot;31.08&quot; height=&quot;-7.90&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2357.19&quot; y=&quot;2488.69&quot; width=&quot;39.60&quot; height=&quot;0.50&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2361.51&quot; y=&quot;2493.01&quot; width=&quot;30.96&quot; height=&quot;-8.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2396.79&quot; y=&quot;2488.81&quot; width=&quot;39.72&quot; height=&quot;0.37&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2401.11&quot; y=&quot;2493.13&quot; width=&quot;31.08&quot; height=&quot;-8.27&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2436.51&quot; y=&quot;2488.94&quot; width=&quot;39.60&quot; height=&quot;0.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2440.83&quot; y=&quot;2493.26&quot; width=&quot;30.96&quot; height=&quot;-8.39&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2476.11&quot; y=&quot;2488.94&quot; width=&quot;39.72&quot; height=&quot;0.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2480.43&quot; y=&quot;2493.26&quot; width=&quot;31.08&quot; height=&quot;-8.39&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2515.84&quot; y=&quot;2489.06&quot; width=&quot;39.60&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2520.16&quot; y=&quot;2493.38&quot; width=&quot;30.96&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2555.44&quot; y=&quot;2489.06&quot; width=&quot;39.72&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2559.76&quot; y=&quot;2493.38&quot; width=&quot;31.08&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2595.16&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2599.48&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2634.76&quot; y=&quot;2489.19&quot; width=&quot;39.72&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2639.08&quot; y=&quot;2493.51&quot; width=&quot;31.08&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2674.49&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2678.80&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2714.09&quot; y=&quot;2489.19&quot; width=&quot;39.72&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2718.40&quot; y=&quot;2493.51&quot; width=&quot;31.08&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2753.81&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2758.13&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2793.41&quot; y=&quot;2489.19&quot; width=&quot;39.72&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2797.73&quot; y=&quot;2493.51&quot; width=&quot;31.08&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2833.13&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2837.45&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2912.46&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2916.78&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2991.78&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2996.10&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3031.38&quot; y=&quot;2489.19&quot; width=&quot;39.72&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3035.70&quot; y=&quot;2493.51&quot; width=&quot;31.08&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3071.10&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3075.42&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3229.75&quot; y=&quot;2489.19&quot; width=&quot;39.60&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3234.07&quot; y=&quot;2493.51&quot; width=&quot;30.96&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1907.91&quot; x2=&quot;350.83&quot; y2=&quot;1907.91&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1907.91&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1907.91)&quot; text-anchor=&quot;middle&quot;&gt;2.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1326.64&quot; x2=&quot;350.83&quot; y2=&quot;1326.64&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1326.64&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1326.64)&quot; text-anchor=&quot;middle&quot;&gt;4.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;745.37&quot; x2=&quot;350.83&quot; y2=&quot;745.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;745.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,745.37)&quot; text-anchor=&quot;middle&quot;&gt;6.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;164.22&quot; x2=&quot;350.83&quot; y2=&quot;164.22&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;8.0e+05&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Frequency&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;454.16&quot; y1=&quot;2489.19&quot; x2=&quot;454.16&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;454.16&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1289.47&quot; y1=&quot;2489.19&quot; x2=&quot;1289.47&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1289.47&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
+	&lt;line x1=&quot;2124.91&quot; y1=&quot;2489.19&quot; x2=&quot;2124.91&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
+	&lt;line x1=&quot;2960.35&quot; y1=&quot;2489.19&quot; x2=&quot;2960.35&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2960.35&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;30&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;40&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;x2&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bin=70, start=2.1730702, width=.53087058)
+</pre></div>
+</div>
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;103.74&quot; width=&quot;3462.46&quot; height=&quot;2382.57&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;635.70&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;640.02&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;680.01&quot; y=&quot;2488.81&quot; width=&quot;44.43&quot; height=&quot;0.37&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;684.33&quot; y=&quot;2493.13&quot; width=&quot;35.79&quot; height=&quot;-8.27&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;724.43&quot; y=&quot;2486.96&quot; width=&quot;44.30&quot; height=&quot;2.23&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;728.75&quot; y=&quot;2491.28&quot; width=&quot;35.66&quot; height=&quot;-6.41&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;768.74&quot; y=&quot;2480.77&quot; width=&quot;44.30&quot; height=&quot;8.42&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;773.05&quot; y=&quot;2485.09&quot; width=&quot;35.66&quot; height=&quot;-0.22&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;813.04&quot; y=&quot;2463.20&quot; width=&quot;44.43&quot; height=&quot;25.99&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;817.36&quot; y=&quot;2467.52&quot; width=&quot;35.79&quot; height=&quot;17.35&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;857.46&quot; y=&quot;2423.84&quot; width=&quot;44.30&quot; height=&quot;65.34&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;861.78&quot; y=&quot;2428.16&quot; width=&quot;35.66&quot; height=&quot;56.70&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;901.77&quot; y=&quot;2351.32&quot; width=&quot;44.30&quot; height=&quot;137.86&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;906.09&quot; y=&quot;2355.64&quot; width=&quot;35.66&quot; height=&quot;129.22&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;946.07&quot; y=&quot;2235.61&quot; width=&quot;44.43&quot; height=&quot;253.57&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;950.39&quot; y=&quot;2239.93&quot; width=&quot;35.79&quot; height=&quot;244.93&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;990.50&quot; y=&quot;2068.30&quot; width=&quot;44.30&quot; height=&quot;420.89&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;994.81&quot; y=&quot;2072.62&quot; width=&quot;35.66&quot; height=&quot;412.25&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1034.80&quot; y=&quot;1850.74&quot; width=&quot;44.43&quot; height=&quot;638.45&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1039.12&quot; y=&quot;1855.06&quot; width=&quot;35.79&quot; height=&quot;629.81&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1079.22&quot; y=&quot;1595.43&quot; width=&quot;44.30&quot; height=&quot;893.75&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1083.54&quot; y=&quot;1599.75&quot; width=&quot;35.66&quot; height=&quot;885.11&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1123.53&quot; y=&quot;1326.77&quot; width=&quot;44.30&quot; height=&quot;1162.42&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1127.85&quot; y=&quot;1331.09&quot; width=&quot;35.66&quot; height=&quot;1153.78&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1167.83&quot; y=&quot;1059.58&quot; width=&quot;44.43&quot; height=&quot;1429.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1172.15&quot; y=&quot;1063.90&quot; width=&quot;35.79&quot; height=&quot;1420.96&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1212.26&quot; y=&quot;821.35&quot; width=&quot;44.30&quot; height=&quot;1667.83&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1216.57&quot; y=&quot;825.67&quot; width=&quot;35.66&quot; height=&quot;1659.19&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1256.56&quot; y=&quot;635.60&quot; width=&quot;44.30&quot; height=&quot;1853.59&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1260.88&quot; y=&quot;639.92&quot; width=&quot;35.66&quot; height=&quot;1844.95&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1300.86&quot; y=&quot;509.99&quot; width=&quot;44.43&quot; height=&quot;1979.20&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1305.18&quot; y=&quot;514.31&quot; width=&quot;35.79&quot; height=&quot;1970.56&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1345.29&quot; y=&quot;449.47&quot; width=&quot;44.30&quot; height=&quot;2039.71&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1349.61&quot; y=&quot;453.79&quot; width=&quot;35.66&quot; height=&quot;2031.07&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1389.59&quot; y=&quot;458.38&quot; width=&quot;44.30&quot; height=&quot;2030.80&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1393.91&quot; y=&quot;462.70&quot; width=&quot;35.66&quot; height=&quot;2022.16&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1433.89&quot; y=&quot;525.46&quot; width=&quot;44.43&quot; height=&quot;1963.73&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1438.21&quot; y=&quot;529.78&quot; width=&quot;35.79&quot; height=&quot;1955.09&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1478.32&quot; y=&quot;640.92&quot; width=&quot;44.30&quot; height=&quot;1848.26&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1482.64&quot; y=&quot;645.24&quot; width=&quot;35.66&quot; height=&quot;1839.62&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1522.62&quot; y=&quot;789.30&quot; width=&quot;44.43&quot; height=&quot;1699.88&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1526.94&quot; y=&quot;793.62&quot; width=&quot;35.79&quot; height=&quot;1691.24&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1567.05&quot; y=&quot;963.42&quot; width=&quot;44.30&quot; height=&quot;1525.76&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1571.37&quot; y=&quot;967.74&quot; width=&quot;35.66&quot; height=&quot;1517.12&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1611.35&quot; y=&quot;1149.92&quot; width=&quot;44.30&quot; height=&quot;1339.26&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1615.67&quot; y=&quot;1154.24&quot; width=&quot;35.66&quot; height=&quot;1330.62&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1655.65&quot; y=&quot;1332.58&quot; width=&quot;44.43&quot; height=&quot;1156.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1659.97&quot; y=&quot;1336.90&quot; width=&quot;35.79&quot; height=&quot;1147.96&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1700.08&quot; y=&quot;1508.93&quot; width=&quot;44.30&quot; height=&quot;980.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1704.40&quot; y=&quot;1513.25&quot; width=&quot;35.66&quot; height=&quot;971.61&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1744.38&quot; y=&quot;1670.06&quot; width=&quot;44.30&quot; height=&quot;819.13&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1748.70&quot; y=&quot;1674.38&quot; width=&quot;35.66&quot; height=&quot;810.49&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1788.68&quot; y=&quot;1813.86&quot; width=&quot;44.43&quot; height=&quot;675.32&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1793.00&quot; y=&quot;1818.18&quot; width=&quot;35.79&quot; height=&quot;666.69&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1833.11&quot; y=&quot;1942.69&quot; width=&quot;44.30&quot; height=&quot;546.50&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1837.43&quot; y=&quot;1947.01&quot; width=&quot;35.66&quot; height=&quot;537.86&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1877.41&quot; y=&quot;2052.09&quot; width=&quot;44.43&quot; height=&quot;437.10&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1881.73&quot; y=&quot;2056.41&quot; width=&quot;35.79&quot; height=&quot;428.46&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1921.84&quot; y=&quot;2141.81&quot; width=&quot;44.30&quot; height=&quot;347.38&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1926.16&quot; y=&quot;2146.13&quot; width=&quot;35.66&quot; height=&quot;338.74&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1966.14&quot; y=&quot;2216.56&quot; width=&quot;44.30&quot; height=&quot;272.63&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1970.46&quot; y=&quot;2220.88&quot; width=&quot;35.66&quot; height=&quot;263.99&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2010.44&quot; y=&quot;2279.05&quot; width=&quot;44.43&quot; height=&quot;210.13&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2014.76&quot; y=&quot;2283.37&quot; width=&quot;35.79&quot; height=&quot;201.49&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2054.87&quot; y=&quot;2329.05&quot; width=&quot;44.30&quot; height=&quot;160.14&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2059.19&quot; y=&quot;2333.37&quot; width=&quot;35.66&quot; height=&quot;151.50&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2099.17&quot; y=&quot;2367.16&quot; width=&quot;44.30&quot; height=&quot;122.02&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2103.49&quot; y=&quot;2371.48&quot; width=&quot;35.66&quot; height=&quot;113.38&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2143.47&quot; y=&quot;2397.61&quot; width=&quot;44.43&quot; height=&quot;91.58&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2147.79&quot; y=&quot;2401.93&quot; width=&quot;35.79&quot; height=&quot;82.94&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2187.90&quot; y=&quot;2420.13&quot; width=&quot;44.30&quot; height=&quot;69.05&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2192.22&quot; y=&quot;2424.45&quot; width=&quot;35.66&quot; height=&quot;60.41&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2232.20&quot; y=&quot;2437.95&quot; width=&quot;44.43&quot; height=&quot;51.23&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2236.52&quot; y=&quot;2442.27&quot; width=&quot;35.79&quot; height=&quot;42.59&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2276.63&quot; y=&quot;2451.81&quot; width=&quot;44.30&quot; height=&quot;37.37&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2280.95&quot; y=&quot;2456.13&quot; width=&quot;35.66&quot; height=&quot;28.73&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2320.93&quot; y=&quot;2461.59&quot; width=&quot;44.30&quot; height=&quot;27.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2325.25&quot; y=&quot;2465.91&quot; width=&quot;35.66&quot; height=&quot;18.96&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2365.23&quot; y=&quot;2469.14&quot; width=&quot;44.43&quot; height=&quot;20.05&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2369.55&quot; y=&quot;2473.46&quot; width=&quot;35.79&quot; height=&quot;11.41&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2409.66&quot; y=&quot;2474.09&quot; width=&quot;44.30&quot; height=&quot;15.10&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2413.98&quot; y=&quot;2478.41&quot; width=&quot;35.66&quot; height=&quot;6.46&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2453.96&quot; y=&quot;2478.67&quot; width=&quot;44.30&quot; height=&quot;10.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2458.28&quot; y=&quot;2482.99&quot; width=&quot;35.66&quot; height=&quot;1.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2498.26&quot; y=&quot;2482.01&quot; width=&quot;44.43&quot; height=&quot;7.18&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2502.58&quot; y=&quot;2486.33&quot; width=&quot;35.79&quot; height=&quot;-1.46&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2542.69&quot; y=&quot;2483.74&quot; width=&quot;44.30&quot; height=&quot;5.45&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2547.01&quot; y=&quot;2488.06&quot; width=&quot;35.66&quot; height=&quot;-3.19&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2586.99&quot; y=&quot;2485.47&quot; width=&quot;44.43&quot; height=&quot;3.71&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2591.31&quot; y=&quot;2489.79&quot; width=&quot;35.79&quot; height=&quot;-4.93&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2631.42&quot; y=&quot;2486.59&quot; width=&quot;44.30&quot; height=&quot;2.60&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2635.74&quot; y=&quot;2490.91&quot; width=&quot;35.66&quot; height=&quot;-6.04&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2675.72&quot; y=&quot;2487.33&quot; width=&quot;44.30&quot; height=&quot;1.86&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2680.04&quot; y=&quot;2491.65&quot; width=&quot;35.66&quot; height=&quot;-6.78&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2720.03&quot; y=&quot;2487.95&quot; width=&quot;44.43&quot; height=&quot;1.24&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2724.34&quot; y=&quot;2492.27&quot; width=&quot;35.79&quot; height=&quot;-7.40&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2764.45&quot; y=&quot;2488.32&quot; width=&quot;44.30&quot; height=&quot;0.87&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2768.77&quot; y=&quot;2492.64&quot; width=&quot;35.66&quot; height=&quot;-7.77&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2808.75&quot; y=&quot;2488.57&quot; width=&quot;44.30&quot; height=&quot;0.62&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2813.07&quot; y=&quot;2492.89&quot; width=&quot;35.66&quot; height=&quot;-8.02&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2853.06&quot; y=&quot;2488.69&quot; width=&quot;44.43&quot; height=&quot;0.50&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2857.38&quot; y=&quot;2493.01&quot; width=&quot;35.79&quot; height=&quot;-8.14&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2897.48&quot; y=&quot;2488.94&quot; width=&quot;44.30&quot; height=&quot;0.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2901.80&quot; y=&quot;2493.26&quot; width=&quot;35.66&quot; height=&quot;-8.39&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2941.78&quot; y=&quot;2488.94&quot; width=&quot;44.43&quot; height=&quot;0.25&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2946.10&quot; y=&quot;2493.26&quot; width=&quot;35.79&quot; height=&quot;-8.39&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2986.21&quot; y=&quot;2489.06&quot; width=&quot;44.30&quot; height=&quot;0.12&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2990.53&quot; y=&quot;2493.38&quot; width=&quot;35.66&quot; height=&quot;-8.52&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3030.51&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3034.83&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3074.82&quot; y=&quot;2489.19&quot; width=&quot;44.43&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3079.14&quot; y=&quot;2493.51&quot; width=&quot;35.79&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3119.24&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3123.56&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3163.55&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3167.86&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3207.85&quot; y=&quot;2489.19&quot; width=&quot;44.43&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3212.17&quot; y=&quot;2493.51&quot; width=&quot;35.79&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3252.27&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3256.59&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3296.58&quot; y=&quot;2489.19&quot; width=&quot;44.43&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3300.90&quot; y=&quot;2493.51&quot; width=&quot;35.79&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3341.00&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3345.32&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3385.30&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3389.62&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3474.03&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3478.35&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3518.34&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3522.66&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3607.07&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3611.38&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3695.79&quot; y=&quot;2489.19&quot; width=&quot;44.30&quot; height=&quot;0.00&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3700.11&quot; y=&quot;2493.51&quot; width=&quot;35.66&quot; height=&quot;-8.64&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;100.86&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1907.91&quot; x2=&quot;350.83&quot; y2=&quot;1907.91&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1907.91&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1907.91)&quot; text-anchor=&quot;middle&quot;&gt;2.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1326.64&quot; x2=&quot;350.83&quot; y2=&quot;1326.64&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1326.64&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1326.64)&quot; text-anchor=&quot;middle&quot;&gt;4.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;745.37&quot; x2=&quot;350.83&quot; y2=&quot;745.37&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;745.37&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,745.37)&quot; text-anchor=&quot;middle&quot;&gt;6.0e+05&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;164.22&quot; x2=&quot;350.83&quot; y2=&quot;164.22&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;164.22&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,164.22)&quot; text-anchor=&quot;middle&quot;&gt;8.0e+05&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1294.96&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1294.96)&quot; text-anchor=&quot;middle&quot;&gt;Frequency&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;454.16&quot; y1=&quot;2489.19&quot; x2=&quot;454.16&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;454.16&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1289.47&quot; y1=&quot;2489.19&quot; x2=&quot;1289.47&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1289.47&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;10&lt;/text&gt;
+	&lt;line x1=&quot;2124.91&quot; y1=&quot;2489.19&quot; x2=&quot;2124.91&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;20&lt;/text&gt;
+	&lt;line x1=&quot;2960.35&quot; y1=&quot;2489.19&quot; x2=&quot;2960.35&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2960.35&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;30&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;2489.19&quot; x2=&quot;3795.66&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2619.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;40&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2729.16&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;x3&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactions-categorical-variables-and-continuous-variables">
+<h2>Interactions, categorical variables and continuous variables.<a class="headerlink" href="#interactions-categorical-variables-and-continuous-variables" title="Permalink to this headline">¶</a></h2>
+<p>We continue with the merged Swedish price data from last week.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">clear</span>
+<span class="k">qui cd</span> Z:<span class="o">/</span>ECON<span class="o">-</span>C4100 <span class="c1">// change working dir</span>
+<span class="k">qui use</span> data<span class="o">/</span>sweden_prices_merged<span class="m">.</span>dta,<span class="k"> clear</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We generated the numerical but string labeled variable for the ATC level 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> atc1_group
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>group(atc_1 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ) |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,408       10.09       10.09
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        956        6.85       16.94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,429       10.24       27.18
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        412        2.95       30.14
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        544        3.90       34.04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        400        2.87       36.90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,032        7.40       44.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,754       12.57       56.87
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        403        2.89       59.76
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,408       31.59       91.35
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         45        0.32       91.67
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        691        4.95       96.62
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        349        2.50       99.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V |        122        0.87      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,953      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>This variable is categorical variable (often called a factor variable). It can get only specific <strong>discrete</strong> values by the <em>DATA GENERATING PROCESS</em>. The numerical values themselves do not matter. Another example is the <code class="docutils literal notranslate"><span class="pre">pm_status</span></code> dummy variable (all dummy variables are categorical variables by definition).</p>
+<p>However, most variables are continous. They can get  any values in some interval. For instance, our prices can take any values between zero and infinity. Another example of a continuous variable is the length of the product name, although you could say it’s a discrete variable too. But we’re talking about Stata/software variables, not maths.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">10</span> name_length AIP atc1_group pm_status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name_length</th>
+      <th>AIP</th>
+      <th>atc1_group</th>
+      <th>pm_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>510.48</td>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>226.8</td>
+      <td>R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>697.76</td>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15</td>
+      <td>37.91</td>
+      <td>R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>15</td>
+      <td>336.51</td>
+      <td>R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>11</td>
+      <td>345.5</td>
+      <td>R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>11</td>
+      <td>98.8</td>
+      <td>R</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>23.46</td>
+      <td>N</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8</td>
+      <td>21.58</td>
+      <td>H</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>40.11</td>
+      <td>N</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can use the categorical variables as dummies in your regression easily with the prefix <code class="docutils literal notranslate"><span class="pre">i.</span></code>. You can even specify the base level yourself with the <code class="docutils literal notranslate"><span class="pre">ib.</span></code> prefix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reg</span> AIP name_length pm_status ib3<span class="m">.</span>atc1_group, r<span class="k"></span>
+<span class="k">tab</span> atc1_group<span class="k"> if</span> atc1_group <span class="o">==</span> <span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(15, 13937)      =      67.36
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1229
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10160
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -176.9473   10.54853   -16.77   0.000    -197.6239   -156.2708
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pm_status |  -1862.504    171.648   -10.85   0.000    -2198.957   -1526.051
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A  |  -887.6416   230.0974    -3.86   0.000    -1338.663   -436.6198
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B  |   2483.324   547.7559     4.53   0.000     1409.649    3556.999
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D  |  -1782.631   173.0914   -10.30   0.000    -2121.914   -1443.349
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G  |  -1928.993   166.4184   -11.59   0.000    -2255.195    -1602.79
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H  |   1070.845   355.8338     3.01   0.003     373.3633    1768.327
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J  |   2966.261   527.8868     5.62   0.000     1931.533     4000.99
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L  |   8254.245   414.9725    19.89   0.000     7440.844    9067.647
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M  |   206.3786    597.065     0.35   0.730    -963.9489    1376.706
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N  |  -1046.485   116.7177    -8.97   0.000    -1275.267   -817.7027
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P  |  -1519.962   288.2879    -5.27   0.000    -2085.045   -954.8786
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R  |   1504.441   625.6971     2.40   0.016     277.9902    2730.891
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S  |  -2370.312   183.4281   -12.92   0.000    -2729.856   -2010.768
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V  |  -450.8543   362.1229    -1.25   0.213    -1160.664    258.9553
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   5101.969   282.7937    18.04   0.000     4547.655    5656.282
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>group(atc_1 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ) |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,429      100.00      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |      1,429      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Consider we want to take an interaction with the variable <code class="docutils literal notranslate"><span class="pre">pm_status</span></code> and <code class="docutils literal notranslate"><span class="pre">name_length</span></code>. We have four options:</p>
+<ol class="simple">
+<li><p>Use only the interaction and not the “main effect”: boolean operator <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>Both interaction and the main effect: main effects typed indpendently, interaction with the boolean operator <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+<li><p>Both interaction and the main effect: boolean operator <code class="docutils literal notranslate"><span class="pre">##</span></code></p></li>
+<li><p>Generate the interactions manually.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> interaction = name_length <span class="o">*</span> pm_status
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(AIP = \beta_0 + \beta_1 X_1 X_2 + \gamma ATC_i + u\)</span></p>
+<p><span class="math notranslate nohighlight">\(AIP = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \gamma ATC_i + u\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">reg</span> AIP c<span class="m">.</span>name_length#i<span class="m">.</span>pm_status i<span class="m">.</span>atc1_group, r<span class="k"></span>
+<span class="k">reg</span> AIP name_length pm_status c<span class="m">.</span>name_length#i<span class="m">.</span>pm_status i<span class="m">.</span>atc1_group, r<span class="k"></span>
+<span class="k">reg</span> AIP c<span class="m">.</span>name_length##i<span class="m">.</span>pm_status i<span class="m">.</span>atc1_group, r<span class="k"></span>
+<span class="k">reg</span> AIP name_length pm_status interaction i<span class="m">.</span>atc1_group, r
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(15, 13937)      =      67.26
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1185
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10185
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pm_status#c.name_length |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     0  |  -166.7039   11.64617   -14.31   0.000     -189.532   -143.8759
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     1  |   -226.299   13.41072   -16.87   0.000    -252.5858   -200.0121
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     B  |   3675.527   579.3624     6.34   0.000     2539.899    4811.155
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     C  |   508.8265   224.0365     2.27   0.023     69.68486    947.9681
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     D  |  -809.8691   215.9984    -3.75   0.000    -1233.255   -386.4832
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     G  |   -980.421   205.6229    -4.77   0.000     -1383.47   -577.3725
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     H  |   2025.345   390.1095     5.19   0.000     1260.678    2790.012
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     J  |   3603.842   607.0937     5.94   0.000     2413.857    4793.827
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     L  |   9356.206   441.7977    21.18   0.000     8490.223    10222.19
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     M  |   723.3684   645.7392     1.12   0.263    -542.3671    1989.104
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     N  |  -309.6067   196.6557    -1.57   0.115    -695.0782    75.86482
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     P  |  -518.3013   317.5188    -1.63   0.103    -1140.681     104.078
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     R  |   2380.672   683.7488     3.48   0.000     1040.433    3720.912
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     S  |   -1420.87   217.1539    -6.54   0.000    -1846.521   -995.2189
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     V  |   758.8709   372.5008     2.04   0.042     28.71933    1489.023
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  _cons |   3674.213   255.0662    14.40   0.000     3174.249    4174.177
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(16, 13936)      =      63.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1274
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10134
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            name_length |  -302.9467   20.25918   -14.95   0.000    -342.6574    -263.236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              pm_status |  -5003.019   399.6898   -12.52   0.000    -5786.465   -4219.574
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pm_status#c.name_length |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     1  |   242.9153   21.40046    11.35   0.000     200.9676    284.8631
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     B  |   3525.001    576.673     6.11   0.000     2394.644    4655.357
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     C  |   805.4678   227.9198     3.53   0.000     358.7143    1252.221
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     D  |  -721.3298   230.3668    -3.13   0.002     -1172.88   -269.7798
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     G  |  -1199.924   215.6958    -5.56   0.000    -1622.716   -777.1311
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     H  |   2202.445   394.9958     5.58   0.000       1428.2     2976.69
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     J  |   3753.153   607.1996     6.18   0.000      2562.96    4943.346
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     L  |   8983.013   442.6047    20.30   0.000     8115.448    9850.577
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     M  |   1072.082   648.5348     1.65   0.098     -199.133    2343.297
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     N  |  -111.9173   199.5042    -0.56   0.575    -502.9724    279.1378
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     P  |  -501.5327   332.4383    -1.51   0.131    -1153.156     150.091
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     R  |   2812.104   693.3251     4.06   0.000     1453.094    4171.114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     S  |  -1456.747   229.6008    -6.34   0.000    -1906.795   -1006.699
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     V  |   142.0437   380.1203     0.37   0.709    -603.0431    887.1305
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  _cons |   5595.934    359.089    15.58   0.000     4892.071    6299.797
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(16, 13936)      =      63.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1274
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10134
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            name_length |  -302.9467   20.25918   -14.95   0.000    -342.6574    -263.236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            1.pm_status |  -5003.019   399.6898   -12.52   0.000    -5786.465   -4219.574
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pm_status#c.name_length |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     1  |   242.9153   21.40046    11.35   0.000     200.9676    284.8631
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     B  |   3525.001    576.673     6.11   0.000     2394.644    4655.357
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     C  |   805.4678   227.9198     3.53   0.000     358.7143    1252.221
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     D  |  -721.3298   230.3668    -3.13   0.002     -1172.88   -269.7798
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     G  |  -1199.924   215.6958    -5.56   0.000    -1622.716   -777.1311
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     H  |   2202.445   394.9958     5.58   0.000       1428.2     2976.69
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     J  |   3753.153   607.1996     6.18   0.000      2562.96    4943.346
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     L  |   8983.013   442.6047    20.30   0.000     8115.448    9850.577
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     M  |   1072.082   648.5348     1.65   0.098     -199.133    2343.297
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     N  |  -111.9173   199.5042    -0.56   0.575    -502.9724    279.1378
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     P  |  -501.5327   332.4383    -1.51   0.131    -1153.156     150.091
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     R  |   2812.104   693.3251     4.06   0.000     1453.094    4171.114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     S  |  -1456.747   229.6008    -6.34   0.000    -1906.795   -1006.699
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     V  |   142.0437   380.1203     0.37   0.709    -603.0431    887.1305
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  _cons |   5595.934    359.089    15.58   0.000     4892.071    6299.797
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear regression                               Number of obs     =     13,953
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                F(16, 13936)      =      63.30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Prob &gt; F          =     0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                R-squared         =     0.1274
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Root MSE          =      10134
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |               Robust
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> name_length |  -302.9467   20.25918   -14.95   0.000    -342.6574    -263.236
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pm_status |  -5003.019   399.6898   -12.52   0.000    -5786.465   -4219.574
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> interaction |   242.9153   21.40046    11.35   0.000     200.9676    284.8631
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  atc1_group |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B  |   3525.001    576.673     6.11   0.000     2394.644    4655.357
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C  |   805.4678   227.9198     3.53   0.000     358.7143    1252.221
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D  |  -721.3298   230.3668    -3.13   0.002     -1172.88   -269.7798
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G  |  -1199.924   215.6958    -5.56   0.000    -1622.716   -777.1311
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H  |   2202.445   394.9958     5.58   0.000       1428.2     2976.69
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J  |   3753.153   607.1996     6.18   0.000      2562.96    4943.346
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L  |   8983.013   442.6047    20.30   0.000     8115.448    9850.577
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M  |   1072.082   648.5348     1.65   0.098     -199.133    2343.297
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N  |  -111.9173   199.5042    -0.56   0.575    -502.9724    279.1378
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P  |  -501.5327   332.4383    -1.51   0.131    -1153.156     150.091
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R  |   2812.104   693.3251     4.06   0.000     1453.094    4171.114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S  |  -1456.747   229.6008    -6.34   0.000    -1906.795   -1006.699
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V  |   142.0437   380.1203     0.37   0.709    -603.0431    887.1305
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   5595.934    359.089    15.58   0.000     4892.071    6299.797
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the prefix <code class="docutils literal notranslate"><span class="pre">c.</span></code> in front of the numerical variable!</p>
+</div>
+<div class="section" id="predicting-values-using-stata">
+<h2>Predicting values using Stata<a class="headerlink" href="#predicting-values-using-stata" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">predict</span></code> is a postestimation command in Stata. Postestimation commands are commands that can be run after some estimation commmands such as <code class="docutils literal notranslate"><span class="pre">regress</span></code>. Postestimation commands use the estimates saved in Stata memory from the <strong>previous</strong> estimation command.</p>
+<p>The first argument of <code class="docutils literal notranslate"><span class="pre">predict</span></code> is the name of the new <em>predicted</em> variable. Its options allows you to calculate the model predictions but also the model residuals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">predict</span> y_hat, xb<span class="k"></span>
+<span class="k">predict</span> y_resid, resid
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">predict</span></code> command is especially useful with time series data, but also in some simulations and manual 2SLS. We will cover it more in the second course.</p>
+<p>It is also (sometimes) used to plot the residual distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">kdensity</span> y_resid, normal
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">                <iframe frameborder="0" scrolling="no" height="436" width="600"                srcdoc="<html><body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;!-- This is a Stata 15.1 generated SVG file (http://www.stata.com) --&gt;
+
+&lt;svg version=&quot;1.1&quot; width=&quot;600px&quot; height=&quot;436px&quot; viewBox=&quot;0 0 3960 2880&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;desc&gt;Stata Graph - Graph&lt;/desc&gt;
+	&lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;3960&quot; height=&quot;2880&quot; style=&quot;fill:#FFFFFF;stroke:none&quot;/&gt;
+	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
+	&lt;rect x=&quot;393.68&quot; y=&quot;278.23&quot; width=&quot;3462.46&quot; height=&quot;1698.08&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;path d=&quot; M454.04 1912.37 L521.98 1762.87 L589.92 471.87 L657.86 1740.47 L725.79 1884.40 L793.73 1906.92 L861.55 1901.48 L929.49 1914.35 L997.42 1909.77 L1065.36 1908.16 L1133.30 1907.67 L1201.24 1913.73 L1269.18 1912.12 L1336.99 1913.11 L1404.93 1915.09 L1472.87 1915.83 L1540.81 1915.83 L1608.75 1915.09 L1676.69 1915.83 L1744.63 1915.83 L1812.44 1915.83 L1880.38 1915.83 L1948.32 1915.83 L2016.26 1911.87 L2084.20 1915.83 L2152.14 1915.83 L2219.95 1910.64 L2287.89 1915.83 L2355.83 1915.83 L2423.77 1915.83 L2491.71 1915.21 L2559.64 1915.83 L2627.58 1915.83 L2695.40 1915.83 L2763.34 1915.83 L2831.28 1915.83 L2899.22 1915.83 L2967.15 1915.83 L3035.09 1915.83 L3103.03 1915.83 L3170.85 1915.83 L3238.78 1915.83 L3306.72 1915.83 L3374.66 1915.83 L3442.60 1915.83 L3510.54 1915.21 L3578.48 1915.83 L3646.29 1915.83 L3714.23 1915.83 L3782.17 1914.60&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;path d=&quot; M454.04 1741.09 L465.18 1720.80 L476.31 1699.76 L487.45 1678.23 L498.59 1656.45 L509.73 1634.79 L520.86 1613.75 L532.00 1593.45 L543.14 1574.27 L554.28 1556.82 L565.41 1541.23 L576.55 1527.87 L587.69 1516.97 L598.83 1508.93 L609.96 1503.86 L620.98 1501.75 L632.12 1502.74 L643.25 1506.95 L654.39 1514.00 L665.53 1523.91 L676.66 1536.40 L687.80 1551.25 L698.94 1568.21 L710.08 1586.77 L721.22 1606.70 L732.35 1627.61 L743.49 1649.14 L754.63 1670.80 L765.76 1692.46 L776.90 1713.74 L788.04 1734.29 L799.18 1753.96 L810.32 1772.65 L821.45 1790.10 L832.47 1806.31 L843.60 1821.04 L854.74 1834.40 L865.88 1846.53 L877.02 1857.17 L888.15 1866.58 L899.29 1874.87 L910.43 1881.93 L921.57 1887.99 L932.70 1893.19 L943.84 1897.52 L954.98 1901.11 L966.12 1904.08 L977.25 1906.55 L988.39 1908.53 L999.53 1910.14 L1010.67 1911.50 L1021.80 1912.49 L1032.82 1913.23 L1043.95 1913.98 L1055.09 1914.35 L1066.23 1914.72 L1077.37 1915.09 L1088.51 1915.21 L1099.64 1915.46 L1110.78 1915.59 L1121.92 1915.59 L1133.06 1915.71 L1144.19 1915.71 L1155.33 1915.83 L1166.47 1915.83 L1177.61 1915.83 L1188.74 1915.83 L1199.88 1915.83 L1211.02 1915.83 L1222.15 1915.83 L1233.29 1915.83 L1244.31 1915.83 L1255.44 1915.83 L1266.58 1915.83 L1277.72 1915.83 L1288.86 1915.83 L1299.99 1915.83 L1311.13 1915.83 L1322.27 1915.83 L1333.41 1915.83 L1344.54 1915.83 L1355.68 1915.83 L1366.82 1915.83 L1377.96 1915.83 L1389.09 1915.83 L1400.23 1915.83 L1411.37 1915.83 L1422.51 1915.83 L1433.64 1915.83 L1444.66 1915.83 L1455.80 1915.83 L1466.93 1915.83 L1478.07 1915.83 L1489.21 1915.83 L1500.35 1915.83 L1511.48 1915.83 L1522.62 1915.83 L1533.76 1915.83 L1544.89 1915.83 L1556.03 1915.83 L1567.17 1915.83 L1578.31 1915.83 L1589.44 1915.83 L1600.58 1915.83 L1611.72 1915.83 L1622.86 1915.83 L1633.99 1915.83 L1645.13 1915.83 L1656.15 1915.83 L1667.28 1915.83 L1678.42 1915.83 L1689.56 1915.83 L1700.70 1915.83 L1711.83 1915.83 L1722.97 1915.83 L1734.11 1915.83 L1745.25 1915.83 L1756.38 1915.83 L1767.52 1915.83 L1778.66 1915.83 L1789.80 1915.83 L1800.93 1915.83 L1812.07 1915.83 L1823.21 1915.83 L1834.35 1915.83 L1845.48 1915.83 L1856.50 1915.83 L1867.63 1915.83 L1878.77 1915.83 L1889.91 1915.83 L1901.05 1915.83 L1912.18 1915.83 L1923.32 1915.83 L1934.46 1915.83 L1945.60 1915.83 L1956.73 1915.83 L1967.87 1915.83 L1979.01 1915.83 L1990.15 1915.83 L2001.29 1915.83 L2012.42 1915.83 L2023.56 1915.83 L2034.70 1915.83 L2045.84 1915.83 L2056.97 1915.83 L2067.99 1915.83 L2079.12 1915.83 L2090.26 1915.83 L2101.40 1915.83 L2112.54 1915.83 L2123.67 1915.83 L2134.81 1915.83 L2145.95 1915.83 L2157.09 1915.83 L2168.22 1915.83 L2179.36 1915.83 L2190.50 1915.83 L2201.64 1915.83 L2212.77 1915.83 L2223.91 1915.83 L2235.05 1915.83 L2246.19 1915.83 L2257.32 1915.83 L2268.34 1915.83 L2279.47 1915.83 L2290.61 1915.83 L2301.75 1915.83 L2312.89 1915.83 L2324.03 1915.83 L2335.16 1915.83 L2346.30 1915.83 L2357.44 1915.83 L2368.57 1915.83 L2379.71 1915.83 L2390.85 1915.83 L2401.99 1915.83 L2413.13 1915.83 L2424.26 1915.83 L2435.40 1915.83 L2446.54 1915.83 L2457.68 1915.83 L2468.69 1915.83 L2479.83 1915.83 L2490.96 1915.83 L2502.10 1915.83 L2513.24 1915.83 L2524.38 1915.83 L2535.51 1915.83 L2546.65 1915.83 L2557.79 1915.83 L2568.93 1915.83 L2580.06 1915.83 L2591.20 1915.83 L2602.34 1915.83 L2613.48 1915.83 L2624.61 1915.83 L2635.75 1915.83 L2646.89 1915.83 L2658.03 1915.83 L2669.16 1915.83 L2680.18 1915.83 L2691.32 1915.83 L2702.45 1915.83 L2713.59 1915.83 L2724.73 1915.83 L2735.86 1915.83 L2747.00 1915.83 L2758.14 1915.83 L2769.28 1915.83 L2780.41 1915.83 L2791.55 1915.83 L2802.69 1915.83 L2813.83 1915.83 L2824.97 1915.83 L2836.10 1915.83 L2847.24 1915.83 L2858.38 1915.83 L2869.51 1915.83 L2880.53 1915.83 L2891.67 1915.83 L2902.80 1915.83 L2913.94 1915.83 L2925.08 1915.83 L2936.22 1915.83 L2947.35 1915.83 L2958.49 1915.83 L2969.63 1915.83 L2980.77 1915.83 L2991.90 1915.83 L3003.04 1915.83 L3014.18 1915.83 L3025.32 1915.83 L3036.45 1915.83 L3047.59 1915.83 L3058.73 1915.83 L3069.87 1915.83 L3081.00 1915.83 L3092.02 1915.83 L3103.16 1915.83 L3114.29 1915.83 L3125.43 1915.83 L3136.57 1915.83 L3147.70 1915.83 L3158.84 1915.83 L3169.98 1915.83 L3181.12 1915.83 L3192.26 1915.83 L3203.39 1915.83 L3214.53 1915.83 L3225.67 1915.83 L3236.80 1915.83 L3247.94 1915.83 L3259.08 1915.83 L3270.22 1915.83 L3281.36 1915.83 L3292.37 1915.83 L3303.51 1915.83 L3314.64 1915.83 L3325.78 1915.83 L3336.92 1915.83 L3348.06 1915.83 L3359.19 1915.83 L3370.33 1915.83 L3381.47 1915.83 L3392.61 1915.83 L3403.74 1915.83 L3414.88 1915.83 L3426.02 1915.83 L3437.16 1915.83 L3448.29 1915.83 L3459.43 1915.83 L3470.57 1915.83 L3481.71 1915.83 L3492.84 1915.83 L3503.86 1915.83 L3514.99 1915.83 L3526.13 1915.83 L3537.27 1915.83 L3548.41 1915.83 L3559.55 1915.83 L3570.68 1915.83 L3581.82 1915.83 L3592.96 1915.83 L3604.09 1915.83 L3615.23 1915.83 L3626.37 1915.83 L3637.51 1915.83 L3648.64 1915.83 L3659.78 1915.83 L3670.92 1915.83 L3682.06 1915.83 L3693.20 1915.83 L3704.21 1915.83 L3715.35 1915.83 L3726.48 1915.83 L3737.62 1915.83 L3748.76 1915.83 L3759.90 1915.83 L3771.03 1915.83 L3782.17 1915.83&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;fill:none;stroke:#A0A0A0;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1979.20&quot; x2=&quot;390.80&quot; y2=&quot;275.35&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1915.83&quot; x2=&quot;350.83&quot; y2=&quot;1915.83&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1915.83&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1915.83)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1390.13&quot; x2=&quot;350.83&quot; y2=&quot;1390.13&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1390.13&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1390.13)&quot; text-anchor=&quot;middle&quot;&gt;.00005&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;864.42&quot; x2=&quot;350.83&quot; y2=&quot;864.42&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;864.42&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,864.42)&quot; text-anchor=&quot;middle&quot;&gt;.0001&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;338.71&quot; x2=&quot;350.83&quot; y2=&quot;338.71&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;338.71&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,338.71)&quot; text-anchor=&quot;middle&quot;&gt;.00015&lt;/text&gt;
+	&lt;text x=&quot;190.71&quot; y=&quot;1127.27&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1127.27)&quot; text-anchor=&quot;middle&quot;&gt;Density&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1979.20&quot; x2=&quot;3859.02&quot; y2=&quot;1979.20&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;622.96&quot; y1=&quot;1979.20&quot; x2=&quot;622.96&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;622.96&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
+	&lt;line x1=&quot;1257.55&quot; y1=&quot;1979.20&quot; x2=&quot;1257.55&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1257.55&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;50000&lt;/text&gt;
+	&lt;line x1=&quot;1892.14&quot; y1=&quot;1979.20&quot; x2=&quot;1892.14&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;1892.14&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;100000&lt;/text&gt;
+	&lt;line x1=&quot;2526.60&quot; y1=&quot;1979.20&quot; x2=&quot;2526.60&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;2526.60&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;150000&lt;/text&gt;
+	&lt;line x1=&quot;3161.19&quot; y1=&quot;1979.20&quot; x2=&quot;3161.19&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3161.19&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;200000&lt;/text&gt;
+	&lt;line x1=&quot;3795.66&quot; y1=&quot;1979.20&quot; x2=&quot;3795.66&quot; y2=&quot;2019.17&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;3795.66&quot; y=&quot;2109.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;250000&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;2219.04&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Residuals&lt;/text&gt;
+	&lt;rect x=&quot;1326.48&quot; y=&quot;2303.68&quot; width=&quot;1596.99&quot; height=&quot;326.46&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
+	&lt;rect x=&quot;1329.36&quot; y=&quot;2306.56&quot; width=&quot;1591.23&quot; height=&quot;320.70&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;line x1=&quot;1369.66&quot; y1=&quot;2396.86&quot; x2=&quot;1744.01&quot; y2=&quot;2396.86&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;1369.66&quot; y1=&quot;2536.95&quot; x2=&quot;1744.01&quot; y2=&quot;2536.95&quot; style=&quot;stroke:#A0A0A0;stroke-width:8.64&quot;/&gt;
+	&lt;text x=&quot;1804.03&quot; y=&quot;2431.89&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot;&gt;Kernel density estimate&lt;/text&gt;
+	&lt;text x=&quot;1804.03&quot; y=&quot;2571.98&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot;&gt;Normal density&lt;/text&gt;
+	&lt;text x=&quot;408.00&quot; y=&quot;2737.89&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:79.94px;fill:#000000&quot;&gt;kernel = epanechnikov, bandwidth = 332.6027&lt;/text&gt;
+	&lt;text x=&quot;2124.91&quot; y=&quot;215.98&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:139.96px;fill:#000000&quot; text-anchor=&quot;middle&quot;&gt;Kernel density estimate&lt;/text&gt;
+&lt;/svg&gt;
+</body></html>"></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="save-data-for-later-use">
+<h2>Save data for later use<a class="headerlink" href="#save-data-for-later-use" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui drop</span> interaction y_hat y_resid<span class="k"></span>
+<span class="k">qui save</span> data<span class="o">/</span>sweden_prices_merged<span class="m">.</span>dta,<span class="k"> replace</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "stata"
+        },
+        kernelOptions: {
+            kernelName: "stata",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'stata'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="third_touch.html" title="previous page">More <code class="docutils literal notranslate"><span class="pre">bysort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge</span></code> and multivariate regression using Stata</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jaakko Markkanen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

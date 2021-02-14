@@ -17,3 +17,9 @@ Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 [Session 3: Some motivation and more Stata commands](https://jaakkogo.github.io/stata_materials/second_touch.html)
 
 [Session 4: More `bysort`, `merge` and multivariate regression using Stata](https://jaakkogo.github.io/stata_materials/third_touch.html)
+
+[Session 5: Recap of random number generation and more about interactions](https://jaakkogo.github.io/stata_materials/fourth_touch.html)
+
+
+
+
