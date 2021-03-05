@@ -160,16 +160,6 @@
    Panel data
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#combining-data-sets-introduction-to-append">
-   Combining data sets - Introduction to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     append
-    </span>
-   </code>
-  </a>
- </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -257,29 +247,22 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Panel data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap-macros-and-scalars">
+   Recap: macros and scalars
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recap-macros-and-scalars">
-     Recap: macros and scalars
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loops-in-stata">
-     Loops in Stata
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#formatting-time-variables-in-stata">
-     Formatting time variables in Stata
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops-in-stata">
+   Loops in Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formatting-time-variables-in-stata">
+   Formatting time variables in Stata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#combining-data-sets-introduction-to-append">
    Combining data sets - Introduction to
    <code class="docutils literal notranslate">
@@ -288,13 +271,11 @@
     </span>
    </code>
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#panel-data-in-stata">
-     Panel data in Stata
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#panel-data-in-stata">
+   Panel data in Stata
+  </a>
  </li>
 </ul>
 
@@ -514,7 +495,7 @@
 <p>Perhaps the best rule for you to remember about macros and scalars is:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The sign <code class="docutils literal notranslate"><span class="pre">=</span></code> forces evaluation (execution) of an expression for local/global macros. It is also required for scalars.</p>
+<p>The sign “<code class="docutils literal notranslate"><span class="pre">=</span></code>” forces evaluation (execution) of an expression for local/global macros. It is also required for scalars.</p>
 </div>
 <p>So should you use macros or scalars? Depends on the situation. Macros are great for <strong>saving model equations</strong> before execution and for some macro functions. Scalars are great for instance simulation parameters and some other tasks that we will cover later.</p>
 <p>Next, let’s consider some macro functions. In this example (which you will need in the problem set), we will save a list of file names in a folder to a local macro. This is done with the macro function <code class="docutils literal notranslate"><span class="pre">dir</span></code>. I’ve made the following initializations beforehand:</p>
@@ -542,7 +523,7 @@
 <p>If the code above shows that we need to use the char <code class="docutils literal notranslate"><span class="pre">:</span></code> after the macro name if we are to use a macro function. The first argument of the macro function <code class="docutils literal notranslate"><span class="pre">dir</span></code> is the folder path and the second argument is either “files” or “directories”, depending if we want to make a list of files or folders. The third parameter is the name pattern for the files we want to use in the command.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The sign <code class="docutils literal notranslate"><span class="pre">*</span></code> is a wildcard. When you use it in a command, it is interpreted as anything / all. In our example, “*.txt” means all files that end in “.txt” (all text files).</p>
+<p>The sign “<code class="docutils literal notranslate"><span class="pre">*</span></code>” is a wildcard. When you use it in a command, it is interpreted as anything / all. In our example, “*.txt” means all files that end in “.txt” (all text files).</p>
 </div>
 <p>There are other macro functions too. For the full list, see <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">macro</span></code>. Most importantly, you can use the macro function <code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">of</span></code> command:</p>
 <div class="cell docutils container">
@@ -1520,9 +1501,8 @@
 </div></div></div>
 </div>
 </div>
-</div>
 <div class="section" id="combining-data-sets-introduction-to-append">
-<h1>Combining data sets - Introduction to <code class="docutils literal notranslate"><span class="pre">append</span></code><a class="headerlink" href="#combining-data-sets-introduction-to-append" title="Permalink to this headline">¶</a></h1>
+<h2>Combining data sets - Introduction to <code class="docutils literal notranslate"><span class="pre">append</span></code><a class="headerlink" href="#combining-data-sets-introduction-to-append" title="Permalink to this headline">¶</a></h2>
 <p>Previously, you were introduced to the <code class="docutils literal notranslate"><span class="pre">merge</span></code> command that can be used to combine data sets based on some keys. The <code class="docutils literal notranslate"><span class="pre">append</span></code> is a similar command that works in the opposite direction. Recall that <code class="docutils literal notranslate"><span class="pre">merge</span></code> worked “horizontally”. <code class="docutils literal notranslate"><span class="pre">append</span></code> instead works vertically.</p>
 <p><img alt="" src="_images/append.png" /></p>
 <p>It requires no keys or identifiers. If the two data sets have different variables, the default option of <code class="docutils literal notranslate"><span class="pre">append</span></code> is include all of them and replace the observations from the other data set with missing values. Observations under the same variable names are under the same variable/column.</p>
@@ -1590,6 +1570,7 @@
 <li><p>cf - verifies that two files are equal.</p></li>
 <li><p>rm - removes files.</p></li>
 </ol>
+</div>
 <div class="section" id="panel-data-in-stata">
 <h2>Panel data in Stata<a class="headerlink" href="#panel-data-in-stata" title="Permalink to this headline">¶</a></h2>
 <p>During this course, we will continue with the pharmaceuticals data from Finland. However, this time you will have over 300 files instead of 1. We will construct the full (panel) data set in the first Problem Set.</p>
@@ -1897,6 +1878,9 @@ xtdescribe
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                delta:  1 day
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     vnr:  3, 4, ..., 9909287                                n =      22083
 </pre></div>
 </div>
 </div>
