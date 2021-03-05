@@ -1,0 +1,1946 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel data &#8212; ECON-C4X00</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jaakkogo.github.io/stata_materials/fifth_touch.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://jaakkogo.github.io/stata_materials/fifth_touch.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Panel data" />
+<meta property="og:description" content="Panel data  Recap: macros and scalars  In this recap, I will present a more detailed introduction to macros and scalars. The key idea of macros is that when usi" />
+<meta property="og:image"       content="https://jaakkogo.github.io/stata_materials/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">ECON-C4X00</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Other_resources.html">
+   External resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dynamic_documents.html">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dyndoc
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     markstat
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stata_basics.html">
+   Stata basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="first_touch.html">
+   Importing data and statistical functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="second_touch.html">
+   Some motivation and more Stata commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="third_touch.html">
+   More
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     bysort
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+   and multivariate regression using Stata
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fourth_touch.html">
+   Recap of random number generation and more about interactions
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/fifth_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/fifth_touch.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Panel data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recap-macros-and-scalars">
+     Recap: macros and scalars
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loops-in-stata">
+     Loops in Stata
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formatting-time-variables-in-stata">
+     Formatting time variables in Stata
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-data-sets-introduction-to-append">
+   Combining data sets - Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     append
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#panel-data-in-stata">
+     Panel data in Stata
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="panel-data">
+<h1>Panel data<a class="headerlink" href="#panel-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="recap-macros-and-scalars">
+<h2>Recap: macros and scalars<a class="headerlink" href="#recap-macros-and-scalars" title="Permalink to this headline">¶</a></h2>
+<p>In this recap, I will present a more detailed introduction to macros and scalars. The key idea of macros is that when using a macro in a function or a command, the macro name is replaced with the contents of the macro <strong>before anything else is done</strong>. This means that the macro constents are replaced before any command is executed. Thus, you could say the macro is a “variable like” wrapper for stuff. As mentioned in the Stata basics session, Stata has two types of macros:</p>
+<ol class="simple">
+<li><p>Local macros that exist for the current Stata program / do-file.</p></li>
+<li><p>Global macros that exist until you exit Stata.</p></li>
+</ol>
+<p>In practice, this means that if you use locals within a Stata do-file, they are not preserved after the do-file contents are executed.</p>
+<p>There are two  ways to declare both local and global macros. The difference is quite important: <strong>evaluation</strong>. Let’s start with a demonstartion:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> number <span class="m">1</span> <span class="o">+</span> <span class="m">1</span><span class="k"></span>
+<span class="k">local</span> number_ = <span class="m">1</span> <span class="o">+</span> <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="s">&quot;</span><span class="nv">`number&#39;</span><span class="s"> vs </span><span class="nv">`number_&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 + 1 vs 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the macro contents are inserted into as a string to be displayed. When we declared the local <code class="docutils literal notranslate"><span class="pre">number_</span></code>, it was evalueted when the local was declared, but the local <code class="docutils literal notranslate"><span class="pre">number</span></code> contains the expression 1+1. Hoewver, notice the difference when we do not display the macros as a string:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">di</span> <span class="nv">`number&#39;</span> <span class="s">&quot; vs &quot;</span> <span class="nv">`number_&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 vs 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though <code class="docutils literal notranslate"><span class="pre">number</span></code> was not evaluated when we made the macro, it was evalueted when we called <code class="docutils literal notranslate"><span class="pre">display</span></code>.</p>
+<p>Scalars (or scalar variables) are close to both actual Stata variables (columns) and macros. Scalars can store single single numbers or strings. The crucial difference is that scalars can not be used to store expressions that we want to be evaluated later:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> auto<span class="k"></span>
+<span class="k">scalar</span> temp = <span class="s">&quot;reg mpg weight&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1978 Automobile Data)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui capture</span> temp<span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;The return code was &quot;</span> _rc<span class="k"></span>
+<span class="k">di</span> temp
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The return code was 199
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reg mpg weight
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">desc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data from C:\Program Files (x86)\Stata15MP\ado\base/a/auto.dta
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:            74                          1978 Automobile Data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            12                          13 Apr 2016 17:45
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size:         3,182                          (_dta has notes)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make            str18   %-18s                 Make and Model
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>price           int     %8.0gc                Price
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mpg             int     %8.0g                 Mileage (mpg)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rep78           int     %8.0g                 Repair Record 1978
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>headroom        float   %6.1f                 Headroom (in.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trunk           int     %8.0g                 Trunk space (cu. ft.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>weight          int     %8.0gc                Weight (lbs.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length          int     %8.0g                 Length (in.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>turn            int     %8.0g                 Turn Circle (ft.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>displacement    int     %8.0g                 Displacement (cu. in.)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gear_ratio      float   %6.2f                 Gear Ratio
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>foreign         byte    %8.0g      origin     Car type
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted by: foreign
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> temp <span class="s">&quot;reg mpg weight&quot;</span>
+<span class="nv">`temp&#39;</span><span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`temp&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Source |       SS           df       MS      Number of obs   =        74
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   F(1, 72)        =    134.62
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Model |   1591.9902         1   1591.9902   Prob &gt; F        =    0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Residual |  851.469256        72  11.8259619   R-squared       =    0.6515
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------   Adj R-squared   =    0.6467
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Total |  2443.45946        73  33.4720474   Root MSE        =    3.4389
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         mpg |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      weight |  -.0060087   .0005179   -11.60   0.000    -.0070411   -.0049763
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       _cons |   39.44028   1.614003    24.44   0.000     36.22283    42.65774
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reg mpg weight
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhaps the best rule for you to remember about macros and scalars is:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sign <code class="docutils literal notranslate"><span class="pre">=</span></code> forces evaluation (execution) of an expression for local/global macros. It is also required for scalars.</p>
+</div>
+<p>So should you use macros or scalars? Depends on the situation. Macros are great for <strong>saving model equations</strong> before execution and for some macro functions. Scalars are great for instance simulation parameters and some other tasks that we will cover later.</p>
+<p>Next, let’s consider some macro functions. In this example (which you will need in the problem set), we will save a list of file names in a folder to a local macro. This is done with the macro function <code class="docutils literal notranslate"><span class="pre">dir</span></code>. I’ve made the following initializations beforehand:</p>
+<ol class="simple">
+<li><p>Download Aofp data from MyCourses</p></li>
+<li><p>Place the data in a new folder called “rawdata” in your working directory</p></li>
+<li><p>Unzip the aofp.zip file</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> Z:<span class="o">/</span>econ<span class="o">-</span>c4200<span class="k"></span>
+<span class="k">local</span> files:<span class="k"> dir</span> <span class="s">&quot;rawdata/aofp&quot;</span> files <span class="s">&quot;*.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z:\econ-c4200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the code above shows that we need to use the char <code class="docutils literal notranslate"><span class="pre">:</span></code> after the macro name if we are to use a macro function. The first argument of the macro function <code class="docutils literal notranslate"><span class="pre">dir</span></code> is the folder path and the second argument is either “files” or “directories”, depending if we want to make a list of files or folders. The third parameter is the name pattern for the files we want to use in the command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sign <code class="docutils literal notranslate"><span class="pre">*</span></code> is a wildcard. When you use it in a command, it is interpreted as anything / all. In our example, “*.txt” means all files that end in “.txt” (all text files).</p>
+</div>
+<p>There are other macro functions too. For the full list, see <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">macro</span></code>. Most importantly, you can use the macro function <code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">of</span></code> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> 50th_file : word <span class="m">50</span> of <span class="nv">`files&#39;</span><span class="k"></span>
+<span class="k">di</span> <span class="s">&quot;</span><span class="nv">`50th_file&#39;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0050.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before importing all these files at once, I will introduce you to loops in programming and in Stata.</p>
+</div>
+<div class="section" id="loops-in-stata">
+<h2>Loops in Stata<a class="headerlink" href="#loops-in-stata" title="Permalink to this headline">¶</a></h2>
+<p>If you are not familiar with the concept of loops, <a class="reference external" href="https://www.youtube.com/watch?v=wxds6MAtUQ0">watch the folling video</a> and <a class="reference external" href="https://www.tutorialspoint.com/computer_programming/computer_programming_loops.htm">look into these web-materials</a>.</p>
+<p>Stata, like any other programming language, of course has loops. Loops are one of the most useful ways to write efficient and readable code. They are also almost necessary for some tasks (as you will learn in PS1). In principle, there are two differenct types of loops:</p>
+<ol class="simple">
+<li><p>While-loops where the user has specified a general stop condition</p></li>
+<li><p>For-loops where the user has specified a range stop condition</p></li>
+</ol>
+<p>In most programming languages, for-loops are just wrappers for while-loops. The Stata variants for these loops is:</p>
+<ol class="simple">
+<li><p>while</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">while</span> <span class="n">exp</span> <span class="p">{</span>
+                <span class="n">stata_commands</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>foreach</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     foreach lname {in|of listtype} list {
+                commands referring to `lname&#39;
+        }
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>forvalues</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     forvalues lname = range {
+                Stata commands referring to `lname&#39;
+        }
+</pre></div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">foreach</span></code> the argument <code class="docutils literal notranslate"><span class="pre">in</span></code> is used for <em>all lists</em> and the argument <code class="docutils literal notranslate"><span class="pre">of</span></code> for specific lists such as <em>local list</em> or <em>variable list</em>.</p>
+<p>Let’s see the loops in action. We will loop over the list of file names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> bool = <span class="m">0</span><span class="k"></span>
+<span class="k">local</span> i = <span class="m">1.00</span><span class="k"></span>
+<span class="k">while</span> <span class="nv">`bool&#39;</span> <span class="o">==</span> <span class="m">0</span> {
+<span class="k">    local</span> file_<span class="nv">`i&#39;</span> : word <span class="nv">`i&#39;</span> of <span class="nv">`files&#39;</span>
+<span class="k">    di</span> <span class="s">&quot;</span><span class="nv">`file_`i&#39;&#39;</span><span class="s">&quot;</span>
+<span class="k">    if</span> <span class="nv">`i&#39;</span> <span class="o">&gt;</span> <span class="m">11</span> {
+<span class="k">        local</span> <span class="o">++</span>bool
+    }
+<span class="k">    local</span> <span class="o">++</span>i
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0001.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0002.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0003.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0004.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0005.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0006.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0007.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0008.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0009.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0010.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0011.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0012.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above code, the local <code class="docutils literal notranslate"><span class="pre">bool</span></code> is the boolean expression for our loop. When we come to the 7th iteration, the if-condition is satisfied and we flip the value of <code class="docutils literal notranslate"><span class="pre">bool</span></code> to 1. If you are not familiar with boolean / logical expressions, read the following <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_expression">Wikipedia</a> page about them.</p>
+<p>Notice how we use <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">++bool</span></code> and <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">++i</span></code> to increment the values of our locals. If we wanted to decrease their values, we could have used <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">--bool</span></code> and <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">--i</span></code> instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> i = <span class="m">1.00</span><span class="k"></span>
+<span class="k">foreach file</span> of<span class="k"> local</span> files {
+<span class="k">    di</span> <span class="s">&quot;</span><span class="nv">`file&#39;</span><span class="s">&quot;</span>
+<span class="k">    if</span> <span class="nv">`i&#39;</span> <span class="o">&gt;</span> <span class="m">5</span> {
+<span class="k">        continue</span>,<span class="k"> break</span>
+    }
+<span class="k">    local</span> <span class="o">++</span>i
+}
+
+
+<span class="k">forvalues</span> i = <span class="m">1</span><span class="o">/</span><span class="m">100</span> {
+<span class="k">    local</span> file_<span class="nv">`i&#39;</span> : word <span class="nv">`i&#39;</span> of <span class="nv">`files&#39;</span>
+<span class="k">    di</span> <span class="s">&quot;</span><span class="nv">`file_`i&#39;&#39;</span><span class="s">&quot;</span>
+<span class="k">    if</span> <span class="nv">`i&#39;</span> <span class="o">&gt;</span> <span class="m">5</span> {
+<span class="k">        continue</span>,<span class="k"> break</span>
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0001.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0002.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0003.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0004.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0005.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0006.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0001.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0002.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0003.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0004.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0005.txt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>salvia_0006.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>The for-loops iterate over specified values or a specified range. You can exit the loop prematurely with the <code class="docutils literal notranslate"><span class="pre">continue,</span> <span class="pre">break</span></code> command.</p>
+</div>
+<div class="section" id="formatting-time-variables-in-stata">
+<h2>Formatting time variables in Stata<a class="headerlink" href="#formatting-time-variables-in-stata" title="Permalink to this headline">¶</a></h2>
+<p>Stata has a specific variable type and formatting for time variables. In Stata, all time variables are numerical variables <strong>relative</strong> to 1st of January 1960. You can find all of the Stata time functions from the Stata documentation by typing <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">datetime</span></code> to the command line. However, the most important datetime functions are listed below:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date(s1,s2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">monthly(s1,s2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quarterly(s1,s2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yearly(s1,s2)</span></code></p></li>
+</ol>
+<p>All of the above functions work the same way: <code class="docutils literal notranslate"><span class="pre">s1</span></code> is an input string (most usually a string variable) and <code class="docutils literal notranslate"><span class="pre">s2</span></code> is format type. For example, <code class="docutils literal notranslate"><span class="pre">s2</span></code> could be:</p>
+<ul class="simple">
+<li><p>“MDY” or Month Day Year or “03012021”</p></li>
+<li><p>“DMY” or Day Month Year or “01032021”</p></li>
+<li><p>“QY” or Quarter Year or “q12021”</p></li>
+<li><p>“MY” or Quarter Year or “12M2021”</p></li>
+</ul>
+<p>As mentioned, Stata saves all time values in numbers relative to 1.1.1960. This is called the Stata Internal Format and it’s diffrentet from the wat we write / format dates. The latter is called Human Readable Format. In practice, we will need to format all of your time variables after generating them with the <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">varname</span> <span class="pre">%format</span></code> command. The time HRF types are</p>
+<ul class="simple">
+<li><p>td</p></li>
+<li><p>tm</p></li>
+<li><p>tq</p></li>
+</ul>
+<p>Notice that for years, SIF = HIF. I will next demonstrate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">    clear</span>
+<span class="k">    set</span> obs <span class="m">100000</span>
+<span class="k">    gen</span> date = _n
+<span class="k">    gen</span> month = _n
+<span class="k">    gen</span> quarter = _n
+<span class="k">    format</span> date <span class="nx">%td</span>
+<span class="k">    format</span> month <span class="nx">%tm</span>
+<span class="k">    format</span> quarter <span class="nx">%tq</span>
+} 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>02jan1960</td>
+      <td>1960m2</td>
+      <td>1960q2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>03jan1960</td>
+      <td>1960m3</td>
+      <td>1960q3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>04jan1960</td>
+      <td>1960m4</td>
+      <td>1960q4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>05jan1960</td>
+      <td>1960m5</td>
+      <td>1961q1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>06jan1960</td>
+      <td>1960m6</td>
+      <td>1961q2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>07jan1960</td>
+      <td>1960m7</td>
+      <td>1961q3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>08jan1960</td>
+      <td>1960m8</td>
+      <td>1961q4</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>09jan1960</td>
+      <td>1960m9</td>
+      <td>1962q1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10jan1960</td>
+      <td>1960m10</td>
+      <td>1962q2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11jan1960</td>
+      <td>1960m11</td>
+      <td>1962q3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Other useful datetime functions are the following:</p>
+<ol class="simple">
+<li><p>mofd(s1) or Month of Date</p></li>
+<li><p>qofd(s1) or Quarter of Date</p></li>
+<li><p>yofd(s1) or Year of Date</p></li>
+</ol>
+<p>I will demonstrate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">drop</span> month quarter<span class="k"></span>
+<span class="k">gen</span> month = <span class="nf">mofd</span>(date)<span class="k"></span>
+<span class="k">gen</span> quarter = <span class="nf">qofd</span>(date)<span class="k"></span>
+<span class="k">gen</span> year = <span class="nf">yofd</span>(date)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">10</span><span class="k"> if</span> month <span class="o">&gt;</span> <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>01mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>02mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>03mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>04mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>05mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>06mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>07mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>08mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>09mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>10mar1960</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1960</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that now we are seeing the SIF formats and not HIF formats. Let’s change this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">format</span> month <span class="nx">%tm</span><span class="k"></span>
+<span class="k">format</span> quarter <span class="nx">%tq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">5</span><span class="k"> if</span> month <span class="o">&gt;</span> <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>01mar1960</td>
+      <td>1960m3</td>
+      <td>1960q1</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>02mar1960</td>
+      <td>1960m3</td>
+      <td>1960q1</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>03mar1960</td>
+      <td>1960m3</td>
+      <td>1960q1</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>04mar1960</td>
+      <td>1960m3</td>
+      <td>1960q1</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>05mar1960</td>
+      <td>1960m3</td>
+      <td>1960q1</td>
+      <td>1960</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Sometimes we need to check our date or speficy datetime moments manually. For this, the most usefull commands are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tm(month)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tq(quarter)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">td(date)</span></code></p></li>
+</ul>
+<p>Again, it’s best if I demonstrate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">5</span><span class="k"> if</span> month <span class="o">==</span> <span class="nf">tm</span>(2000m1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14610</th>
+      <td>01jan2000</td>
+      <td>2000m1</td>
+      <td>2000q1</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>14611</th>
+      <td>02jan2000</td>
+      <td>2000m1</td>
+      <td>2000q1</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>14612</th>
+      <td>03jan2000</td>
+      <td>2000m1</td>
+      <td>2000q1</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>14613</th>
+      <td>04jan2000</td>
+      <td>2000m1</td>
+      <td>2000q1</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>14614</th>
+      <td>05jan2000</td>
+      <td>2000m1</td>
+      <td>2000q1</td>
+      <td>2000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse <span class="m">5</span><span class="k"> if</span> quarter <span class="o">==</span> <span class="nf">tq</span>(1995q1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12784</th>
+      <td>01jan1995</td>
+      <td>1995m1</td>
+      <td>1995q1</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>12785</th>
+      <td>02jan1995</td>
+      <td>1995m1</td>
+      <td>1995q1</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>12786</th>
+      <td>03jan1995</td>
+      <td>1995m1</td>
+      <td>1995q1</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>12787</th>
+      <td>04jan1995</td>
+      <td>1995m1</td>
+      <td>1995q1</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>12788</th>
+      <td>05jan1995</td>
+      <td>1995m1</td>
+      <td>1995q1</td>
+      <td>1995</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse<span class="k"> if</span> date <span class="o">==</span> <span class="nf">td</span>(01mar2021)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22340</th>
+      <td>01mar2021</td>
+      <td>2021m3</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We could also misspecify:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse<span class="k"> if</span> date <span class="o">==</span> <span class="nf">tm</span>(2021m2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>733</th>
+      <td>03jan1962</td>
+      <td>1962m1</td>
+      <td>1962q1</td>
+      <td>1962</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>%browse<span class="k"> if</span> month <span class="o">==</span> <span class="nf">tm</span>(2021m2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22312</th>
+      <td>01feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22313</th>
+      <td>02feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22314</th>
+      <td>03feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22315</th>
+      <td>04feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22316</th>
+      <td>05feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22317</th>
+      <td>06feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22318</th>
+      <td>07feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22319</th>
+      <td>08feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22320</th>
+      <td>09feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22321</th>
+      <td>10feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22322</th>
+      <td>11feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22323</th>
+      <td>12feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22324</th>
+      <td>13feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22325</th>
+      <td>14feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22326</th>
+      <td>15feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22327</th>
+      <td>16feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22328</th>
+      <td>17feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22329</th>
+      <td>18feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22330</th>
+      <td>19feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22331</th>
+      <td>20feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22332</th>
+      <td>21feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22333</th>
+      <td>22feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22334</th>
+      <td>23feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22335</th>
+      <td>24feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22336</th>
+      <td>25feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22337</th>
+      <td>26feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22338</th>
+      <td>27feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>22339</th>
+      <td>28feb2021</td>
+      <td>2021m2</td>
+      <td>2021q1</td>
+      <td>2021</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="combining-data-sets-introduction-to-append">
+<h1>Combining data sets - Introduction to <code class="docutils literal notranslate"><span class="pre">append</span></code><a class="headerlink" href="#combining-data-sets-introduction-to-append" title="Permalink to this headline">¶</a></h1>
+<p>Previously, you were introduced to the <code class="docutils literal notranslate"><span class="pre">merge</span></code> command that can be used to combine data sets based on some keys. The <code class="docutils literal notranslate"><span class="pre">append</span></code> is a similar command that works in the opposite direction. Recall that <code class="docutils literal notranslate"><span class="pre">merge</span></code> worked “horizontally”. <code class="docutils literal notranslate"><span class="pre">append</span></code> instead works vertically.</p>
+<p><img alt="" src="_images/append.png" /></p>
+<p>It requires no keys or identifiers. If the two data sets have different variables, the default option of <code class="docutils literal notranslate"><span class="pre">append</span></code> is include all of them and replace the observations from the other data set with missing values. Observations under the same variable names are under the same variable/column.</p>
+<p>Let’s demonstrate by splitting our data in half and then merging it back:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gsort</span> date<span class="k"></span>
+<span class="k">save</span> <span class="s">&quot;Z:/econ-c4200/data/both_halves&quot;</span>,<span class="k"> replace</span>
+
+<span class="k">preserve</span>
+<span class="k">    keep if</span> _n <span class="o">&lt;=</span> _N<span class="o">/</span><span class="m">2</span>
+<span class="k">    save</span> <span class="s">&quot;Z:/econ-c4200/data/first_half.dta&quot;</span>,<span class="k"> replace</span>
+<span class="k">restore</span>
+
+<span class="k">drop if</span> _n <span class="o">&lt;=</span> _N<span class="o">/</span><span class="m">2</span><span class="k"></span>
+<span class="k">count</span>
+<span class="k">append</span> using <span class="s">&quot;Z:/econ-c4200/data/first_half&quot;</span><span class="k"></span>
+<span class="k">count</span>
+
+<span class="k">gsort</span> date<span class="k"></span>
+<span class="k">cf</span> _all using <span class="s">&quot;Z:/econ-c4200/data/both_halves&quot;</span>
+
+<span class="k">rm</span> <span class="s">&quot;Z:/econ-c4200/data/both_halves.dta&quot;</span><span class="k"></span>
+<span class="k">rm</span> <span class="s">&quot;Z:/econ-c4200/data/first_half.dta&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(note: file Z:/econ-c4200/data/both_halves.dta not found)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file Z:/econ-c4200/data/both_halves.dta saved
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(50,000 observations deleted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(note: file Z:/econ-c4200/data/first_half.dta not found)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file Z:/econ-c4200/data/first_half.dta saved
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(50,000 observations deleted)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  50,000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  100,000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, we use the following new commands:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">preserve</span></code> - saves the current data in memory temporarily</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restore</span></code> - loads the data saved by <code class="docutils literal notranslate"><span class="pre">preserve</span></code> back to memory</p></li>
+</ol>
+<p>These are very useful for doing stuff that require dropping / modifying data for temporary use. However, it’s an ugly solution in comparison to data frames that exist nowadays. We will not cover that in these courses.</p>
+<ol class="simple">
+<li><p>cf - verifies that two files are equal.</p></li>
+<li><p>rm - removes files.</p></li>
+</ol>
+<div class="section" id="panel-data-in-stata">
+<h2>Panel data in Stata<a class="headerlink" href="#panel-data-in-stata" title="Permalink to this headline">¶</a></h2>
+<p>During this course, we will continue with the pharmaceuticals data from Finland. However, this time you will have over 300 files instead of 1. We will construct the full (panel) data set in the first Problem Set.</p>
+<p>I’ve already done this way back. The complete product should look something like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> data<span class="o">/</span>salvia,<span class="k"> clear</span>
+<span class="k">desc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains data from data/salvia.dta
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obs:     3,282,897                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> vars:            56                          2 Mar 2021 17:17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> size: 2,511,416,205                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              storage   display    value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variable name   type    format     label      variable label
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>typecode        byte    %10.0g                Typecode
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vnr             long    %10.0g                VNR
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pricing_code    str1    %9s                   Pricing code
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>register_entr~e str5    %9s                   Reimbursement level and prescription process
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ma_condition    str3    %9s                   Market authorization restrictions
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in_exit         str2    %9s                   &#39;PU&#39; if product is exiting the market
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ppp             double  %10.0g                PPP Salvia
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prp             double  %10.0g                PRP Salvia
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prp_vat         double  %10.0g                PRP inc. VAT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>change_code     str2    %9s                   Changes in product characteristics
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shelf_life_code str1    %9s                   Shelf life code
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>product_name    str43   %43s                  Product name
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>strength        str63   %63s                  Strength
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dosage_form     str66   %66s                  Dosage form
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mah_code        str7    %9s                   Market authorization holder
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pack_size       str16   %16s                  Pack size and amount of added water
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reimbursement~s str67   %67s                  Disease codes for special reimbursement
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc             str9    %9s                   ATC5 group
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ean             str13   %13s                  EAN code for the product
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wholesaler_1    str1    %9s                   Tamro or KD Oriala
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>order_code1     str7    %9s                   Order code for wholesaler_1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wholesaler_2    str1    %9s                   Tamro or KD Oriala
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>order_code2     str7    %9s                   Order code for wholesaler_2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vat_code        str1    %9s                   Level of VAT for the product
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>special_condi~e str3    %9s                   Restrictions to reimbursement
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>product_name_~h str1    %9s                   Product name in Swedish
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dosage_form_f~h str84   %84s                  Dosage form in Finnish
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dosage_form_s~h str85   %85s                  Dosage form in Swedish
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pack_size_num~c str8    %9s                   Numeric part of pack size
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pack_size_non~c str16   %16s                  Non-numeric part of pack size
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ddd_numeric     str6    %9s                   Numeric part of ddd
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ddd_non_numeric str3    %9s                   Non-numeric part of ddd
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>substitution_~p double  %10.0g                Digits as: 00 + XXXX (Fimea code) + XXXX (pack size)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>within_price_~r str1    %9s                   Product is within the price corridor
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>min_price       long    %10.0g                Lower limit for the price corridor
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_price       long    %10.0g                Upper limit for the price corridor
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>molecules       str99   %99s                  Molecule list, comma separated
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ppp_hila        double  %10.0g                The reasonable pharmacy purchasing price - price ceiling
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ppp_hila_begins str10   %10s                  Start of reasonable ppp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ppp_hila_ends   str10   %10s                  End of reasonable price
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>product_group   int     %10.0g                Type of product
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stamp           str29   %29s                  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reference_price double  %10.0g                Reference price
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp       str12   %12s                  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>date            int     %td                   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>month           int     %tm                   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>quarter         int     %tq                   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year            int     %9.0g                 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvals           int     %9.0g                 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rs_status       byte    %9.0g                 Reimbursement status
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>substitution_~s byte    %9.0g                 Substitution status
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rx_status       byte    %9.0g                 Prescription required
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvals_rs        int     %9.0g                 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvals_subs      int     %9.0g                 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nvals_rx        int     %9.0g                 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>atc_1           str1    %9s                   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted by: quarter  rx_status
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, let’s generate our date variable (two price lists per month).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">tab</span> year
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       year |      Freq.     Percent        Cum.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2003 |    130,776        3.98        3.98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2004 |    176,780        5.38        9.37
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2005 |    173,856        5.30       14.66
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2006 |    186,128        5.67       20.33
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2007 |    186,156        5.67       26.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2008 |    186,071        5.67       31.67
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2009 |    191,334        5.83       37.50
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2010 |    196,074        5.97       43.47
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2011 |    197,947        6.03       49.50
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2012 |    200,902        6.12       55.62
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2013 |    201,725        6.14       61.77
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2014 |    205,176        6.25       68.02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2015 |    207,325        6.32       74.33
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2016 |    211,096        6.43       80.76
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2017 |    219,552        6.69       87.45
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2018 |     94,164        2.87       90.32
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2019 |     69,098        2.10       92.42
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2020 |    238,821        7.27       99.70
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       2021 |      9,916        0.30      100.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |  3,282,897      100.00
+</pre></div>
+</div>
+</div>
+</div>
+<p>The command to declare the data set to a panel data set is <code class="docutils literal notranslate"><span class="pre">xtset</span></code>. The first argument is the <strong>cross-section variable</strong> and the second argument is the <strong>time series variable</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">xtset</span> vnr date
+xtdescribe
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       panel variable:  vnr (unbalanced)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        time variable:  date, 01apr2003 to 01jan2021, but with gaps
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                delta:  1 day
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     vnr:  3, 4, ..., 9909287                                n =      22083
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "stata"
+        },
+        kernelOptions: {
+            kernelName: "stata",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'stata'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jaakko Markkanen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
