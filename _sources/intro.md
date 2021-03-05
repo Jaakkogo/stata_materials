@@ -20,6 +20,8 @@ Author: [Jaakko Markkanen](mailto:jaakko.m.markkanen@aalto.fi)
 
 [Session 5: Recap of random number generation and more about interactions](https://jaakkogo.github.io/stata_materials/fourth_touch.html)
 
+[Session 6: Panel data](https://jaakkogo.github.io/stata_materials/fifth_touch.html)
+
 
 
 

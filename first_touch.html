@@ -156,6 +156,21 @@
    Recap of random number generation and more about interactions
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fifth_touch.html">
+   Panel data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fifth_touch.html#combining-data-sets-introduction-to-append">
+   Combining data sets - Introduction to
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     append
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -386,7 +401,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    4. | Abacavir/Lamivudine Medical Valley             Medical Valley Invest AB   1400,00 |
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5. |         Abacavir/Lamivudine Sandoz                           Sandoz A/S    190,18 |
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5. |         Abacavir/Lamivudine Sandoz                           Sandoz A/S    150,28 |
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       |-----------------------------------------------------------------------------------|
@@ -395,7 +410,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    6. |          Abacavir/Lamivudine STADA                     STADA Nordic ApS   1199,00 |
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    7. |           Abacavir/Lamivudine Teva                       Teva Sweden AB    172,13 |
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    7. |           Abacavir/Lamivudine Teva                       Teva Sweden AB    142,13 |
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    8. |             Abakavir/Lamivudin Ebb                       Ebb Medical AB   4232,00 |
@@ -950,19 +965,19 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    mean |   2848.74  2948.172
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    mean |  2841.006  2940.252
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      sd |  10888.03  11020.44
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      sd |  10887.92  11019.89
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p25 |    100.01   155.695
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p25 |    100.56    155.98
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p50 |   323.885    382.99
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p50 |       323    380.27
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p75 |      1090  1163.735
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     p75 |   1087.99   1158.33
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     max |    255000  256046.3
@@ -980,10 +995,10 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+---------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     13,972     2848.74    10888.03        .98     255000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     14,015    2841.006    10887.92        .98     255000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AUP |     13,972    2948.172    11020.44       31.7   256046.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AUP |     14,015    2940.252    11019.89       31.7   256046.3
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1018,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+---------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     13,972     2848.74     92.1128        2668.187    3029.293
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     14,015    2841.006    91.97046        2660.732    3021.281
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Variable |        Obs      Variance       [95% Conf. Interval]
@@ -1012,7 +1027,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     13,972      1.19e+08       1.16e+08    1.21e+08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         AIP |     14,015      1.19e+08       1.16e+08    1.21e+08
 </pre></div>
 </div>
 </div>
@@ -1037,16 +1052,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          0 |      6,986       50.00       50.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          0 |      7,007       50.00       50.00
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1 |      6,986       50.00      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1 |      7,008       50.00      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,015      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary for variables: AIP
@@ -1061,16 +1076,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       0 |  3532.443  13216.63
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       0 |  3533.438  13240.97
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1 |  2165.037  7842.263
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1 |  2148.673   7799.78
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Total |   2848.74  10888.03
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Total |  2841.006  10887.92
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------
@@ -1088,31 +1103,31 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       0 |   6,986    3532.443    158.1271    13216.63    3222.465     3842.42
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       0 |   7,007    3533.438    158.1808    13240.97    3223.356     3843.52
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1 |   6,986    2165.037    93.82684    7842.263    1981.108    2348.967
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>combined |  13,972     2848.74     92.1128    10888.03    2668.187    3029.293
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       1 |   7,008    2148.673    93.17198     7799.78    1966.028    2331.319
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    diff |            1367.405    183.8686                1006.991    1727.819
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>combined |  14,015    2841.006    91.97046    10887.92    2660.732    3021.281
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---------+--------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    diff |            1384.765    183.5815                1024.913    1744.616
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    diff = mean(0) - mean(1)                                      t =   7.4369
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    diff = mean(0) - mean(1)                                      t =   7.5431
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ho: diff = 0                     Satterthwaite&#39;s degrees of freedom =  11361.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ho: diff = 0                     Satterthwaite&#39;s degrees of freedom =  11345.3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
@@ -1185,52 +1200,52 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,413       10.11       10.11
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          A |      1,418       10.12       10.12
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        957        6.85       16.96
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          B |        961        6.86       16.97
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,430       10.23       27.20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          C |      1,428       10.19       27.16
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        412        2.95       30.15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          D |        410        2.93       30.09
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        547        3.91       34.06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          G |        546        3.90       33.99
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        403        2.88       36.95
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          H |        404        2.88       36.87
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,032        7.39       44.33
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          J |      1,036        7.39       44.26
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,758       12.58       56.91
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          L |      1,771       12.64       56.90
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        403        2.88       59.80
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          M |        403        2.88       59.77
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,408       31.55       91.35
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          N |      4,421       31.54       91.32
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         45        0.32       91.67
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          P |         46        0.33       91.64
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        693        4.96       96.63
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          R |        699        4.99       96.63
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        349        2.50       99.13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          S |        349        2.49       99.12
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V |        122        0.87      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          V |        123        0.88      100.00
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------+-----------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     13,972      100.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Total |     14,015      100.00
 </pre></div>
 </div>
 </div>
@@ -1261,7 +1276,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13,972 real changes made)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(14,015 real changes made)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  56
@@ -1300,116 +1315,116 @@
 	&lt;rect x=&quot;393.68&quot; y=&quot;278.23&quot; width=&quot;3462.46&quot; height=&quot;2208.07&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;932.09&quot; cy=&quot;1938.11&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;932.09&quot; cy=&quot;1938.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2019.23&quot; cy=&quot;1385.05&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2019.23&quot; cy=&quot;1385.05&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3673.89&quot; cy=&quot;586.72&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;3673.89&quot; cy=&quot;586.72&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1238.37&quot; cy=&quot;1765.97&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1238.37&quot; cy=&quot;1765.97&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;932.09&quot; cy=&quot;1938.11&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;932.09&quot; cy=&quot;1938.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3673.89&quot; cy=&quot;586.72&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;3673.89&quot; cy=&quot;586.72&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2019.23&quot; cy=&quot;1385.05&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;2019.23&quot; cy=&quot;1385.05&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;2097.07&quot; cy=&quot;1347.43&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;2097.07&quot; cy=&quot;1347.43&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;799.92&quot; cy=&quot;2012.36&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;799.92&quot; cy=&quot;2012.36&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;614.79&quot; cy=&quot;2116.44&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;614.79&quot; cy=&quot;2116.44&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;994.83&quot; cy=&quot;1902.72&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;994.83&quot; cy=&quot;1902.72&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1228.71&quot; cy=&quot;1771.29&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1228.71&quot; cy=&quot;1771.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;3498.04&quot; cy=&quot;671.49&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;682.98&quot; cy=&quot;2078.07&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;682.98&quot; cy=&quot;2078.07&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1632.88&quot; cy=&quot;1571.55&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;527.05&quot; cy=&quot;2165.69&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;527.05&quot; cy=&quot;2165.69&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;621.10&quot; cy=&quot;2112.85&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;621.10&quot; cy=&quot;2112.85&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;715.89&quot; cy=&quot;2059.64&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;715.89&quot; cy=&quot;2059.64&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;588.80&quot; cy=&quot;2131.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;588.80&quot; cy=&quot;2131.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;677.41&quot; cy=&quot;2081.17&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;677.41&quot; cy=&quot;2081.17&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;615.53&quot; cy=&quot;2115.94&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;615.53&quot; cy=&quot;2115.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;711.44&quot; cy=&quot;2062.11&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;711.44&quot; cy=&quot;2062.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;535.34&quot; cy=&quot;2161.11&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;535.34&quot; cy=&quot;2161.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1126.99&quot; cy=&quot;1828.46&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1126.99&quot; cy=&quot;1828.46&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1457.03&quot; cy=&quot;1656.32&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1457.03&quot; cy=&quot;1656.32&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3652.36&quot; cy=&quot;597.11&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;3652.36&quot; cy=&quot;597.11&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1157.06&quot; cy=&quot;1811.63&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1157.06&quot; cy=&quot;1811.63&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1457.03&quot; cy=&quot;1656.32&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1457.03&quot; cy=&quot;1656.32&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;577.42&quot; cy=&quot;2137.48&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;577.42&quot; cy=&quot;2137.48&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;3690.47&quot; cy=&quot;578.67&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;3690.47&quot; cy=&quot;578.67&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;595.61&quot; cy=&quot;2127.21&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;595.61&quot; cy=&quot;2127.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;514.30&quot; cy=&quot;2172.87&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;514.30&quot; cy=&quot;2172.87&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1510.99&quot; cy=&quot;1630.21&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1510.99&quot; cy=&quot;1630.21&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1116.72&quot; cy=&quot;1834.28&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1116.72&quot; cy=&quot;1834.28&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;956.84&quot; cy=&quot;1924.13&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;956.84&quot; cy=&quot;1924.13&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;788.29&quot; cy=&quot;2018.92&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;788.29&quot; cy=&quot;2018.92&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1212.63&quot; cy=&quot;1780.32&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1212.63&quot; cy=&quot;1780.32&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1044.45&quot; cy=&quot;1874.87&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1044.45&quot; cy=&quot;1874.87&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;570.98&quot; cy=&quot;2141.07&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;570.98&quot; cy=&quot;2141.07&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;615.53&quot; cy=&quot;2115.94&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;615.53&quot; cy=&quot;2115.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1111.28&quot; cy=&quot;1837.37&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1111.28&quot; cy=&quot;1837.37&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;820.71&quot; cy=&quot;2000.73&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;820.71&quot; cy=&quot;2000.73&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1723.84&quot; cy=&quot;1527.62&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1723.84&quot; cy=&quot;1527.62&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;642.88&quot; cy=&quot;2100.60&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;642.88&quot; cy=&quot;2100.60&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;587.69&quot; cy=&quot;2131.66&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;587.69&quot; cy=&quot;2131.66&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;1055.59&quot; cy=&quot;1868.68&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1442.68&quot; cy=&quot;1663.25&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1442.68&quot; cy=&quot;1663.25&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1211.51&quot; cy=&quot;1780.94&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1211.51&quot; cy=&quot;1780.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;538.93&quot; cy=&quot;2159.01&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;538.93&quot; cy=&quot;2159.01&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;586.08&quot; cy=&quot;2132.53&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;586.08&quot; cy=&quot;2132.53&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;681.37&quot; cy=&quot;2078.94&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;681.37&quot; cy=&quot;2078.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1108.31&quot; cy=&quot;1838.98&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1108.31&quot; cy=&quot;1838.98&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;511.09&quot; cy=&quot;2174.73&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;511.09&quot; cy=&quot;2174.73&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;519.75&quot; cy=&quot;2169.78&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;519.75&quot; cy=&quot;2169.78&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1554.30&quot; cy=&quot;1609.42&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1554.30&quot; cy=&quot;1609.42&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;598.83&quot; cy=&quot;2125.35&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;598.83&quot; cy=&quot;2125.35&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;699.19&quot; cy=&quot;2069.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;699.19&quot; cy=&quot;2069.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;810.56&quot; cy=&quot;2006.42&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;810.56&quot; cy=&quot;2006.42&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;3684.28&quot; cy=&quot;581.64&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;3684.28&quot; cy=&quot;581.64&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;787.67&quot; cy=&quot;2019.29&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;787.67&quot; cy=&quot;2019.29&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;553.16&quot; cy=&quot;2151.09&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;553.16&quot; cy=&quot;2151.09&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1211.51&quot; cy=&quot;1780.94&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1211.51&quot; cy=&quot;1780.94&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;1657.01&quot; cy=&quot;1559.79&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;1657.01&quot; cy=&quot;1559.79&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;2105.85&quot; cy=&quot;1343.22&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1337.98&quot; cy=&quot;1713.74&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1337.98&quot; cy=&quot;1713.74&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;579.27&quot; cy=&quot;2136.36&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;579.27&quot; cy=&quot;2136.36&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;519.75&quot; cy=&quot;2169.78&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;519.75&quot; cy=&quot;2169.78&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;511.09&quot; cy=&quot;2174.73&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;511.09&quot; cy=&quot;2174.73&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;662.80&quot; cy=&quot;2089.46&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;662.80&quot; cy=&quot;2089.46&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;654.51&quot; cy=&quot;2094.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;699.19&quot; cy=&quot;2069.04&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;699.19&quot; cy=&quot;2069.04&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;3767.82&quot; cy=&quot;541.30&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;3767.82&quot; cy=&quot;541.30&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;810.56&quot; cy=&quot;2006.42&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;810.56&quot; cy=&quot;2006.42&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1512.22&quot; cy=&quot;1629.71&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;585.46&quot; cy=&quot;2132.90&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;585.46&quot; cy=&quot;2132.90&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;2102.64&quot; cy=&quot;1344.83&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;circle cx=&quot;1300.61&quot; cy=&quot;1731.81&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;circle cx=&quot;1300.61&quot; cy=&quot;1731.81&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;275.35&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2425.82&quot; x2=&quot;350.83&quot; y2=&quot;2425.82&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;text x=&quot;300.72&quot; y=&quot;2425.82&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2425.82)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
@@ -1447,29 +1462,29 @@
 	&lt;rect x=&quot;0.00&quot; y=&quot;0.00&quot; width=&quot;3959.88&quot; height=&quot;2880.00&quot; style=&quot;fill:#FFFFFF&quot;/&gt;
 	&lt;rect x=&quot;2.88&quot; y=&quot;2.88&quot; width=&quot;3954.12&quot; height=&quot;2874.24&quot; style=&quot;fill:none;stroke:#FFFFFF;stroke-width:5.76&quot;/&gt;
 	&lt;rect x=&quot;393.68&quot; y=&quot;278.23&quot; width=&quot;3462.46&quot; height=&quot;2208.07&quot; style=&quot;fill:none;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;rect x=&quot;675.18&quot; y=&quot;338.71&quot; width=&quot;442.03&quot; height=&quot;2150.47&quot; style=&quot;fill:#808080&quot;/&gt;
-	&lt;rect x=&quot;679.50&quot; y=&quot;343.03&quot; width=&quot;433.40&quot; height=&quot;2141.83&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
-	&lt;rect x=&quot;1117.21&quot; y=&quot;1593.21&quot; width=&quot;441.91&quot; height=&quot;895.98&quot; style=&quot;fill:#808080&quot;/&gt;
-	&lt;rect x=&quot;1121.53&quot; y=&quot;1597.53&quot; width=&quot;433.27&quot; height=&quot;887.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
-	&lt;rect x=&quot;1559.13&quot; y=&quot;1593.21&quot; width=&quot;442.04&quot; height=&quot;895.98&quot; style=&quot;fill:#808080&quot;/&gt;
-	&lt;rect x=&quot;1563.45&quot; y=&quot;1597.53&quot; width=&quot;433.40&quot; height=&quot;887.34&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
-	&lt;rect x=&quot;2001.16&quot; y=&quot;1862.00&quot; width=&quot;442.03&quot; height=&quot;627.18&quot; style=&quot;fill:#808080&quot;/&gt;
-	&lt;rect x=&quot;2005.48&quot; y=&quot;1866.32&quot; width=&quot;433.40&quot; height=&quot;618.54&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
-	&lt;rect x=&quot;3327.27&quot; y=&quot;2041.20&quot; width=&quot;442.03&quot; height=&quot;447.99&quot; style=&quot;fill:#808080&quot;/&gt;
-	&lt;rect x=&quot;3331.59&quot; y=&quot;2045.52&quot; width=&quot;433.40&quot; height=&quot;439.35&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;675.18&quot; y=&quot;374.60&quot; width=&quot;442.03&quot; height=&quot;2114.58&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;679.50&quot; y=&quot;378.92&quot; width=&quot;433.40&quot; height=&quot;2105.94&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1117.21&quot; y=&quot;1385.92&quot; width=&quot;441.91&quot; height=&quot;1103.27&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1121.53&quot; y=&quot;1390.24&quot; width=&quot;433.27&quot; height=&quot;1094.63&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;1559.13&quot; y=&quot;1845.67&quot; width=&quot;442.04&quot; height=&quot;643.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;1563.45&quot; y=&quot;1849.99&quot; width=&quot;433.40&quot; height=&quot;634.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;2001.16&quot; y=&quot;1845.67&quot; width=&quot;442.03&quot; height=&quot;643.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;2005.48&quot; y=&quot;1849.99&quot; width=&quot;433.40&quot; height=&quot;634.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;3327.27&quot; y=&quot;1845.67&quot; width=&quot;442.03&quot; height=&quot;643.52&quot; style=&quot;fill:#808080&quot;/&gt;
+	&lt;rect x=&quot;3331.59&quot; y=&quot;1849.99&quot; width=&quot;433.40&quot; height=&quot;634.88&quot; style=&quot;fill:none;stroke:#000000;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;390.80&quot; y2=&quot;275.35&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;350.83&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;text x=&quot;300.72&quot; y=&quot;2489.19&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2489.19)&quot; text-anchor=&quot;middle&quot;&gt;0&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;2070.03&quot; x2=&quot;350.83&quot; y2=&quot;2070.03&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;2070.03&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2070.03)&quot; text-anchor=&quot;middle&quot;&gt;.002&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;1650.88&quot; x2=&quot;350.83&quot; y2=&quot;1650.88&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;1650.88&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1650.88)&quot; text-anchor=&quot;middle&quot;&gt;.004&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;1231.72&quot; x2=&quot;350.83&quot; y2=&quot;1231.72&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;1231.72&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1231.72)&quot; text-anchor=&quot;middle&quot;&gt;.006&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;812.57&quot; x2=&quot;350.83&quot; y2=&quot;812.57&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;812.57&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,812.57)&quot; text-anchor=&quot;middle&quot;&gt;.008&lt;/text&gt;
-	&lt;line x1=&quot;390.80&quot; y1=&quot;393.29&quot; x2=&quot;350.83&quot; y2=&quot;393.29&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
-	&lt;text x=&quot;300.72&quot; y=&quot;393.29&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,393.29)&quot; text-anchor=&quot;middle&quot;&gt;.01&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;2059.14&quot; x2=&quot;350.83&quot; y2=&quot;2059.14&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;2059.14&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,2059.14)&quot; text-anchor=&quot;middle&quot;&gt;.002&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1628.97&quot; x2=&quot;350.83&quot; y2=&quot;1628.97&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1628.97&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1628.97)&quot; text-anchor=&quot;middle&quot;&gt;.004&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;1198.93&quot; x2=&quot;350.83&quot; y2=&quot;1198.93&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;1198.93&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,1198.93)&quot; text-anchor=&quot;middle&quot;&gt;.006&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;768.76&quot; x2=&quot;350.83&quot; y2=&quot;768.76&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;768.76&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,768.76)&quot; text-anchor=&quot;middle&quot;&gt;.008&lt;/text&gt;
+	&lt;line x1=&quot;390.80&quot; y1=&quot;338.71&quot; x2=&quot;350.83&quot; y2=&quot;338.71&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
+	&lt;text x=&quot;300.72&quot; y=&quot;338.71&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 300.72,338.71)&quot; text-anchor=&quot;middle&quot;&gt;.01&lt;/text&gt;
 	&lt;text x=&quot;190.71&quot; y=&quot;1382.33&quot; style=&quot;font-family:&#x27;Helvetica&#x27;;font-size:99.99px;fill:#000000&quot; transform=&quot;rotate(-90 190.71,1382.33)&quot; text-anchor=&quot;middle&quot;&gt;Density&lt;/text&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2489.19&quot; x2=&quot;3859.02&quot; y2=&quot;2489.19&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
 	&lt;line x1=&quot;620.98&quot; y1=&quot;2489.19&quot; x2=&quot;620.98&quot; y2=&quot;2529.16&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
@@ -1497,21 +1512,13 @@
 	&lt;line x1=&quot;390.80&quot; y1=&quot;1890.96&quot; x2=&quot;3859.02&quot; y2=&quot;1890.96&quot; style=&quot;stroke:#E0E0E0;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;1133.59&quot; x2=&quot;3859.02&quot; y2=&quot;1133.59&quot; style=&quot;stroke:#E0E0E0;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;376.21&quot; x2=&quot;3859.02&quot; y2=&quot;376.21&quot; style=&quot;stroke:#E0E0E0;stroke-width:8.64&quot;/&gt;
-	&lt;rect x=&quot;958.20&quot; y=&quot;1838.61&quot; width=&quot;2333.43&quot; height=&quot;665.67&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;rect x=&quot;962.52&quot; y=&quot;1842.93&quot; width=&quot;2324.79&quot; height=&quot;657.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;958.20&quot; y1=&quot;2221.51&quot; x2=&quot;3291.63&quot; y2=&quot;2221.51&quot; style=&quot;stroke:#FFFFFF;stroke-width:12.96&quot;/&gt;
-	&lt;line x1=&quot;2124.91&quot; y1=&quot;2504.28&quot; x2=&quot;2124.91&quot; y2=&quot;2609.60&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;2124.91&quot; y1=&quot;1838.61&quot; x2=&quot;2124.91&quot; y2=&quot;1525.27&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;rect x=&quot;958.20&quot; y=&quot;1684.54&quot; width=&quot;2333.43&quot; height=&quot;824.70&quot; style=&quot;fill:#606060&quot;/&gt;
+	&lt;rect x=&quot;962.52&quot; y=&quot;1688.86&quot; width=&quot;2324.79&quot; height=&quot;816.06&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;958.20&quot; y1=&quot;2180.67&quot; x2=&quot;3291.63&quot; y2=&quot;2180.67&quot; style=&quot;stroke:#FFFFFF;stroke-width:12.96&quot;/&gt;
+	&lt;line x1=&quot;2124.91&quot; y1=&quot;2509.23&quot; x2=&quot;2124.91&quot; y2=&quot;2609.60&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;2124.91&quot; y1=&quot;1684.54&quot; x2=&quot;2124.91&quot; y2=&quot;447.62&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;1343.31&quot; y1=&quot;2609.60&quot; x2=&quot;2906.64&quot; y2=&quot;2609.60&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;line x1=&quot;1343.31&quot; y1=&quot;1525.27&quot; x2=&quot;2906.64&quot; y2=&quot;1525.27&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;578.55&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;578.55&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;578.55&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;578.55&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;459.00&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;459.00&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;447.62&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
-	&lt;circle cx=&quot;2124.91&quot; cy=&quot;447.62&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
+	&lt;line x1=&quot;1343.31&quot; y1=&quot;447.62&quot; x2=&quot;2906.64&quot; y2=&quot;447.62&quot; style=&quot;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;circle cx=&quot;2124.91&quot; cy=&quot;395.15&quot; r=&quot;26.35&quot; style=&quot;fill:#606060&quot;/&gt;
 	&lt;circle cx=&quot;2124.91&quot; cy=&quot;395.15&quot; r=&quot;22.03&quot; style=&quot;fill:none;stroke:#606060;stroke-width:8.64&quot;/&gt;
 	&lt;line x1=&quot;390.80&quot; y1=&quot;2749.19&quot; x2=&quot;390.80&quot; y2=&quot;275.35&quot; style=&quot;stroke:#000000;stroke-width:5.76&quot;/&gt;
